@@ -36,4 +36,4 @@ var/
 *.egg
 .Rproj.user
 .ipynb_checkpoints
-.Rhistorys
+.Rhistory
