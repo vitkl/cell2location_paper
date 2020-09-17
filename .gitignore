@@ -3,6 +3,7 @@ notebooks/results
 *.h5ad
 .pybiomart.sqlite
 
+model_*.p
 CoLocatedComb/
 *requirements.txt
 
