@@ -74,7 +74,7 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.pdf"), 
-                           width=8.5*1.2, height=9*1.3
+                           width=8.5*1.2, height=9*1.4
                            );
 pmap <- pheatmap::pheatmap(region_cell_mat, 
                            show_colnames = T, angle_col=90,
@@ -87,16 +87,16 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"), 
-                           width=8.5*1.2, height=9*1.3
+                           width=8.5*1.2, height=9*1.4
                            );
 
-write.csv(as.data.frame(region_cell_mat), paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.csv"))
+write.csv(as.data.frame(region_cell_mat[pmap$tree_row$labels[pmap$tree_row$order],]), paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.csv"))
 knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"))
 ```
 
 ## Plot heatmap for Fig3E
 
-```{r Fig3E_pheatmap, echo=TRUE, fig.width = 10.2, fig.height = 10.8}
+```{r Fig3E_pheatmap, echo=TRUE, fig.width = 10.2, fig.height = 11.8}
 astro_region_cell = region_cell[, .SD, .SDcols = patterns('Astro|region_label|location|region_label_colors')]
 ## Make color palettes
 reg_cl_pal <- setNames(as.character(astro_region_cell$region_label_colors),
