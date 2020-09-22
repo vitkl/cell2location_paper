@@ -30,12 +30,8 @@ data_dir = '../selected_results/mouse_viseum_snrna/CoLocationModelNB4E6V2_59clus
 region_cell = fread(paste0(data_dir, '20200904_region_cell_abundances.csv'))
 region_cell[, c('V1', 'subregion') := NULL]
 
-region_cell$region_final_colors = toupper(region_cell$region_final_colors)
-region_final_int = region_cell$region_final
-region_cell$region_final = paste0('r', as.character(region_cell$region_final))
-region_cell$region_final = factor(region_cell$region_final, paste0('r', as.character(sort(region_final_int))))
-region_cell[cortical_layer != '', region_final := paste0(cortical_layer, '_', region_final)]
-region_cell[, c('cortical_layer') := NULL]
+region_cell$region_label_colors = toupper(region_cell$region_label_colors)
+region_cell$region_label = factor(region_cell$region_label)
 
 sel = c("hypothalamus", "thalamus", 
         "white matter", "pia, lateral ventricle", "lateral ventricle", 
@@ -49,8 +45,8 @@ head(region_cell)
 
 ```{r Fig3E_suppl_pheatmap, echo=TRUE, fig.width = 10.2, fig.height = 10.8}
 ## Make color palettes
-reg_cl_pal <- setNames(as.character(region_cell$region_final_colors),
-as.character(region_cell$region_final))
+reg_cl_pal <- setNames(as.character(region_cell$region_label_colors),
+as.character(region_cell$region_label))
 
 brain_reg_pal <- setNames(brewer_palette_4_values(as.character(unique(region_cell$location)), "Paired"),
 as.character(unique(region_cell$location)))
@@ -58,11 +54,11 @@ brain_reg_pal = brain_reg_pal[levels(region_cell$location)]
 
 region_cell_mat = copy(region_cell)
 region_cell_mat = region_cell_mat[order(region_cell_mat$location), ]
-region_cell_annot = as.data.frame(region_cell_mat[, .(region_final, location)])
-rownames(region_cell_annot) = region_cell_annot$region_final
-region_cell_mat[, c('location', 'region_final_colors') := NULL]
+region_cell_annot = as.data.frame(region_cell_mat[, .(region_label, location)])
+rownames(region_cell_annot) = region_cell_annot$region_label
+region_cell_mat[, c('location', 'region_label_colors') := NULL]
 
-region_cell_mat = t(as.matrix(region_cell_mat, rownames='region_final'))
+region_cell_mat = t(as.matrix(region_cell_mat, rownames='region_label'))
 
 reg_cl_pal = reg_cl_pal[colnames(region_cell_mat)]
 region_cell_annot = region_cell_annot[colnames(region_cell_mat), ]
@@ -75,10 +71,10 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            cellwidth=12, cellheight=12, border_color=NA,
                            silent = F,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_final=reg_cl_pal, location=brain_reg_pal), 
+                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.pdf"), 
-                           width=8.5*1.2, height=9*1.2
+                           width=8.5*1.2, height=9*1.3
                            );
 pmap <- pheatmap::pheatmap(region_cell_mat, 
                            show_colnames = T, angle_col=90,
@@ -88,10 +84,10 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            cellwidth=12, cellheight=12, border_color=NA,
                            silent = F,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_final=reg_cl_pal, location=brain_reg_pal), 
+                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"), 
-                           width=8.5*1.2, height=9*1.2
+                           width=8.5*1.2, height=9*1.3
                            );
 knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"))
 ```
@@ -99,10 +95,10 @@ knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3E_Supl_location_phea
 ## Plot heatmap for Fig3E
 
 ```{r Fig3E_pheatmap, echo=TRUE, fig.width = 10.2, fig.height = 10.8}
-astro_region_cell = region_cell[, .SD, .SDcols = patterns('Astro|region_final|location|region_final_colors')]
+astro_region_cell = region_cell[, .SD, .SDcols = patterns('Astro|region_label|location|region_label_colors')]
 ## Make color palettes
-reg_cl_pal <- setNames(as.character(astro_region_cell$region_final_colors),
-as.character(astro_region_cell$region_final))
+reg_cl_pal <- setNames(as.character(astro_region_cell$region_label_colors),
+as.character(astro_region_cell$region_label))
 
 brain_reg_pal <- setNames(brewer_palette_4_values(as.character(unique(astro_region_cell$location)), "Paired"),
 as.character(unique(astro_region_cell$location)))
@@ -113,11 +109,11 @@ brain_reg_pal = brain_reg_pal[levels(region_cell$location)]
 
 region_cell_mat = copy(astro_region_cell)
 region_cell_mat = region_cell_mat[order(region_cell_mat$location), ]
-region_cell_annot = as.data.frame(region_cell_mat[, .(region_final, location)])
-rownames(region_cell_annot) = region_cell_annot$region_final
-region_cell_mat[, c('location', 'region_final_colors') := NULL]
+region_cell_annot = as.data.frame(region_cell_mat[, .(region_label, location)])
+rownames(region_cell_annot) = region_cell_annot$region_label
+region_cell_mat[, c('location', 'region_label_colors') := NULL]
 
-region_cell_mat = t(as.matrix(region_cell_mat, rownames='region_final'))
+region_cell_mat = t(as.matrix(region_cell_mat, rownames='region_label'))
 
 reg_cl_pal = reg_cl_pal[colnames(region_cell_mat)]
 region_cell_annot = region_cell_annot[colnames(region_cell_mat), ]
@@ -135,10 +131,10 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            cellwidth=12, cellheight=12, border_color=NA,
                            silent = F,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_final=reg_cl_pal, location=brain_reg_pal), 
+                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_astro_location_pheatmap.pdf"), 
-                           width=8.5*1.2, height=9*1.2
+                           width=8.5*1.2, height=9*1.3
                            #labels_col=paste0()
                            );
 pmap <- pheatmap::pheatmap(region_cell_mat, 
@@ -149,10 +145,10 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            cellwidth=12, cellheight=12, border_color=NA,
                            silent = F,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_final=reg_cl_pal, location=brain_reg_pal), 
+                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
                            filename=paste0(data_dir, "plots/figures/Fig3E_astro_location_pheatmap.png"), 
-                           width=8.5*1.2, height=9*1.2
+                           width=8.5*1.2, height=9*1.3
                            );
 write.csv(as.data.frame(region_cell_mat), paste0(data_dir, "plots/figures/Fig3E_astro_location_pheatmap.csv"))
 
