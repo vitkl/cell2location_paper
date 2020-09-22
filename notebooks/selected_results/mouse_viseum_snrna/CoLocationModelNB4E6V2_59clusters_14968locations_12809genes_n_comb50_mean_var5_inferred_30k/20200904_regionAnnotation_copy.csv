@@ -12,7 +12,7 @@ region_04092020,region_final,new_regions,old_region,location,subregion,cortical_
 10,10,11,-,piriform cortex,L1,,PirCTX_L1,some L2-3,
 11,11,8,11,hippocampus,,,HPC,"stronger in CA1, CA2, CA3 but also observed in DG",
 12,12,12,17,striatum,caudate putamen,,STR,,
-13,6,2,5,cortex,pan cortex,L5,CTX_ L5,looks like upper L5 and likely includes full L5/6 in medial cortex,
+13,6,2,5,cortex,pan cortex,L5,CTX_L5,looks like upper L5 and likely includes full L5/6 in medial cortex,
 14,14,14,8,thalamus,select thalamic nuclei,,THAL_venmedial,ventral/medial thalamic nuclei outside region 0 and the habenula,
 15,15,16,13,hypothalamus,dorsal,,HYPO_dorsal2,"zona incerta, subthalamic nuclei (49) and also contains region immediately doroslateral to the hypothamus - perhaps globus pallidus internal segment or substantia innominata (48,52)",49
 16,16,13,9,piriform cortex,L2-3,,PirCTX_L2/3,,
