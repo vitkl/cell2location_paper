@@ -89,6 +89,8 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            filename=paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"), 
                            width=8.5*1.2, height=9*1.3
                            );
+
+write.csv(as.data.frame(region_cell_mat), paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.csv"))
 knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3E_Supl_location_pheatmap.png"))
 ```
 
