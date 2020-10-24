@@ -5,20 +5,19 @@ Astro_marker,Hepacam,T,,,F,,,Astro
 Astro_WM,Gfap,T,well known WM marker so shouldnt classify as HPC,,F,,,WM
 Astro_WM,Igfbp5,T,,,F,,,WM
 Astro_WM,Id2,F,,,F,,,WM
-Broad_Astro_CTX,Gldc,T,,,F,,,broad_CTX
-Broad_Astro_CTX,Cspg5,F,,,F,,,broad_CTX
-Broad_Astro_CTX,Meis2,F,ctx+wm vs subcortical,,F,,,broad_CTX
-Broad_Astro_CTX,Tspan7,F,,,F,,,broad_CTX
-Broad_Astro_CTX,Rgcc,F,,,F,,,broad_CTX
-Broad_Astro_THAL_HYPO,Slc6a11,T,also zeisel marker,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Erbb4,T,,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Lrig1,T,,,F,,,THAL_HYPO
-Astro_HYPO,Agt,T,"also zeisel marker, expressed broadly in HYPO+THAL but enriched in HYPO and THAL_hab",,F,,,HYPO
-Broad_Astro_THAL_HYPO,Mgat4c,F,,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Itpkb,F,,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Pdgfd,F,also in HPC,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Sparc,F,Nice pattern but low,,F,,,THAL_HYPO
-Broad_Astro_THAL_HYPO,Slc6a9,F,also zeisel marker,,F,,,THAL_HYPO
+telencephalic,Gldc,T,,,F,,,telencephalic
+telencephalic,Cspg5,F,,,F,,,telencephalic
+telencephalic,Meis2,F,ctx+wm vs subcortical,,F,,,telencephalic
+telencephalic,Tspan7,F,,,F,,,telencephalic
+telencephalic,Rgcc,F,,,F,,,telencephalic
+diencephalic,Slc6a11,T,also zeisel marker,,F,,,diencephalic
+diencephalic,Erbb4,T,,,F,,,diencephalic
+diencephalic,Lrig1,T,,,F,,,diencephalic
+diencephalic,Agt,T,"also zeisel marker, expressed broadly in HYPO+THAL but enriched in HYPO and THAL_hab",,F,,,HYPO
+diencephalic,Mgat4c,F,,,F,,,diencephalic
+diencephalic,Itpkb,F,,,F,,,diencephalic
+diencephalic,Pdgfd,F,also in HPC,,F,,,diencephalic
+diencephalic,Slc6a9,F,also zeisel marker,,F,,,diencephalic
 Astro_THAL_hab,Slc38a1,T,,,F,T,,THAL_hab
 Astro_THAL_hab,Angpt1,T,also interactor,,F,U,,THAL_hab
 Astro_THAL_hab,Pkp4,T,,,F,U,,THAL_hab
@@ -36,6 +35,7 @@ Astro_THAL_med,Scel,F,,,F,L,,THAL_med
 Astro_THAL_med,F5,F,,,F,U,,THAL_med
 Astro_HYPO,Itih3,T,Merged with Astro_HYPO_THAL for this analysis - Itih3 ABA looks good,,F,T,,HYPO
 Astro_HYPO,Ttll3,T,,,F,F,,HYPO
+Astro_HYPO,Sparc,T,Nice pattern but low,,F,,,HYPO
 Astro_THAL_med,Unc13c,T,also med vs lah/hab,,F,T,,THAL_med
 Astro_CTX,Unc13c,T,also med vs lah/hab,,F,T,,CTX
 Astro_CTX,Chrdl1,T,,,F,T,,CTX
@@ -61,8 +61,8 @@ Astro_THAL_med,Gria1,T,low in lat,Astro_THAL_combo,T,U,,THAL_med
 Astro_THAL_lat,Rhoq,F,lower tier - higher in lat,Astro_THAL_combo,T,U,,THAL_lat
 Astro_HYPO,Nnat,F,hypo/thal_hab vs thal_med/lat - FISH does not look great,Astro_THAL_combo,T,T,In Visium THAL_hab but also in many neurones,HYPO
 Astro_THAL_hab,Nnat,F,hypo/thal_hab vs thal_med/lat - FISH does not look great,Astro_THAL_combo,T,T,In Visium THAL_hab but also in many neurones,THAL_hab
-Broad_Astro_CTX,Hapln1,T,,,F,,,broad_CTX
-Broad_Astro_CTX,Slco1c1,T,low in hab,Astro_THAL_combo,T,U,,broad_CTX
+telencephalic,Hapln1,T,,,F,,,telencephalic
+telencephalic,Slco1c1,T,low in hab,Astro_THAL_combo,T,U,,telencephalic
 Astro_THAL_hab,Ldb2,F,high in hab and hypo,Astro_THAL_combo,T,U,Expressed by cortical neurones,THAL_hab
 Astro_THAL_lat,Igfbp2,F,high thal lat + ctx,Astro_THAL_combo,T,,,THAL_lat
 Astro_combo,Slc7a10,F,"thal lat, but broadly expressed",Astro_THAL_combo,T,,,combo
