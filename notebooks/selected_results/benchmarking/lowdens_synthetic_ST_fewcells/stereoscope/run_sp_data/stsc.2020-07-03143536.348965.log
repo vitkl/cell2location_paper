@@ -1,0 +1,6 @@
+[2020-07-03 14:35:36,387 - stsc - INFO ] >> Using device cuda
+[2020-07-03 14:35:36,389 - stsc - INFO ] >> fitting sc data | count file : /lustre/scratch117/cellgen/team292/aa22/stereoscope_for_Vitalii_20200703/seed10/sc_reference.tsv | labels file : /lustre/scratch117/cellgen/team292/aa22/stereoscope_for_Vitalii_20200703/seed10/sc_reference_annot.tsv
+[2020-07-03 14:39:14,130 - stsc - INFO ] >> SC data GENES : 5000  SC data CELLS : 8137  SC data TYPES : 46 
+[2020-07-04 00:56:48,147 - stsc - INFO ] >> fit st data section(s) : ['/lustre/scratch117/cellgen/team292/aa22/stereoscope_for_Vitalii_20200703/seed10/sp_data.tsv']
+[2020-07-04 00:57:32,173 - stsc - INFO ] >> ST data GENES : 5000  ST data SPOTS : 2000 
+[2020-07-04 03:14:13,066 - stsc - INFO ] >> saving proportions for section sp_data to run_sp_data/sp_data/W.2020-07-03143536.348965.tsv
