@@ -8,6 +8,7 @@ CoLocatedComb/
 *requirements.txt
 counts_*.p
 synthetic_*_counts.csv
+mapping_video/
 
 Meta
 doc
