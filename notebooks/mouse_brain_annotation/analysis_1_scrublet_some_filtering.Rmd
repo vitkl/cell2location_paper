@@ -1,0 +1,414 @@
+---
+title: "Explore mouse snRNA-seq matching viseum chips"
+author: "Vitalii Kleshchevnikov"
+date: "14/09/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+reticulate::use_condaenv("r-tensorflow", conda = "auto", required = TRUE)
+library(ParetoTI)
+library(SingleCellExperiment)
+library(BiocSingular)
+library(Seurat)
+library(foreach)
+library(ggplot2)
+doParallel::registerDoParallel(16)
+
+unloadNamespace("loadatasets")
+devtools::load_all("../loadatasets/")
+
+if(F){ # code to knit this
+  library(rmarkdown)
+  proj_path = "/home/jovyan/viseum_chips/"
+  rmarkdown::render(input = paste0(proj_path, "explore_mouse_snrnaseq.Rmd"), 
+                    output_format = "html_document", 
+                    output_file=paste0(proj_path, "explore_mouse_snrnaseq.html"))
+}
+```
+
+## Load and plot snRNA-seq data
+
+```{r snrna_viseum, eval=TRUE}
+seu_vis = load_snrna_viseum(nfeatures = 5000, M3Drop_threshold = 0.1, emptyDrops_fdr_p_val = 0.01, scrublet_score = 1,
+                        dir10x = c("filtered_feature_bc_matrix"))
+
+seu_vis_empty = load_snrna_viseum(nfeatures = 5000, M3Drop_threshold = 0.1, emptyDrops_fdr_p_val = 1, scrublet_score = 1,
+                        dir10x = c("raw_feature_bc_matrix"), emptyDrops_lower = 10, run_scrublet = FALSE,
+                        data_ind = "5705STDY8058280",
+                        cache_file = "5705STDY8058280.mtx")
+```
+### Examine the structure of the empty droplet fraction
+
+```{r}
+qplot(seu_vis_empty@meta.data$nCount_RNA, bins=100) +
+  xlab("nUMI") +
+  scale_x_log10() +
+  geom_vline(xintercept = 100) + geom_vline(xintercept = 450) 
+```
+
+Select the peak > 100 & < 450 and show UMAP of these droplets
+
+```{r drop_umap}
+seu_vis_empty_sm = seu_vis_empty[, seu_vis_empty$nCount_RNA > 100 & seu_vis_empty$nCount_RNA < 450]
+#seu_vis_empty_sm = seu_vis_empty[, seu_vis_empty$nCount_RNA < 100]
+seu_vis_empty_sm@assays$RNA@scale.data = as.matrix(seu_vis_empty_sm@assays$RNA@counts)
+
+# PCA ============================================================
+npcs = 50
+seu_vis_empty_sm = RunPCA(seu_vis_empty_sm, npcs = npcs, ndims.print = 1:5, nfeatures.print = 5)
+print(ElbowPlot(seu_vis_empty_sm, ndims = npcs))
+
+# Graph-based clustering ============================================================
+seu_vis_empty_sm = FindNeighbors(seu_vis_empty_sm, k.param=100, reduction = "pca", dims = 1:npcs)
+seu_vis_empty_sm = FindClusters(seu_vis_empty_sm, resolution = 0.5, n.start = 10)
+
+# compute UMAP ============================================================
+seu_vis_empty_sm = RunUMAP(seu_vis_empty_sm, dims = 1:npcs, min.dist = 0.2)
+```
+
+```{r fig.width=20, fig.height=20}
+# find non-zero genes
+n_drops_per_gene = rowSums(seu_vis_empty_sm@assays$RNA@scale.data)
+qplot(n_drops_per_gene, bins = 50) + scale_x_log10()
+
+# # plot pairs of markers
+# plt = expand.grid(i = seq_along(mtgenes), j = seq_along(mtgenes))
+# plot_list = foreach(i = plt[,1], j = plt[,2]) %do% {
+#   
+#   x = as.vector(seu_vis_empty_sm[mtgenes[i, "ENSEMBL"],]@assays$RNA@scale.data)
+#   y = as.vector(seu_vis_empty_sm[mtgenes[j, "ENSEMBL"],]@assays$RNA@scale.data)
+#   qplot(x, y, geom = "bin2d", bins = 3) + scale_fill_viridis_c() + theme(legend.position = "none")
+#   
+# }
+# cowplot::plot_grid(plotlist = plot_list, ncol=length(mtgenes))
+```
+
+```{r drop_umap_plot, fig.height=21, fig.width=33, eval=TRUE}
+point_size=0.1
+dims = c(2, 3)
+# show cells 
+p1 = DimPlot(seu_vis_empty_sm, reduction = "pca", pt.size = point_size, group.by = "RNA_snn_res.0.5", dims = dims) +
+  ggtitle(label = "seurat_clusters")
+
+p2 = DimPlot(seu_vis_empty_sm, reduction = "pca", pt.size = point_size, group.by = "sample", dims = dims) +
+  ggtitle(label = "sample")
+
+p3 = FeaturePlot(seu_vis_empty_sm, features = c("nCount_RNA"),
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = "nUMI") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(500, 1000, 10000, 100000), labels = c("500", "1k", "10k", "100k"))
+p4 = FeaturePlot(seu_vis_empty_sm, features = c("nFeature_RNA"),
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = "nGenes") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(200, 500, 1000, 2000, 5000, 8000), labels = c("200", "500", "1k", "2k", "5k", "8k"))
+
+p5 = FeaturePlot(seu_vis_empty_sm, features = c("ENSMUSG00000070570"),
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = "Slc17a7 - Vesicular glutamate transporter 1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p6 = FeaturePlot(seu_vis_empty_sm, features = c("ENSMUSG00000031425"),
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = "Plp1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p7 = FeaturePlot(seu_vis_empty_sm, features = c("ENSMUSG00000033981"),
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = "Gria2")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+mtgenes = seu_vis_empty_sm@assays$RNA@meta.features[grep("^mt-", seu_vis_empty_sm@assays$RNA@meta.features$SYMBOL),]
+
+p8 = FeaturePlot(seu_vis_empty_sm, features = mtgenes[1,"ENSEMBL"],
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = mtgenes[1,"SYMBOL"])  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p9 = FeaturePlot(seu_vis_empty_sm, features = mtgenes[2,"ENSEMBL"],
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = mtgenes[2,"SYMBOL"])  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p10 = FeaturePlot(seu_vis_empty_sm, features = mtgenes[3,"ENSEMBL"],
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = mtgenes[3,"SYMBOL"])  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p11 = FeaturePlot(seu_vis_empty_sm, features = mtgenes[4,"ENSEMBL"],
+                 reduction = "pca", pt.size = point_size, slot = "counts", dims = dims) +
+  ggtitle(label = mtgenes[4,"SYMBOL"])  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+cowplot::plot_grid(plotlist = list(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11), ncol = 4, align = "hv")
+```
+
+#### Now plot cells
+
+```{r}
+seu_vis = FindClusters(seu_vis, resolution = 0.1, n.start = 10)
+```
+
+```{r, fig.height=14, fig.width=33, eval=TRUE}
+point_size=0.1
+# show cells 
+p1 = DimPlot(seu_vis, reduction = "umap", pt.size = point_size, group.by = "RNA_snn_res.0.1") +
+  ggtitle(label = "seurat_clusters")
+
+p2 = DimPlot(seu_vis, reduction = "umap", pt.size = point_size, group.by = "sample") +
+  ggtitle(label = "sample")
+
+p3 = FeaturePlot(seu_vis, features = c("nCount_RNA"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nUMI") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(500, 1000, 10000, 100000), labels = c("500", "1k", "10k", "100k"))
+p4 = FeaturePlot(seu_vis, features = c("nFeature_RNA"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nGenes") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(200, 500, 1000, 2000, 5000, 8000), labels = c("200", "500", "1k", "2k", "5k", "8k"))
+
+p5 = FeaturePlot(seu_vis, features = c("ENSMUSG00000070570"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Slc17a7 - Vesicular glutamate transporter 1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p6 = FeaturePlot(seu_vis, features = c("ENSMUSG00000031425"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Plp1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p7 = FeaturePlot(seu_vis, features = c("ENSMUSG00000005360"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Glast")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+seu_vis$sel_clust = seu_vis$RNA_snn_res.0.1 == 1
+p8 = DimPlot(seu_vis, reduction = "umap", pt.size = point_size, group.by = "sel_clust") +
+  ggtitle(label = "sel_clust")
+
+cowplot::plot_grid(plotlist = list(p1, p2, p3, p4, p5, p6, p7, p8), ncol = 4, align = "hv")
+```
+
+### Compare expression of PLP1 and other markers between empty spots and other cell types
+
+```{r}
+seu_vis$sel_clust = seu_vis$RNA_snn_res.0.1 == 1
+plp1_neu = as.numeric(seu_vis['ENSMUSG00000031425', seu_vis$sel_clust & seu_vis$sample %in% "5705STDY8058280"]@assays$RNA@counts)
+seu_vis$sel_clust = seu_vis$RNA_snn_res.0.1 == 12
+plp1_ast = as.numeric(seu_vis['ENSMUSG00000031425', seu_vis$sel_clust & seu_vis$sample %in% "5705STDY8058280"]@assays$RNA@counts)
+plp1_emp = as.numeric(seu_vis_empty_sm['ENSMUSG00000031425', ]@assays$RNA@counts)
+max_count = max(c(plp1_neu, plp1_ast, plp1_emp))
+
+p1 = qplot(plp1_neu, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+p2 = qplot(plp1_ast, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+p3 = qplot(plp1_emp, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+
+cowplot::plot_grid(plotlist = list(p1, p2, p3), ncol = 1, align = "hv")
+```
+
+```{r}
+seu_vis$sel_clust = seu_vis$RNA_snn_res.0.1 == 0
+snap25_oligo = as.numeric(seu_vis['ENSMUSG00000027273', seu_vis$sel_clust & seu_vis$sample %in% "5705STDY8058280"]@assays$RNA@counts)
+seu_vis$sel_clust = seu_vis$RNA_snn_res.0.1 == 12
+snap25_ast = as.numeric(seu_vis['ENSMUSG00000027273', seu_vis$sel_clust & seu_vis$sample %in% "5705STDY8058280"]@assays$RNA@counts)
+snap25_emp = as.numeric(seu_vis_empty_sm['ENSMUSG00000031425', ]@assays$RNA@counts)
+max_count = max(c(snap25_oligo, snap25_ast, snap25_emp))
+
+p1 = qplot(snap25_oligo, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+p2 = qplot(snap25_ast, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+p3 = qplot(snap25_emp, y=..density.., geom="histogram", breaks=seq(0, max_count)) + xlim(-0.01, max_count+0.01) + ylim(0, 1)
+
+cowplot::plot_grid(plotlist = list(p1, p2, p3), ncol = 1, align = "hv")
+```
+
+## Load and plot Zeisel data for matching regions   
+
+Matching regions include:    
+
+Amygdala, Hippocampus, Hypothalamus, MiddleCortex, Striatum, Thalamus
+
+```{r zeisel, fig.height=10, fig.width=12}
+zeisel = load_zeisel(regions = c('Amygd', 'CA1', 'HC', 'Hypoth', 'Ctx2', 'SScortex', 'StriatVent', 'StriatDor', 'Thal'),
+                  data_dir = "./data/mouse_zeisel/")
+
+ena = fread("./data/mouse_zeisel/PRJNA438862.txt")
+ena[, ftp_bam := gsub(";.+$", "", submitted_ftp)]
+ena[, ftp_bai := gsub("^.+;", "", submitted_ftp)]
+ena[, SampleID := gsub("^.+/|\\.bam", "", ftp_bam)]
+ena = ena[SampleID %in% zeisel$SampleID]
+fwrite(ena, "./data/mouse_zeisel/PRJNA438862_selection.csv")
+```
+
+```{r, fig.height=14, fig.width=33, eval=TRUE}
+point_size=0.1
+# show cells 
+p1 = DimPlot(zeisel, reduction = "umap", pt.size = point_size, group.by = "Class") +
+  ggtitle(label = "Annotation")
+
+p2 = DimPlot(zeisel, reduction = "umap", pt.size = point_size, group.by = "Tissue") +
+  ggtitle(label = "Tissue")
+
+p3 = FeaturePlot(zeisel, features = c("nCount_RNA"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nUMI") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(500, 1000, 10000, 100000), labels = c("500", "1k", "10k", "100k"))
+p4 = FeaturePlot(zeisel, features = c("nFeature_RNA"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nGenes") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(200, 500, 1000, 2000, 5000, 8000), labels = c("200", "500", "1k", "2k", "5k", "8k"))
+
+p5 = FeaturePlot(zeisel, features = c("ENSMUSG00000070570"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Slc17a7 - Vesicular glutamate transporter 1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+p6 = FeaturePlot(zeisel, features = c("ENSMUSG00000031425"),
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Plp1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+cowplot::plot_grid(plotlist = list(p1, p2, p3, p4, p5, p6), ncol = 4, align = "hv")
+```
+
+## Plot some gene pairs
+
+```{r gene_pairs}
+
+```
+
+## Combine with Zeisel data using Seurat CCA
+
+I follow the default pipeline in https://satijalab.org/seurat/v3.0/integration.html.  
+
+```{r cca}
+anchors = FindIntegrationAnchors(object.list = list(seu_vis, zeisel),
+                                 dims = 1:50)
+integrated = IntegrateData(anchorset = anchors, 
+                           k.weight = 50, dims = 1:50)
+
+# normalised and PCA-project data
+# switch to integrated assay. The variable features of this assay are automatically
+# set during IntegrateData
+DefaultAssay(integrated) = "integrated"
+
+# Run the standard workflow for visualization and clustering
+integrated = ScaleData(integrated, verbose = FALSE)
+integrated = RunPCA(integrated, npcs = 50, verbose = FALSE)
+integrated = RunUMAP(integrated, reduction = "pca", dims = 1:50)
+
+integrated$source = NA
+integrated$source[!is.na(integrated$Class)] = "Zeisel"
+integrated$source[!is.na(integrated$RNA_snn_res.0.1)] = "snRNA-seq Viseum"
+
+ref_annot = paste0(integrated$Tissue,"_", integrated$Class)
+ref_annot[ref_annot == "NANA"] = NA
+integrated$ref_annot = ref_annot
+```
+
+```{r}
+integrated = FindNeighbors(integrated, reduction = "pca", dims = 1:50)
+integrated = FindClusters(integrated, resolution = 0.8, n.start = 10)
+table(integrated$integrated_snn_res.0.8)
+table(Zeisel_annotations = integrated$Class, new_annot = integrated$integrated_snn_res.0.8, 
+      Tissue = integrated$Tissue, useNA = "ifany")
+
+table(Zeisel_annotations = integrated$Class, new_annot = integrated$integrated_snn_res.0.8,
+      useNA = "ifany")
+
+table(new_annot = integrated$integrated_snn_res.0.8, 
+      Tissue = integrated$Tissue, useNA = "ifany")
+
+saveRDS(integrated, "./data/mouse_viseum_snrna/zeisel_integrated.rds")
+fwrite(as.data.table(integrated@meta.data), "./data/mouse_viseum_snrna/zeisel_integrated_meta.tsv", sep = "\t")
+```
+
+```{r fig.height=14, fig.width=14}
+corr_mat = table(Zeisel_annotations = paste0(integrated$Class, " | ", integrated$Tissue),
+      new_annot = integrated$integrated_snn_res.0.8, useNA = "ifany")
+
+ord1=hclust(1-as.dist(cor(corr_mat)))$order
+ord2=hclust(1-as.dist(cor(t(corr_mat))))$order
+co=reshape2::melt(corr_mat[ord2,ord1])
+co$new_annot = as.character(co$new_annot)
+
+ggplot(co, aes(new_annot, Zeisel_annotations)) + 
+  geom_tile(aes(fill = value)) + 
+  #geom_text(aes(fill = co$value, label = round(co$value, 2))) +
+  scale_fill_viridis_c(option = "magma", trans = "log10", na.value = "black") +
+  theme(panel.grid.major.x=element_blank(), 
+        panel.grid.minor.x=element_blank(), 
+        panel.grid.major.y=element_blank(), 
+        panel.grid.minor.y=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.text.x = element_text(size = 12,face = "bold"),
+        plot.title = element_text(size=20,face="bold"),
+        axis.text.y = element_text(size = 12,face = "bold")) + 
+  ggtitle("Correlation Plot") + 
+  theme(legend.title=element_text(face="bold", size=14)) + 
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="") +
+  labs(fill="Corr. Coef.")
+```
+
+```{r, fig.height=14, fig.width=33, eval=TRUE}
+point_size=0.1
+# show cells 
+p1 = DimPlot(integrated, reduction = "umap", pt.size = point_size, order = TRUE, group.by = "source") +
+  ggtitle(label = "source")
+p2 = DimPlot(integrated, reduction = "umap", pt.size = point_size, order = TRUE, na.value = "grey90", group.by = "RNA_snn_res.0.1") +
+  ggtitle(label = "seurat_clusters")
+p7 = DimPlot(integrated, reduction = "umap", pt.size = point_size, order = TRUE, na.value = "grey90", group.by = "integrated_snn_res.0.8") +
+  ggtitle(label = "seurat_clusters2")
+
+p3 = DimPlot(integrated, reduction = "umap", pt.size = point_size, order = TRUE, na.value = "grey90", group.by = "Class") +
+  ggtitle(label = "Zeisel annotations") 
+p4 = DimPlot(integrated, reduction = "umap", pt.size = point_size, order = TRUE, na.value = "grey90", group.by = "Tissue") +
+  ggtitle(label = "Zeisel  region") 
+
+p5 = FeaturePlot(integrated, features = c("nCount_RNA"), order = TRUE,
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nUMI") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(500, 1000, 10000, 100000), labels = c("500", "1k", "10k", "100k"))
+p6 = FeaturePlot(integrated, features = c("nFeature_RNA"), order = TRUE,
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "nGenes") +
+  scale_colour_viridis_c(trans = "log10", option = "magma",
+                         breaks = c(200, 500, 1000, 2000, 5000, 8000), labels = c("200", "500", "1k", "2k", "5k", "8k"))
+
+p7 = FeaturePlot(integrated, features = c("ENSMUSG00000070570"), order = TRUE,
+                 reduction = "umap", pt.size = point_size, slot = "counts") +
+  ggtitle(label = "Slc17a7 - Vesicular glutamate transporter 1")  +
+  scale_colour_distiller(trans = "log10", palette = "RdPu")
+
+cowplot::plot_grid(plotlist = list(p1, p2, p7, p3, p4, p5, p6, p7), ncol = 4, align = "hv")
+```
+
+Transfer cell labels
+
+```{r eval=FALSE}
+trans_anchors = FindTransferAnchors(reference = zeisel, query = seu_vis, 
+    dims = 1:50)
+
+predictions = TransferData(anchorset = anchors, refdata = zeisel$ref_annot, 
+    dims = 1:50)
+seu_vis = AddMetaData(seu_vis, metadata = predictions)
+```
+
+
+```{r, fig.width=40, fig.height=24, eval=FALSE}
+cat = data.table(c("Cell source", "source"),
+                 c("Zeisel annotations", "Class"),
+                 c("snRNA-seq Viseum annotations", "annot"))
+
+plot_markers(integrated, markers = my_neuro_markers, categ = cat,
+             point_size = 0.3, slot = "data", # log scale here for comparability between datasets
+             ncol = 6)
+```

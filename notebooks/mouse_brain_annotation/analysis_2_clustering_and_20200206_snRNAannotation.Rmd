@@ -1,0 +1,438 @@
+---
+title: "Annotation of snRNA-seq dataset from coronal brain sections"
+author: 'Emma Dann'
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(Seurat)
+library(tidyverse)
+library(RColorBrewer)
+library(biomaRt)
+library(ensembldb)
+library(EnsDb.Mmusculus.v79)
+library(cowplot)
+
+brewer_palette_4_values <- function(vec, palette, seed=42){
+  set.seed(seed)
+  pal=suppressWarnings(colorRampPalette(brewer.pal(12, palette))(length(vec)))
+  # names(pal) <- sample(vec)
+  return(pal)
+}
+
+```
+
+## Load raw counts matrix
+
+Gene filtering was already performed
+
+```{r}
+snrna_raw <- ReadH5AD("/nfs/team283/ed6/processed_data/visium_st_beta/snRNA_s144600_raw_20200128.h5ad")
+```
+
+## QC filtering
+
+```{r}
+snrna_raw@meta.data %>%
+  dplyr::select(nCount.RNA,nFeature.RNA, doublet.scores, nucl.mito.genes) %>%
+  ggplot(aes(nFeature.RNA, nucl.mito.genes)) +
+  geom_point(size=0.1, alpha=0.4)
+```
+```{r}
+snrna_raw@meta.data %>%
+  dplyr::select(nCount.RNA,nFeature.RNA, doublet.scores, nucl.mito.genes) %>%
+  ggplot(aes(nFeature.RNA, doublet.scores)) +
+  geom_point(size=0.1, alpha=0.4)
+```
+
+Filtering cells
+```{r}
+snrna_qc <- subset(snrna_raw, 
+                   subset =  nFeature.RNA < 5000 & nucl.mito.genes < 0.10 & doublet.scores < 0.2 
+                     )
+
+```
+
+```{r}
+snrna_qc <- NormalizeData(snrna_qc, normalization.method = "LogNormalize", scale.factor = 10000)
+snrna_qc <- ScaleData(snrna_qc)
+snrna_qc <- RunPCA(snrna_qc, features= rownames(GetAssay(snrna_qc)), npcs = 50)
+snrna_qc <- RunUMAP(snrna_qc, dims = 1:50)
+```
+
+```{r}
+DimPlot(snrna_qc, group.by="sample") + scale_color_brewer(name="Sample", palette = "Set2")
+```
+
+## Clustering with Louvain algorithm
+
+```{r, fig.height=8, fig.width=8}
+snrna_qc_sel <- snrna_qc
+
+snrna_qc_sel <- FindNeighbors(snrna_qc_sel, k.param = 100, reduction = "pca", dims = 1:50)
+snrna_qc_sel <- Seurat::FindClusters(snrna_qc_sel, resolution = 7, random.seed=42)
+
+DimPlot(snrna_qc_sel, group.by = "seurat_clusters", label=T, 
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==52]
+        ) +
+  guides(color="none")
+```
+
+
+Changing feature names between datasets
+
+```{r}
+ensembl <- useMart("ensembl", dataset="mmusculus_gene_ensembl",  host = "www.ensembl.org",
+              ensemblRedirect = FALSE)
+
+mouse_gene_ids  <- union(rownames(GetAssay(allen_VIS_seu)), rownames(GetAssay(allen_ALM_seu)))
+
+gene.attributes.2 <- getBM(attributes = c('ensembl_gene_id',
+                          'mgi_symbol', 'entrezgene_id', "external_gene_name"),
+             filter = "ensembl_gene_id",
+             values = rownames(visium_seu),
+             mart = ensembl)
+
+vis_metafeatures <- gene.attributes.2 %>%
+  dplyr::rename(ENSEMBL = ensembl_gene_id) %>%
+  right_join(snrna_qc_sel@assays$RNA@meta.features) 
+
+ens_ids_w_mgi <- vis_metafeatures$ENSEMBL[which(!is.na(vis_metafeatures$mgi_symbol))]
+common_ens_ids_w_mgi <- intersect(ens_ids_w_mgi, rownames(snrna_qc_sel))
+
+snrna_qc_sel <- snrna_qc_sel[common_ens_ids_w_mgi,]
+
+common_rownames <- vis_metafeatures$mgi_symbol[match(common_ens_ids_w_mgi, vis_metafeatures$ENSEMBL)] 
+common_rownames <- make.names(common_rownames, unique=TRUE)
+rownames(snrna_qc_sel@assays$RNA@counts) <- common_rownames
+rownames(snrna_qc_sel@assays$RNA@data) <- common_rownames
+rownames(snrna_qc_sel@assays$RNA@scale.data) <- common_rownames
+rownames(snrna_qc_sel@reductions$pca@feature.loadings) <- common_rownames
+rownames(snrna_qc_sel@assays$RNA@meta.features) <- common_rownames
+```
+```{r, fig.width=15, fig.height=10}
+VlnPlot(snrna_qc_sel, features=c("percent.mt", 'doublet.scores', 'nCount_RNA'), pt.size=0.1,ncol = 1) + guides(fill="none")
+```
+
+
+Explore expression of marker genes. Main sources: 
+
+- Tasic, Bosiljka, Zizhen Yao, Lucas T. Graybuck, Kimberly A. Smith, Thuc Nghi Nguyen, Darren Bertagnolli, Jeff Goldy, et al. ‘Shared and Distinct Transcriptomic Cell Types across Neocortical Areas’. Nature 563, no. 7729 (November 2018): 72–78. https://doi.org/10.1038/s41586-018-0654-5.
+- Zeisel, Amit, Ana B. Muñoz-Manchado, Simone Codeluppi, Peter Lönnerberg, Gioele La Manno, Anna Juréus, Sueli Marques, et al. ‘Cell Types in the Mouse Cortex and Hippocampus Revealed by Single-Cell RNA-Seq’. Science 347, no. 6226 (6 March 2015): 1138–42. https://doi.org/10.1126/science.aaa1934.
+- Ortiz, Cantin, Jose Fernandez Navarro, Aleksandra Jurek, Antje Märtin, Joakim Lundeberg, and Konstantinos Meletis. ‘Molecular Atlas of the Adult Mouse Brain’. Preprint. Neuroscience, 27 September 2019. https://doi.org/10.1101/784181.
+- Zeisel, Amit, Hannah Hochgerner, Peter Lönnerberg, Anna Johnsson, Fatima Memic, Job van der Zwan, Martin Häring, et al. ‘Molecular Architecture of the Mouse Nervous System’. Cell 174, no. 4 (9 August 2018): 999-1014.e22. https://doi.org/10.1016/j.cell.2018.06.021.
+
+```{r, fig.height=18, fig.width=24, message=FALSE, warning=FALSE}
+cell.markers = list(
+  'Neurons' =  c('Rbfox3', "Snap25", "Ndrg4"), # NeuN
+  'NSC' = c('Pax6','Emx2',"Sox2","Nes"), # Apparently also in astrocytes
+  'Activated neurons' = 'Fos', 
+  'Astrocytes' = c('Gfap', 'Aqp4','Slc1a3', 'Mfge8', 'Agt' ),
+  'VGLUT1 excitatory' = 'Slc17a7',
+  'VGLUT2 excitatory' = 'Slc17a6',
+  'cortical.layers' = c('Layer I inhibitory' = 'Reln',
+      'Layer II/III-IV excitatory.1' = 'Cux1',
+      'Layer II/III-IV excitatory.2' = 'Cux2',
+      'Layer IV excitatory' = 'Rorb',
+      'Layer Va excitatory' = 'Pcp4',
+      'Layer Vb excitatory' = 'Htr2c',
+      'Layer VIa excitatory' = 'Oprk1',
+      'Layer VIb excitatory' = 'Nr4a2',
+      "Bcl11b", "Foxp2",
+      "Claustrum" = "Synpr"),
+  'GABAergic' = 'Gad1',
+  'Interneuron' = c('Sst', 'Htr3a', 'Vip', "Pvalb","Lamp5", 'Meis2'),
+  'Cholinergic' = 'Ache',
+  'Dopaminergic' = 'Th',
+  'Serotinergic' = 'Tph1',
+  'Oligodendrocytes' = c('Plp1','Mog'),
+  'OPC' = c('Pdgfra', "Bmp4"),
+  'Endothelial cells' = c('Apold1', "Flt1", 'Tek'),
+  'Microglia' = c('Ccl4','Ccl3','Tmem119', "Ptprc")
+  )
+
+markers_df <- imap(cell.markers, ~ data.frame(feature=.x, marker.group=.y)) %>%
+  purrr::reduce(bind_rows)
+
+dp <- DotPlot(snrna_qc_sel, features = unlist(cell.markers), group.by = "seurat_clusters")
+left_join(dp$data, dplyr::rename(markers_df, features.plot=feature)) %>%
+  dplyr::rename(cluster=id) %>%
+  ggplot(aes(features.plot, cluster)) +
+  geom_point(aes(color=avg.exp.scaled, size=pct.exp)) +
+  facet_grid(. ~ marker.group, scales="free", space="free") +
+  scale_color_gradient(low="white", high="blue") +
+  theme_bw(base_size = 20) +
+  xlab("Marker genes") + ylab("clusters") +
+  theme(axis.text.x = element_text(angle=90, hjust=1, vjust=0.5),
+        strip.text.x = element_text(angle=90),
+        strip.text.y = element_text(angle=0),
+        panel.grid = element_blank()
+        )
+
+```
+
+Closer look at cluster 60 (high doublet scores but expressing endothelial markers)
+
+```{r}
+cl60_seu <- snrna_qc_sel[,snrna_qc_sel$seurat_clusters==60]
+colnames(cl60_seu@meta.data) <- str_replace(colnames(cl60_seu@meta.data), "seurat_clusters", "seurat_clusters_all")
+cl60_seu <- FindVariableFeatures(cl60_seu)
+cl60_seu <- RunPCA(cl60_seu, npcs = 50)
+cl60_seu <- FindNeighbors(cl60_seu, k.param = 20, reduction = "pca", dims = 1:50)
+cl60_seu <- Seurat::FindClusters(cl60_seu,  random.seed=42, )
+DimPlot(cl60_seu, group.by = "seurat_clusters", label=T, 
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==60]
+        ) +
+  guides(color="none")
+
+```
+
+<!-- more -->
+
+<!-- ```{r, fig.height=20, fig.width=18} -->
+<!-- markers = c( -->
+<!--   'Plcxd2', -->
+<!--   'Rorb', -->
+<!--   'Cux2', -->
+<!-- 'Pcp4', -->
+<!-- 'Synpr', -->
+<!-- 'Nr4a2', -->
+<!-- 'Rprm', -->
+<!-- 'Syt6', -->
+<!-- 'Foxp2', -->
+<!-- 'Sulf2', -->
+<!-- 'Cplx3', -->
+<!-- 'Kcnk2', -->
+<!-- 'Thsd7a' -->
+<!-- ) -->
+<!-- FeaturePlot(snrna_qc_sel, features = c("Itpr2", "Cnksr3", "Tmem2", "Klk6", "Gpr17", "Vcan")) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- DimPlot(snrna_qc_sel, group.by = ) -->
+<!-- ``` -->
+
+
+```{r}
+cl60_seu@meta.data <- cl60_seu@meta.data %>% mutate(seurat_clusters = paste0(seurat_clusters_all, "-", seurat_clusters))
+snrna_qc_sel$seurat_clusters <- as.character(snrna_qc_sel$seurat_clusters)
+snrna_qc_sel$seurat_clusters[colnames(cl60_seu)] <- as.character(cl60_seu$seurat_clusters)
+```
+```{r}
+DimPlot(snrna_qc_sel, group.by = "seurat_clusters", label=T, 
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==52]
+        ) +
+  guides(color="none")
+```
+
+
+Annotate clusters
+
+```{r}
+snrna_annotation <- list(
+  microglia = c(  "32"="Microglia",
+  "29"="Microglia"),
+  inhibitory.interneurons= c("27"="Sst",
+                             "17"="Pvalb (1)",
+                             "46"="Lamp5",
+                             "37"="Vip",
+                             "57"="Pvalb (2)",
+                             "44"="Meis2 (1)",
+                             "31"="Meis2 (2)",
+                             "18"="Meis2 (3)"),
+  excitatory.neurons = c( "45"="L6B",
+                          "51"="ClauPyr", 
+                          "24"="Unknown excitatory (1)",
+                          "6"="L2/3",
+                          "11"="L2/3_L4",
+                          "48"="L4 (2)",
+                          "34"="L4 (2)",
+                          "22"="L5 (1)",
+                          "58"="L5 (1)",
+                          "47"="L5B",
+                          "40"="L5B",
+                          
+                          "36"="Unknown excitatory (2)",
+                          "61"="L5 (4)",
+                          "38"="L5 (2)",
+                          "50"="Unknown excitatory (3)",
+                          "63"="Unknown excitatory (4)",
+                          "2"="L6",
+                          "65"="Unknown excitatory (5)",
+                          "59"="L5 (3)",
+                          "20"="Unknown excitatory (6)",
+                          "26"="Unknown excitatory (7)"),
+  astrocytes = c("0"="Astro (2)",
+                  "56"="Astro (2)",
+                  "23"="Astro (1)",
+                  "39"="Astro (1)"),
+  OPCs = c("7"="OPC (1)",
+        "49"="OPC (2)"),
+  interneurons = c("35"="Int (1)",
+  "14"="Int (2)",
+  "15"="Int (3)",
+  "3"="Int (4)",
+  "62"="Int (5)",
+  "41"="Int (6)"),
+  VGLUT2 = c(
+     "42"="VGLUT2 (1)",
+    "19"="VGLUT2 (2)",
+    "43"="VGLUT2 (2)",
+    "25"="VGLUT2 (3)",
+    "54"="VGLUT (4)"
+    ),
+  oligodendrocytes = c(
+    "30"="Oligo (1)",
+    "21"="Oligo (2)",
+    "1"="Oligo (2)",
+    "4"="Oligo (2)",
+    "28"="Oligo (2)",
+    "8"="Oligo (2)",
+    "4"="Oligo (2)",
+    "12"="Oligo (2)",
+    "16"="Oligo (2)",
+    "33"="Oligo (2)",
+    "5"="Oligo (2)",
+    "9"="Oligo (2)",
+    "10"="Oligo (2)"
+  ),
+  endothelial = c(
+    '60-3' = "Endo"
+  ),
+  'Low quality' = c(
+      "60-0"="LowQ (1)",
+      "60-1"="LowQ (1)",
+      "60-2"="LowQ (1)",
+      "52"="LowQ (2)"
+  ),
+  unknown = c(
+    "53"="Unknown (1)",
+    "55"="Unknown (2)",
+    "13"="Unknown (3)",
+    "13"="Unknown (4)",
+    "64"="Unknown (5)"
+    )
+  )
+
+anno_vec <- unlist(snrna_annotation)
+names(anno_vec) <-str_remove(names(anno_vec), ".+\\.")
+
+anno_1 <- ifelse(as.character(snrna_qc_sel$seurat_clusters) %in% names(anno_vec),anno_vec[as.character(snrna_qc_sel$seurat_clusters)], NA)
+snrna_qc_sel <- AddMetaData(snrna_qc_sel, anno_1, "annotation_1")
+
+## Better naming 
+short_names <- 
+  str_replace(snrna_qc_sel$annotation_1, "\\ \\(","_") %>% 
+  str_remove("\\)")
+
+short_names <-
+  case_when(str_detect(short_names, "Astro|Oligo|Microglia|OPC|Endo") ~ str_c("NonNeu_",short_names),
+          str_detect(short_names, "Meis2|Pvalb|Sst|Vip|Lamp5|Int") ~ str_c("Inh_",short_names),
+          str_detect(short_names, "Low") ~ short_names,
+          str_detect(short_names, "Unknown_") ~ str_replace(short_names, "Unknown", "Unk"),
+          str_detect(short_names, "excitatory") ~ str_c("Ext_",short_names) %>% str_remove(" excitatory"),
+          TRUE ~ str_c("Ext_",short_names))  
+
+snrna_qc_sel <- AddMetaData(snrna_qc_sel, short_names, "annotation_1")
+snrna_qc_sel <- AddMetaData(snrna_qc_sel, anno_1, "annotation_long_1")
+```
+
+Refined cluster annotation from inspection of predicted locations
+```{r}
+new_annotation <- read_csv("/nfs/team283/ed6/20200226_annotationSession.csv")
+
+new_names <- new_annotation$cluster_newname[match(short_names,new_annotation$cluster)]
+snrna_qc_sel <- AddMetaData(snrna_qc_sel, new_names, "annotation_1")
+```
+
+Plot final set of marker genes used for annotation
+
+```{r, fig.height=18, fig.width=20}
+cell.markers = list(
+  'Neurons' =  c('Rbfox3', "Snap25", "Ndrg4"), # NeuN
+  'VGLUT1 excitatory' = 'Slc17a7',
+  'VGLUT2 excitatory' = 'Slc17a6',
+  'cortical.layers' = c('Layer I inhibitory' = 'Reln',
+      'Layer II/III-IV excitatory.1' = 'Cux1',
+      'Layer II/III-IV excitatory.2' = 'Cux2',
+      'Layer IV excitatory' = 'Rorb',
+      'Layer Va excitatory' = 'Pcp4',
+      'Layer Vb excitatory' = 'Htr2c',
+      'Layer VIa excitatory' = 'Oprk1',
+      'Layer VIb excitatory' = 'Nr4a2',
+      "Bcl11b", "Foxp2",
+      "Claustrum" = "Synpr"),
+  'hippocampus' = c('Neurod6', 'Vipf3', 'Ahcyl2', 'Nr3c2'),
+  'amygdala' = c('Kcng1', 'Lypd1', 'Ndst4', 'Kcnk2'),
+  "thalamus" = c('Ptpn3', 'Ptpn4'),
+  'GABAergic' = 'Gad1',
+  'Cholinergic' = 'Ache',
+  'Interneuron' = c('Sst', 'Htr3a', 'Vip', "Pvalb","Lamp5", 'Meis2'),
+  "Nb" = c("Dcx", 'Sox2', "Pax6"),
+  'Astrocytes' = c('Gfap', 'Aqp4','Slc1a3', 'Mfge8', 'Agt' ),
+  'Oligodendrocytes' = c('Plp1','Mog'),
+  'OPC' = c('Pdgfra', "Bmp4"),
+  'Endothelial cells' = c('Apold1', "Flt1", 'Tek'),
+  'Microglia' = c('Ccl4','Ccl3','Tmem119', "Ptprc")
+  )
+
+markers_df <- imap(cell.markers, ~ data.frame(feature=.x, marker.group=.y)) %>%
+  purrr::reduce(bind_rows)
+
+class_df <-
+  new_annotation %>%
+  # dplyr::select(marker_pos, marker_neg, cluster_newname) %>%
+  # pivot_longer(cols=c("marker_pos", "marker_neg")) %>%
+  dplyr::select(cluster_newname) %>%
+  mutate(class = str_remove(cluster_newname, "_.+")) %>%
+  dplyr::rename(cluster = cluster_newname) 
+
+dp <- DotPlot(snrna_qc_sel, features = unlist(cell.markers), group.by = "annotation_1")
+left_join(dp$data, dplyr::rename(markers_df, features.plot=feature)) %>%
+  dplyr::rename(cluster=id) %>%
+  left_join(class_df) %>%
+  mutate(marker.group=factor(marker.group, levels=names(cell.markers))) %>%
+  # dplyr::filter(cluster %in% c(20,26)) %>%
+   ggplot(aes(features.plot, cluster)) +
+  geom_point(aes(color=avg.exp.scaled, size=pct.exp)) +
+  facet_grid(class ~ marker.group, scales="free", space="free") +
+  scale_color_gradient(low="white", high="blue") +
+  theme_bw(base_size = 20) +
+  xlab("Marker genes") + ylab("clusters") +
+  theme(axis.text.x = element_text(angle=90, hjust=1, vjust=0.5),
+        strip.text.x = element_text(angle=90),
+        strip.text.y = element_text(angle=0),
+        panel.grid = element_blank()
+        )
+```
+
+
+```{r, fig.width=8, fig.height=8}
+annotation_palette = brewer_palette_4_values(unique(snrna_qc_sel$annotation_1), palette = "Paired") %>%
+  setNames(sample(unique(snrna_qc_sel$annotation_1)))
+
+
+DimPlot(snrna_qc_sel, group.by = "annotation_1", label=T, 
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==52]
+        ) +
+  scale_color_manual(values = annotation_palette) +
+  guides(color="none")
+```
+```{r, fig.width=8, fig.height=8}
+DimPlot(snrna_qc_sel, group.by = "annotation_1", label=T, cells.highlight = 
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==52]
+        ) +
+  guides(color="none")
+FeaturePlot(snrna_qc_sel[,which(snrna_qc_sel$annotation_1=="Ext_L2/3_L4")], feature="Rorb"
+        # cells.highlight = colnames(snrna_qc_sel)[snrna_qc_sel$seurat_clusters==52]
+        )
+```
+
+## Save annotation
+
+```{r}
+# saveRDS(snrna_qc_sel, "/nfs/team283/ed6/processed_data/snRNA_seurat_20200206.RDS")
+anno_df <- snrna_qc_sel@meta.data[c("annotation_1", "seurat_clusters")] %>%
+  rownames_to_column("cell")
+write_csv(anno_df, "/nfs/team283/ed6/processed_data/visium_st_beta/snRNA_annotation_20200229.csv")
+
+```
