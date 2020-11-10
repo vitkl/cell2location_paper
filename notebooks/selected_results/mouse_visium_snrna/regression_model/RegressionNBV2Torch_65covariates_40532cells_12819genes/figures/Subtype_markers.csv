@@ -1,0 +1,111 @@
+Subtype,Genes,Selected,Comments,Subcategory,Combo,Visium,Comments_Visium,Short_Subtype
+Astro_marker,Slc1a3,T,,,F,,,Astro
+Astro_marker,Aldoc,T,,,F,,,Astro
+Astro_marker,Hepacam,T,,,F,,,Astro
+Astro_WM,Gfap,T,well known WM marker so shouldnt classify as HPC,,F,,,WM
+Astro_WM,Igfbp5,T,,,F,,,WM
+Astro_WM,Id2,F,,,F,,,WM
+telencephalic,Gldc,T,,,F,,,telencephalic
+telencephalic,Cspg5,F,,,F,,,telencephalic
+telencephalic,Meis2,F,ctx+wm vs subcortical,,F,,,telencephalic
+telencephalic,Tspan7,F,,,F,,,telencephalic
+telencephalic,Rgcc,F,,,F,,,telencephalic
+diencephalic,Slc6a11,T,also zeisel marker,,F,,,diencephalic
+diencephalic,Erbb4,T,,,F,,,diencephalic
+diencephalic,Lrig1,T,,,F,,,diencephalic
+diencephalic,Agt,T,"also zeisel marker, expressed broadly in HYPO+THAL but enriched in HYPO and THAL_hab",,F,,,HYPO
+diencephalic,Mgat4c,F,,,F,,,diencephalic
+diencephalic,Itpkb,F,,,F,,,diencephalic
+diencephalic,Pdgfd,F,also in HPC,,F,,,diencephalic
+diencephalic,Slc6a9,F,also zeisel marker,,F,,,diencephalic
+Astro_THAL_hab,Slc38a1,T,,,F,T,,THAL_hab
+Astro_THAL_hab,Angpt1,T,also interactor,,F,U,,THAL_hab
+Astro_THAL_hab,Pkp4,T,,,F,U,,THAL_hab
+Astro_THAL_hab,Pax3,F,,,F,L,,THAL_hab
+Astro_THAL_hab,Trem2,F,,,F,U,,THAL_hab
+Astro_THAL_hab,Il6st,F,,,F,U,,THAL_hab
+Astro_THAL_hab,Gh,F,,,,,,THAL_hab
+Astro_THAL_lat,Aldh1a1,T,lat/med,,F,T,,THAL_lat
+Astro_THAL_lat,Esrrg,T,lat/med,,F,U,,THAL_lat
+Astro_THAL_lat,Car10,T,,,F,U,,THAL_lat
+Astro_THAL_lat,A330087D11Rik,F,,,F,L,,THAL_lat
+Astro_THAL_lat,Dock5,F,,,F,L,,THAL_lat
+Astro_THAL_med,Lgr6,T,med,,F,L,,THAL_med
+Astro_THAL_med,Scel,F,,,F,L,,THAL_med
+Astro_THAL_med,F5,F,,,F,U,,THAL_med
+Astro_HYPO,Itih3,T,Merged with Astro_HYPO_THAL for this analysis - Itih3 ABA looks good,,F,T,,HYPO
+Astro_HYPO,Ttll3,T,,,F,F,,HYPO
+Astro_HYPO,Sparc,T,Nice pattern but low,,F,,,HYPO
+Astro_THAL_med,Unc13c,T,also med vs lah/hab,,F,T,,THAL_med
+Astro_CTX,Unc13c,T,also med vs lah/hab,,F,T,,CTX
+Astro_CTX,Chrdl1,T,,,F,T,,CTX
+Astro_CTX,Car8,T,,,F,T,,CTX
+Astro_CTX,Nat8f3,F,,,F,L,,CTX
+Astro_AMY_CTX,Mfge8,T,AMY_CTX has only negative markers compared to Astro_CTX,,F,T,,AMY_CTX
+Astro_AMY_CTX,Tnc,F,"also in hpc, lat/med",,F,U,,AMY_CTX
+Astro_AMY_CTX,Hes5,T,,,F,T,,AMY_CTX
+Astro_AMY,Tenm4,T,,,F,U,,AMY
+Astro_AMY,Gm29683,T,,,F,T,,AMY
+Astro_AMY,Map3k19,T,Also expressed by CA2 neurones,,F,T,,AMY
+Astro_STR,Efemp1,T,,,F,U,,STR
+Astro_STR,Gfra1,T,"pan-astro, higher in STR",,F,U,in Visium STR but also expressed by Ext_ClauPyr ,STR
+Astro_STR,Thbs4,T,,,F,U,,STR
+Astro_STR,Ccdc80,F,,,F,U,,STR
+Astro_HPC,Thrsp,T,,,F,T,,HPC
+Astro_HPC,Id3,T,,,F,U,,HPC
+Astro_HPC,Pdgfd,T,also in HPC,,F,,,HPC
+Astro_HPC,Hsd11b1,F,not in WM,,F,U,,HPC
+Astro_HPC,Cadps,F,,,F,U,,HPC
+Astro_THAL_lat,Chl1,F,thal_med/lat - interactions,Astro_THAL_combo,T,U,,THAL_lat
+Astro_THAL_med,Gria1,T,low in lat,Astro_THAL_combo,T,U,,THAL_med
+Astro_THAL_lat,Rhoq,F,lower tier - higher in lat,Astro_THAL_combo,T,U,,THAL_lat
+Astro_HYPO,Nnat,F,hypo/thal_hab vs thal_med/lat - FISH does not look great,Astro_THAL_combo,T,T,In Visium THAL_hab but also in many neurones,HYPO
+Astro_THAL_hab,Nnat,F,hypo/thal_hab vs thal_med/lat - FISH does not look great,Astro_THAL_combo,T,T,In Visium THAL_hab but also in many neurones,THAL_hab
+telencephalic,Hapln1,T,,,F,,,telencephalic
+telencephalic,Slco1c1,T,low in hab,Astro_THAL_combo,T,U,,telencephalic
+Astro_THAL_hab,Ldb2,F,high in hab and hypo,Astro_THAL_combo,T,U,Expressed by cortical neurones,THAL_hab
+Astro_THAL_lat,Igfbp2,F,high thal lat + ctx,Astro_THAL_combo,T,,,THAL_lat
+Astro_combo,Slc7a10,F,"thal lat, but broadly expressed",Astro_THAL_combo,T,,,combo
+Astro_combo,Adamts9,F,thal hab + STR,Astro_THAL_combo,T,,,combo
+Astro_combo,Zfp36l1,F,thal hab + STR + WM,Astro_THAL_combo,T,,,combo
+Astro_combo,Dpf3,F,low in hab,Astro_THAL_combo,T,U,,combo
+Astro_combo,Itpr2,F,lower tier - low in lat than rest,Astro_THAL_combo,T,U,,combo
+Astro_combo,Igfbp5,F,hab + WM,Astro_THAL_combo,T,T,,combo
+Astro_combo,Nfkbia,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Afap1l2,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Zfp36l1,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Iqck,F,,Astro_THAL_combo,T,L,,combo
+Astro_combo,Plod2,F,,Astro_THAL_combo,T,L,,combo
+Astro_combo,Slc7a10,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Fmo1,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Hes5,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Ttll3,F,,Astro_THAL_combo,T,U,,combo
+Astro_combo,Tnfaip8,F,,Astro_THAL_combo,T,U,,combo
+Astro_STR,Zfhx3,T,"str over rest, non-specific",Astro_CTX_combo,T,U,,STR
+Astro_CTX,Emx2os,F,"ctx over hpc, non-specific",Astro_CTX_combo,T,T,,CTX
+Astro_AMY,Emx2os,F,"ctx over hpc, non-specific",Astro_CTX_combo,T,T,,AMY
+Astro_AMY_CTX,St6galnac5,T,Amy1/ctx vs Amy2,Astro_CTX_combo,T,U,,AMY_CTX
+Astro_WM,Cd9,T,,Astro_CTX_combo,T,U,,WM
+Astro_AMY,Tnfaip8,F,low in str,Astro_CTX_combo,T,,,AMY
+Astro_combo,Nat8f7,F,,Astro_CTX_combo,T,L,,combo
+Astro_combo,Lama3,F,,Astro_CTX_combo,T,L,,combo
+Interactions,Tek,F,,,,U,,Interactions
+Interactions,Cntn6,F,,,,U,,Interactions
+Broad_Astro,Eva1a,F,,,,T,Ttl3,Astro
+Broad_Astro,Epas1,F,,,,U,,Astro
+Broad_Astro,Ntsr2,F,,,,T,,Astro
+Broad_Astro,Ccdc190,F,,,,T,,Astro
+Shared_broad_THAL_HYPO,Dnah7b,F,,,,L,,Shared_broad_THAL_HYPO
+Shared_broad_THAL_HYPO,Gjc3,F,,,,F,,Shared_broad_THAL_HYPO
+Shared_broad_CTX,Foxg1,F,,,,L,,Shared_broad_CTX
+Shared_THAL_lat,Fstl1,F,,,,T,,Shared_THAL_lat
+Shared_THAL_hab,Otx2os1,F,,,,L,,Shared_THAL_hab
+Shared_THAL_hab,Otx2,F,,,,T,,Shared_THAL_hab
+Shared_STR,Sun2,F,,,,U,,Shared_STR
+Shared_HYPO,Sycp3,F,,,,U,,Shared_HYPO
+Astro_AMY_2,Map3k19,F,,,,U,,Astro_AMY_2
+Astro_AMY_2,Slc16a9,F,,,,L,,Astro_AMY_2
+Astro_AMY_2,C4b,F,,,,U,,Astro_AMY_2
+Astro_AMY_1,Gm29683,F,,,,U,,Astro_AMY_1
+Astro_AMY_1,Tenm4,F,,,,U,,Astro_AMY_1
+New_genes_v1,Csmd1,F,cortex+hab vs rest,,,U,,New_genes_v1
