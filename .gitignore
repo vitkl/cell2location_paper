@@ -9,7 +9,8 @@ CoLocatedComb/
 counts_*.p
 synthetic_*_counts.csv
 mapping_video/
-notebooks/selected_results/mouse_viseum_snrna/segmentation/results/*_segmented
+notebooks/selected_results/mouse_visium_snrna/segmentation/results/*_segmented
+notebooks/selected_data/
 
 Meta
 doc

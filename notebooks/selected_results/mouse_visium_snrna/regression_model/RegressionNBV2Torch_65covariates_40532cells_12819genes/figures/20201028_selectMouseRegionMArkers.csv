@@ -1,0 +1,62 @@
+Broad_class,Region,Marker_ref,Marker,CellTypeRef,Neuroglial_class
+Excitatory,Claustrum,Zeisel_2015,Synpr,,Neurones
+Excitatory,Claustrum,Zeisel_2015,Nr4a2,,Neurones
+Excitatory,Amygdala,Zeisel_2018,Lypd1,,Neurones
+Excitatory,Amygdala,Zeisel_2018,Kcng1,,Neurones
+Excitatory,Amygdala,Zeisel_2018,C1ql3,,Neurones
+Excitatory,hippocampus CA1,Zeisel_2018,Neurod6,,Neurones
+Excitatory,hippocampus CA1,Zeisel_2018,Wipf3,,Neurones
+Excitatory,hippocampus CA1,Zeisel_2018,Rprml,,Neurones
+Excitatory,hippocampus CA3,Zeisel_2018,Nr4a3,,Neurones
+Excitatory,hippocampus CA3,Zeisel_2018,Nptx1,,Neurones
+Excitatory,hippocampus CA3,Zeisel_2018,Rnf182,,Neurones
+Excitatory,thalamus,Zeisel_2018,Slc17a6,,Neurones
+Excitatory,thalamus,Zeisel_2018,Synpo2,,Neurones
+Excitatory,thalamus,Zeisel_2018,Ptpn3,,Neurones
+Excitatory,hypothalamus,Zeisel_2018,Shox2,,Neurones
+Excitatory,hypothalamus,Zeisel_2018,Ramp3,,Neurones
+Excitatory,hypothalamus,Zeisel_2018,Prkch,,Neurones
+Excitatory,cortex,Zeisel_2015,Cux2,,Neurones
+Excitatory,cortex,Zeisel_2015,Rorb,,Neurones
+Excitatory,cortex,Zeisel_2015,Bcl11b,,Neurones
+Excitatory,cortex,Zeisel_2015,Foxp2,,Neurones
+Excitatory,cortex,Zeisel_2015,Thsd7a,,Neurones
+Excitatory,cortex,Zeisel_2015,Kcnk2,,Neurones
+Excitatory,cortex,Zeisel_2015,Dkk3,,Neurones
+Excitatory,cortex,Zeisel_2015,Sox5,,Neurones
+Excitatory,cortex,Zeisel_2015,Cux1,,Neurones
+Excitatory,cortex,Zeisel_2015,Htr2c,,Neurones
+Inhbitory,habenula,Zeisel_2018,Lrrc55,Inh_6,Neurones
+Inhbitory,habenula,Zeisel_2018,Nwd2,Inh_6,Neurones
+Inhbitory,habenula,Zeisel_2018,Syt9,Inh_6,Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Dlx6os1,,Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Vwc2,,Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Kcnip1,,Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Pvalb,"Pvalb, Sst, Lamp5, Vip",Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Vip,"Pvalb, Sst, Lamp5, Vip",Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Sst,"Pvalb, Sst, Lamp5, Vip",Neurones
+Inhibitory,cortex/hippocampus,Zeisel_2018,Lamp5,"Pvalb, Sst, Lamp5, Vip",Neurones
+Inhbitory,striatum,Zeisel_2018,Drd1,"Inh_Meis2_2, InhMeis2_3",Neurones
+Inhbitory,striatum,Zeisel_2018,Nexn,"Inh_Meis2_2, InhMeis2_3",Neurones
+Inhbitory,striatum,Zeisel_2018,Rgs9,"Inh_Meis2_2, InhMeis2_3",Neurones
+Inhbitory,striatum,Zeisel_2018,Adora2,"Inh_Meis2_2, InhMeis2_3",Neurones
+Inhbitory,thalamus,Zeisel_2018,Fign,Inh_Meis2_4,Neurones
+Inhbitory,thalamus,Zeisel_2018,Esrrg,Inh_Meis2_4,Neurones
+Inhbitory,thalamus,Zeisel_2018,Ubash3b,Inh_Meis2_4,Neurones
+Inhbitory,thalamus,Zeisel_2018,Nova1,"1-5, Meis2_1",Neurones
+Inhbitory,thalamus,Zeisel_2018,Tmem130,"1-5, Meis2_2",Neurones
+Inhbitory,thalamus,Zeisel_2018,Scg2,"1-5, Meis2_3",Neurones
+Inhbitory,thalamus,Zeisel_2018,Syt2,"1-5, Meis2_4",Neurones
+Inhbitory,thalamus,Zeisel_2018,Esrrg,"1-5, Meis2_5",Neurones
+Microglia,Microglia,Zeisel_2018,Ptprc,,Glia
+Neuroblasts,Neuroblasts,Zeisel_2018,Dcx,,Glia
+Neuroblasts,Neuroblasts,Zeisel_2018,Sox2,,Glia
+Neuroblasts,Neuroblasts,Zeisel_2018,Pax6,,Glia
+Oligodendrocytes,Oligodendrocytes,Zeisel_2018,Plp1,,Glia
+Oligodendrocytes,Oligodendrocytes,Zeisel_2018,Mog,,Glia
+Oligodendrocytes,Oligodendrocytes,Zeisel_2018,Cnksr3,,Glia
+OPCs,OPCs,Zeisel_2018,Pdgfra,,Glia
+OPCs,OPCs,Zeisel_2018,Bmp4,,Glia
+Astrocytes,Astrocytes,Zeisel_2018,Slc1a3,,Glia
+Astrocytes,Astrocytes,Zeisel_2018,Aldoc,,Glia
+Astrocytes,Astrocytes,Zeisel_2018,Hepacam,,Glia

@@ -1,0 +1,35 @@
+region_04092020,region_final,new_regions,old_region,location,subregion,cortical_layer,region_label,comments,observed_select_sections
+0,0,0,0,thalamus,select thalamic nuclei,,THAL_lateral,most thalamus except medial nuclei and habenula,
+1,1,1,1,cortex,pan cortex,L2/3,CTX_L2/3,,
+2,2,6,15,cortex,pan cortex,L1,CTX_L1,could also be low quality - but I think the L1 was stripped off in this sample,
+3,3,4,10,hypothalamus,dorsal,,HYPO_dorsal,dorsal hypothalamic nuclei outside region 6,
+4,4,5,4,white matter,ventral,,WM_ventral,mostly in cerebral peduncle - some in corpus callosum,
+5,5,3,7,cortex,pan cortex,L6,CTX_L6,maybe some L5,
+6,6,2,5,cortex,pan cortex,L5,CTX_L5,looks like upper L5 and likely includes full L5/6 in medial cortex,
+7,7,7,12,white matter,dorsal,,WM_dorsal,"stria terminalis, corpus calllosum, fimbria - complementary to region 12",
+8,8,17,20,cortex,lateral cortex (SS) ,L4,CTX_L4,,
+9,9,10,3,amygdala,basomedial,,AMY_basomedial,,
+10,10,11,-,piriform cortex,L1,,PirCTX_L1,some L2-3,
+11,11,8,11,hippocampus,,,HPC,"stronger in CA1, CA2, CA3 but also observed in DG",
+12,12,12,17,striatum,caudate putamen,,STR,,
+13,6,2,5,cortex,pan cortex,L5,CTX_L5,looks like upper L5 and likely includes full L5/6 in medial cortex,
+14,14,14,8,thalamus,select thalamic nuclei,,THAL_venmedial,ventral/medial thalamic nuclei outside region 0 and the habenula,
+15,15,16,13,hypothalamus,dorsal,,HYPO_dorsal2,"zona incerta, subthalamic nuclei (49) and also contains region immediately doroslateral to the hypothamus - perhaps globus pallidus internal segment or substantia innominata (48,52)",49
+16,16,13,9,piriform cortex,L2-3,,PirCTX_L2/3,,
+17,17,21,13,thalamus,habenula,,THAL_latHabenula,lateral habenula,
+18,18,9,6,hypothalamus,ventral,,HYPO_ventral,periventricular nucleus and more ventral areas - excludes zona incerta - could be split prpbably,
+19,19,18,2,"pia, lateral ventricle",dorsal,,PIA_dorsal,could be a low quality region or a pial/meninges cell type or ependyma,
+20,20,19,18,cortex,pan cortex,L6b,CTX_L6b,L6b - might be white matter - tough to say - check expression of L6b neuron vs white matter Oligodendrocyte markers,
+21,0,24,-,thalamus,select thalamic nuclei,,THAL_lateral,"lateral nuclei - substantial in animal 2 section 51, 52",51
+22,22,20,-,amygdala,posterior,,AMY_posterior,seems like posterior amygdalar,49
+23,23,22,25,hippocampus,"CA2, CA3",,HPC_CA2/3,,
+24,24,25,23,hippocampus,dentate gyrus,,HPC_DG,,
+25,25,23,-,thalamus,select thalamic nuclei,,THAL_medial,"medial nuclei ventral to habenula - few spots in animal 1 but substantial in animal 2 section 51,52",51
+26,26,28,21,hippocampus,CA1,,HPC_CA1,,
+27,27,26,24,thalamus,select thalamic nuclei,,THAL_lateral2,lateral - looks like reticular nucleus,
+28,28,27,-,lateral ventricle,ventral,,VENTRICLE,could be a low quality region or a pial/meninges cell type or ependyma- can be merged with 18,
+29,29,30,-,hypothalamus,ventral,,HYPO_ventral2,"ventromedial nuclei - not on animal 1 but clear on section 51,52",51
+30,30,21,13,thalamus,habenula,,THAL_medHabenula,medial habenula,
+,,NA,14,pia,ventral,,PIA_ventral,could be a low quality region or a pial/meninges cell type or ependyma,
+,,NA,19,thalamus,select thalamic nuclei,,THAL,lateral nuclei - can group with region 0,
+,,NA,22,hypothalamus,dorsomedial,,HYPO_dorsomedial,"complementray to region 6,10 and 13 - together they describe differnet hypothalamic nuclei",
