@@ -1,0 +1,98 @@
+---
+title: "RCTD"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RCTD
+
+```{r }
+library(RCTD)
+library(Matrix)
+library(data.table)
+library(Seurat)
+
+refdir <- system.file("extdata",'Reference/Vignette',package = 'RCTD') #directory for the reference
+reference <- dgeToSeurat(refdir)
+
+datadir <- system.file("extdata",'SpatialRNA/Vignette',package = 'RCTD') # directory for sample Slide-seq dataset
+puck <- read.SpatialRNA(datadir) # read in the SpatialRNA object
+
+barcodes <- colnames(puck@counts) #pixels to be used (a list of barcode names). 
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+```
+
+```{r}
+sp_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sp_data_downsampled.tsv')
+cell_names = sp_data$spot
+sp_data[, spot := NULL]
+sp_data = as.matrix(sp_data)
+rownames(sp_data) = cell_names
+
+sc_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference.tsv')
+cell_names = sc_data$cell
+sc_data[, cell := NULL]
+sc_data = as.matrix(sc_data)
+rownames(sc_data) = cell_names
+
+meta = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference_annot.tsv', data.table = F)
+rownames(meta) = meta$cell
+```
+
+```{r}
+sc_seu = Seurat::CreateSeuratObject(t(sc_data), meta=meta)
+Idents(sc_seu) = sc_seu$bio_celltype
+sp_seu = Seurat::CreateSeuratObject(t(sp_data))
+```
+
+```{r}
+set.seed(1)
+# generate random positions
+coords = data.frame(row.names = colnames(sp_seu),
+                    xcoord = rgamma(ncol(sp_seu), 2),
+                    ycoord = rgamma(ncol(sp_seu), 2))
+```
+
+```{r}
+puck@counts = sp_seu@assays$RNA@counts
+puck@coords = coords
+puck@nUMI = sp_seu$nCount_RNA
+puck@cell_type_names = unique(sc_seu@meta.data$bio_celltype)
+
+# the column for annotations is hard-coded
+sc_seu@meta.data$liger_ident_coarse = factor(sc_seu@meta.data$bio_celltype)
+
+sc_seu@meta.data$nUMI = sc_seu@meta.data$nCount_RNA
+sc_seu@meta.data$orig.ident = sc_seu@meta.data$bio_celltype
+sc_seu@meta.data$cluster = sc_seu@meta.data$bio_celltype
+```
+
+## running RCTD
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(puck, sc_seu, max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+results <- myRCTD@results
+# normalize the cell type proportions to sum to 1.
+norm_weights = sweep(results$weights, 1, rowSums(results$weights), '/') 
+cell_type_names <- myRCTD@cell_type_info$info[[2]] #list of cell type names
+spatialRNA <- myRCTD@spatialRNA
+
+norm_weights
+spatialRNA
+```
+
+```{r}
+results_weights = as.data.frame(results$weights)
+results_weights$spot = rownames(results_weights)
+fwrite(results_weights, '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/rctd/results_weights10.csv')
+```
