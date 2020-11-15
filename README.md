@@ -1,7 +1,8 @@
 ## Cell2location paper - Comprehensive mapping of tissue cell architecture via integrated single cell and spatial transcriptomics
 
-This repository contains notebooks and scripts used in the paper aimed to show how the analysis was done. Reproducing the analysis requires additional steps such as downloading data, changing hard-coded paths, etc. Some notebooks will be updated shortly. 
-For our latest tutorial on using cell2location please see https://cell2location.readthedocs.io/en/latest/, the tutorial shows enough to reproduce mouse brain analysis in the paper (Visium data, Fig 2-3).
+This repository contains notebooks and scripts used in the paper and is aimed to show how the analysis was done. Reproducing the analysis requires additional steps such as downloading data, changing hard-coded paths, etc. Some notebooks will be updated shortly. 
+
+For our latest tutorial on using cell2location please see https://cell2location.readthedocs.io/en/latest/. The tutorial covers cell2location analysis needed to reproduce mouse brain figures in the paper (Visium data, Fig 2-3).
 
 ## Comprehensive mapping of tissue cell architecture via integrated single cell and spatial transcriptomics
 
