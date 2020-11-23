@@ -11,6 +11,7 @@ synthetic_*_counts.csv
 mapping_video/
 notebooks/selected_results/mouse_visium_snrna/segmentation/results/*_segmented
 notebooks/selected_data/
+*.gif
 
 Meta
 doc
