@@ -1,6 +1,7 @@
 notebooks/results
 .idea
 *.h5ad
+*.h5seurat
 .pybiomart.sqlite
 
 model_*.p
