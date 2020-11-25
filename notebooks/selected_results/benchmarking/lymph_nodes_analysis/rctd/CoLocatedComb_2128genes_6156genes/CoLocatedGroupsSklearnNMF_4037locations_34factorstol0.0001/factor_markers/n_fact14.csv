@@ -1,0 +1,15 @@
+,top-1,top-2,top-3,top-4,top-5,top-6,top-7,top-8,top-9,top-10
+mean_cell_type_factorsfact_0,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_1,B_naive: 0.8,T_CD4+_TfH_GC: 0.34,T_CD8+_cytotoxic: 0.23,FDC: 0.2,Mast: 0.2,B_GC_DZ: 0.19,T_CD4+: 0.18,NKT: 0.16,T_TfR: 0.15,B_preGC: 0.14
+mean_cell_type_factorsfact_2,B_GC_LZ: 0.91,T_CD4+_TfH_GC: 0.43,B_GC_prePB: 0.33,FDC: 0.31,Macrophages_M1: 0.1,B_Cycling: 0.071,T_TIM3+: 0.036,Endo: 0.0018,B_IFN: 0.0,B_activated: 0.0
+mean_cell_type_factorsfact_3,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_4,B_mem: 0.94,B_preGC: 0.74,DC_cDC1: 0.49,T_CD4+: 0.45,DC_cDC2: 0.24,Macrophages_M1: 0.19,FDC: 0.16,Endo: 0.16,VSMC: 0.15,T_Treg: 0.12
+mean_cell_type_factorsfact_5,T_CD8+_CD161+: 0.92,NK: 0.88,NKT: 0.84,Mast: 0.8,T_CD4+_TfH: 0.76,DC_pDC: 0.73,ILC: 0.71,Monocytes: 0.67,B_plasma: 0.64,DC_cDC2: 0.6
+mean_cell_type_factorsfact_6,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_7,B_Cycling: 0.65,B_GC_prePB: 0.53,B_GC_DZ: 0.51,FDC: 0.16,T_Treg: 0.16,T_CD4+_TfH: 0.11,Macrophages_M1: 0.098,DC_cDC1: 0.074,T_CD4+_TfH_GC: 0.064,B_plasma: 0.046
+mean_cell_type_factorsfact_8,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_9,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_10,T_CD4+_naive: 0.95,T_CD8+_naive: 0.51,DC_CCR7+: 0.37,T_TfR: 0.27,T_Treg: 0.22,T_CD8+_cytotoxic: 0.15,Macrophages_M2: 0.14,VSMC: 0.12,DC_cDC1: 0.12,T_CD4+_TfH_GC: 0.1
+mean_cell_type_factorsfact_11,B_activated: 0.84,ILC: 0.25,Macrophages_M2: 0.21,Monocytes: 0.2,B_plasma: 0.15,DC_pDC: 0.13,T_CD4+_TfH: 0.13,T_TIM3+: 0.13,Endo: 0.12,VSMC: 0.1
+mean_cell_type_factorsfact_12,B_IFN: 0.95,T_TIM3+: 0.15,DC_CCR7+: 0.1,T_TfR: 0.1,FDC: 0.074,Macrophages_M1: 0.048,B_Cycling: 0.028,Endo: 0.027,B_preGC: 0.025,DC_cDC2: 0.022
+mean_cell_type_factorsfact_13,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0

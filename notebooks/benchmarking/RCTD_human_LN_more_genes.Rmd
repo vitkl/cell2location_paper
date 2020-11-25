@@ -1,0 +1,122 @@
+---
+title: "RCTD"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RCTD
+
+```{r }
+library(RCTD)
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+
+refdir <- system.file("extdata",'Reference/Vignette',package = 'RCTD') #directory for the reference
+reference <- dgeToSeurat(refdir)
+
+datadir <- system.file("extdata",'SpatialRNA/Vignette',package = 'RCTD') # directory for sample Slide-seq dataset
+puck <- read.SpatialRNA(datadir) # read in the SpatialRNA object
+
+barcodes <- colnames(puck@counts) #pixels to be used (a list of barcode names). 
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+```
+
+```{r}
+# read cell2location model results
+results_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/lymph_nodes_analysis/'
+
+reg_mod_name = 'RegressionNBV4Torch_57covariates_73260cells_10237genes'
+reg_path = paste0(results_folder, 'regression_model/', reg_mod_name, '/')
+Convert(paste0(reg_path,'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$Subset
+```
+
+```{r}
+run_name = 'CoLocationModelNB4V2_34clusters_4039locations_10241genes_input_inferred_V4_batch1024_l2_0001_n_comb50_5_cps5_fpc3_alpha001'
+sp_data_path = paste0(results_folder, run_name, '/')
+
+Convert(paste0(sp_data_path, 'sp_with_clusters_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_with_clusters_for_seurat.h5seurat'))
+
+sp_seu = sp_seu[!duplicated(sp_seu@assays$RNA@meta.features$SYMBOL),]
+rownames(sp_seu@assays$RNA@meta.features) = sp_seu@assays$RNA@meta.features$SYMBOL
+rownames(sp_seu@assays$RNA@counts) = sp_seu@assays$RNA@meta.features$SYMBOL
+rownames(sp_seu@assays$RNA@data) = sp_seu@assays$RNA@meta.features$SYMBOL
+#rownames(sp_seu@assays$RNA@scale.data) = sp_seu@assays$RNA@meta.features$SYMBOL
+```
+
+```{r}
+set.seed(1)
+# generate random positions
+coords = as.data.frame(sp_seu@reductions$spatial@cell.embeddings)
+colnames(coords) = c('xcoord', 'ycoord')
+```
+
+```{r}
+puck@counts = sp_seu@assays$RNA@counts
+puck@coords = coords
+puck@nUMI = sp_seu$total_counts
+puck@cell_type_names = as.character(unique(sc_seu@meta.data$Subset))
+
+# the column for annotations is hard-coded
+sc_seu@meta.data$liger_ident_coarse = factor(as.character(sc_seu@meta.data$Subset))
+
+sc_seu@meta.data$nUMI = sc_seu@meta.data$n_counts
+sc_seu@meta.data$orig.ident = sc_seu@meta.data$Subset
+sc_seu@meta.data$cluster = sc_seu@meta.data$Subset
+```
+
+## running RCTD
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(puck, sc_seu, 
+                        gene_cutoff = 0.000125, fc_cutoff = 0.1,
+                        gene_cutoff_reg = 2e-04, fc_cutoff_reg = 0.1,
+                        CELL_MIN_INSTANCE=15,
+                        max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+time # 765.4797 seconds, 14 min, with 10 cores.
+```
+
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(puck, sc_seu, 
+                        gene_cutoff = 0.00006, fc_cutoff = 0.05,
+                        gene_cutoff_reg = 2e-04, fc_cutoff_reg = 0.05,
+                        CELL_MIN_INSTANCE=15,
+                        max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+results <- myRCTD@results
+# normalize the cell type proportions to sum to 1.
+norm_weights = sweep(results$weights, 1, rowSums(results$weights), '/') 
+cell_type_names <- myRCTD@cell_type_info$info[[2]] #list of cell type names
+spatialRNA <- myRCTD@spatialRNA
+
+norm_weights
+spatialRNA
+```
+
+```{r}
+results_weights = as.data.frame(results$weights)
+results_weights$spot = rownames(results_weights)
+rctd_results = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lymph_nodes_analysis/rctd/'
+fwrite(results_weights, paste0(rctd_results, 'results_weights_59clusters_2128genes_6156genes.csv'))
+```
