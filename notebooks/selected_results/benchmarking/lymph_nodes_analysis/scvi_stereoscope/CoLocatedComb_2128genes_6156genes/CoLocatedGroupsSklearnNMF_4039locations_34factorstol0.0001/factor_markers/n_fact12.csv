@@ -1,0 +1,13 @@
+,top-1,top-2,top-3,top-4,top-5,top-6,top-7,top-8,top-9,top-10
+mean_cell_type_factorsfact_0,B_Cycling: 0.76,B_GC_DZ: 0.57,B_GC_LZ: 0.48,FDC: 0.43,B_GC_prePB: 0.41,T_CD4+_TfH: 0.32,Macrophages_M1: 0.2,T_CD4+_TfH_GC: 0.16,DC_cDC1: 0.15,NK: 0.1
+mean_cell_type_factorsfact_1,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_2,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_3,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_4,B_preGC: 0.75,T_TIM3+: 0.44,T_CD8+_naive: 0.37,T_CD4+: 0.31,T_CD4+_TfH: 0.29,DC_cDC1: 0.26,T_Treg: 0.26,DC_pDC: 0.26,DC_cDC2: 0.25,DC_CCR7+: 0.21
+mean_cell_type_factorsfact_5,B_IFN: 0.88,T_TIM3+: 0.16,T_TfR: 0.15,T_CD4+_TfH: 0.11,DC_CCR7+: 0.11,T_CD8+_cytotoxic: 0.08,T_CD8+_CD161+: 0.073,FDC: 0.073,Macrophages_M1: 0.06,DC_cDC2: 0.059
+mean_cell_type_factorsfact_6,T_CD4+_naive: 0.93,T_CD8+_naive: 0.42,DC_CCR7+: 0.36,T_TfR: 0.36,T_Treg: 0.25,T_CD8+_cytotoxic: 0.2,Macrophages_M2: 0.18,NKT: 0.17,DC_cDC1: 0.16,T_CD4+_TfH_GC: 0.15
+mean_cell_type_factorsfact_7,B_naive: 0.77,T_CD4+_TfH_GC: 0.36,B_GC_LZ: 0.23,FDC: 0.17,T_CD8+_cytotoxic: 0.17,B_GC_prePB: 0.14,B_activated: 0.12,NKT: 0.099,T_Treg: 0.078,B_GC_DZ: 0.077
+mean_cell_type_factorsfact_8,B_activated: 0.78,DC_pDC: 0.38,ILC: 0.36,DC_cDC2: 0.36,Endo: 0.32,Monocytes: 0.28,B_GC_LZ: 0.26,B_GC_prePB: 0.25,T_CD8+_cytotoxic: 0.25,NK: 0.23
+mean_cell_type_factorsfact_9,VSMC: 0.0,B_plasma: 0.0,Endo: 0.0,DC_pDC: 0.0,DC_cDC2: 0.0,DC_cDC1: 0.0,DC_CCR7+: 0.0,B_preGC: 0.0,B_naive: 0.0,T_Treg: 0.0
+mean_cell_type_factorsfact_10,B_plasma: 0.8,Mast: 0.67,Macrophages_M2: 0.49,Monocytes: 0.39,NKT: 0.36,NK: 0.3,T_CD8+_CD161+: 0.28,DC_pDC: 0.25,Endo: 0.24,T_CD8+_cytotoxic: 0.24
+mean_cell_type_factorsfact_11,B_mem: 0.87,Macrophages_M1: 0.28,VSMC: 0.23,Mast: 0.22,T_CD4+: 0.22,DC_cDC1: 0.21,FDC: 0.19,DC_cDC2: 0.19,Monocytes: 0.18,Endo: 0.17
