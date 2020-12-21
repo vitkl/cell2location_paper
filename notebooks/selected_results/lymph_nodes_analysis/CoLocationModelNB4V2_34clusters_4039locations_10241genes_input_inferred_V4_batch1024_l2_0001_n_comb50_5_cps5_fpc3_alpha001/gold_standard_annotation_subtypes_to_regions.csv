@@ -1,0 +1,35 @@
+cell_type,GC,T-cell zone,other,label
+B_Cycling,1,0,0,GC
+B_GC_DZ,1,0,0,GC
+B_GC_LZ,1,0,0,GC
+B_GC_prePB,1,0,0,GC
+B_IFN,NA,NA,NA,NA
+B_activated,0,0,1,other
+B_mem,0,0,1,other
+B_naive,NA,NA,NA,NA
+B_plasma,0,0,1,other
+B_preGC,NA,NA,NA,NA
+DC_CCR7+,0,1,0,T-cell zone
+DC_cDC1,NA,NA,NA,NA
+DC_cDC2,NA,NA,NA,NA
+DC_pDC,NA,NA,NA,NA
+Endo,0,0,1,other
+FDC,1,0,0,GC
+ILC,NA,NA,NA,NA
+Macrophages_M1,NA,NA,NA,NA
+Macrophages_M2,NA,NA,NA,NA
+Mast,0,0,1,other
+Monocytes,0,0,1,other
+NK,NA,NA,NA,NA
+NKT,NA,NA,NA,NA
+T_CD4+,NA,NA,NA,NA
+T_CD4+_TfH,NA,NA,NA,NA
+T_CD4+_TfH_GC,1,0,0,GC
+T_CD4+_naive,0,1,0,T-cell zone
+T_CD8+_CD161+,NA,NA,NA,NA
+T_CD8+_cytotoxic,0,1,0,T-cell zone
+T_CD8+_naive,0,1,0,T-cell zone
+T_TIM3+,NA,NA,NA,NA
+T_TfR,NA,NA,NA,NA
+T_Treg,0,1,0,T-cell zone
+VSMC,0,0,1,other
