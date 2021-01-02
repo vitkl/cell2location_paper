@@ -1,0 +1,143 @@
+---
+title: "SPOTlight"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./SPOTlight_human_LN.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./SPOTlight_human_LN.html"))
+
+## SPOTlight
+
+```{r }
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+library(dplyr)
+library(SPOTlight)
+library(Seurat)
+```
+
+```{r}
+# read cell2location model results
+results_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/lymph_nodes_analysis/'
+
+reg_mod_name = 'RegressionNBV4Torch_57covariates_73260cells_10237genes'
+reg_path = paste0(results_folder, 'regression_model/', reg_mod_name, '/')
+Convert(paste0(reg_path,'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$Subset
+
+sc_seu = sc_seu[!is.na(sc_seu@assays$RNA@meta.features$GeneID.2),]
+sc_seu = sc_seu[!duplicated(sc_seu@assays$RNA@meta.features$GeneID.2),]
+rownames(sc_seu@assays$RNA@meta.features) = sc_seu@assays$RNA@meta.features$GeneID.2
+rownames(sc_seu@assays$RNA@counts) = sc_seu@assays$RNA@meta.features$GeneID.2
+rownames(sc_seu@assays$RNA@data) = sc_seu@assays$RNA@meta.features$GeneID.2
+```
+
+```{r}
+run_name = 'CoLocationModelNB4V2_34clusters_4039locations_10241genes_input_inferred_V4_batch1024_l2_0001_n_comb50_5_cps5_fpc3_alpha001'
+sp_data_path = paste0(results_folder, run_name, '/')
+
+Convert(paste0(sp_data_path, 'sp_with_clusters_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_with_clusters_for_seurat.h5seurat'))
+
+sp_seu = sp_seu[!is.na(sp_seu@assays$RNA@meta.features$gene_ids),]
+sp_seu = sp_seu[!duplicated(sp_seu@assays$RNA@meta.features$gene_ids),]
+rownames(sp_seu@assays$RNA@meta.features) = sp_seu@assays$RNA@meta.features$gene_ids
+rownames(sp_seu@assays$RNA@counts) = sp_seu@assays$RNA@meta.features$gene_ids
+rownames(sp_seu@assays$RNA@data) = sp_seu@assays$RNA@meta.features$gene_ids
+```
+
+```{r}
+# the column for annotations
+sc_seu@meta.data$Subset = factor(as.character(sc_seu@meta.data$Subset))
+```
+
+#when sc_seu contains column named SPOTlight code breaks
+name <- function(se_obj, clust_vr, cl_n=5000) {
+  
+ lapply(split(se_obj@meta.data, se_obj@meta.data[, clust_vr]), 
+        function(subdf) {
+            n_sample <- if_else(nrow(subdf) < cl_n, as.numeric(nrow(subdf)), 
+                as.numeric(cl_n))
+            tmp_ds <- subdf[sample(seq_len(nrow(subdf)), n_sample), 
+                ] %>% tibble::rownames_to_column("ID") %>% dplyr::pull(ID)
+            return(tmp_ds)
+        }) %>% purrr::flatten_chr()
+}
+
+> name(se_obj=sc_seu, clust_vr='Subset')
+ Error: Column name `ID` must not be duplicated.
+Run `rlang::last_error()` to see where the error occurred. 
+> rlang::last_error()
+█
+├─<error/tibble_error_column_names_must_be_unique>
+│ Column name `ID` must not be duplicated.
+└─<error/vctrs_error_names_must_be_unique>
+  Names must be unique.
+Backtrace:
+  1. global::name(se_obj = sc_seu, clust_vr = "Subset")
+  8. tibble::rownames_to_column(., "ID")
+  9. tibble:::repaired_names(c(unique(names2(df)), var))
+ 12. vctrs::vec_as_names(...)
+ 14. vctrs:::validate_unique(names = names, arg = arg)
+ 15. vctrs:::stop_names_must_be_unique(names, arg)
+ 16. vctrs:::stop_names(...)
+ 17. vctrs:::stop_vctrs(class = c(class, "vctrs_error_names"), ...)
+Run `rlang::last_trace()` to see the full context.
+
+
+## running SPOTlight
+
+```{r SPOTlight}
+sc_seu@meta.data = rename(sc_seu@meta.data, sample='ID')
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+#### Extract the top marker genes from each cluster ####
+Seurat::Idents(object = sc_seu) <- sc_seu@meta.data$Subset
+cluster_markers_all <- Seurat::FindAllMarkers(object = sc_seu, 
+                                              assay = "RNA",
+                                              slot = "data",
+                                              verbose = TRUE, 
+                                              only.pos = TRUE, 
+                                              logfc.threshold = 1,
+                                              min.pct = 0.9)
+
+set.seed(123)
+spotlight_ls <- spotlight_deconvolution(se_sc = sc_seu,
+                                      counts_spatial = sp_seu@assays$RNA@counts,
+                                      clust_vr = "Subset",
+                                      cluster_markers = cluster_markers_all,
+                                      cl_n = 100, # 100 by default
+                                      hvg = 5000,
+                                      ntop = NULL,
+                                      transf = "uv",
+                                      method = "nsNMF",
+                                      min_cont = 0.09)
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = spotlight_ls,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lymph_nodes_analysis/SPOTlight/results_hvg5k.RDS")
+
+decon_mtrx <- spotlight_ls[[2]]
+rownames(decon_mtrx) = colnames(sp_seu)
+
+library(data.table)
+decon_df = as.data.table(decon_mtrx, keep.rownames=TRUE)
+fwrite(decon_df, "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lymph_nodes_analysis/SPOTlight/results_hvg5k.csv")
+```

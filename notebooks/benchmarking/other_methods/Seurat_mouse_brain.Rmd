@@ -1,0 +1,102 @@
+---
+title: "Seurat V3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./Seurat_mouse_brain.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./Seurat_mouse_brain.html"))
+
+## Seurat V3
+
+```{r }
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+```
+
+```{r}
+sp_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_proj/notebooks/data/visium_cortex_trial/'
+sc_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_proj/notebooks/data/mouse_visium_snrna/'
+results_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/mouse_visium_snrna/'
+
+reg_mod_name = 'RegressionNBV2Torch_65covariates_40532cells_12819genes'
+reg_path = paste0(results_folder, 'regression_model/', reg_mod_name, '/')
+Convert(paste0(reg_path,'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$annotation_1
+```
+```{r}
+run_name = 'LocationModelLinearDependentWMultiExperiment_59clusters_14968locations_12809genes_n_comb50_mean_var5_inferred_30k'
+sp_data_path = paste0(results_folder, run_name, '/')
+
+Convert(paste0(sp_data_path, 'sp_with_clusters.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_with_clusters.h5seurat'))
+```
+
+```{r}
+# the column for annotations is hard-coded
+sc_seu@meta.data$annotation_1 = factor(sc_seu@meta.data$annotation_1)
+```
+
+## running Seurat PCA
+
+```{r seurat}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT")
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$annotation_1,
+                                  weight.reduction = 'pcaproject')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/mouse_visium_snrna/seurat_new/results_pca.RDS")
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/mouse_visium_snrna/seurat_new/results_pca.csv')
+predictions.assay[1:5, 1:5]
+```
+
+## running Seurat CCA
+
+```{r seurat_cca}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT", reduction='cca')
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$annotation_1,
+                                  weight.reduction = 'cca')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/mouse_visium_snrna/seurat_new/results_cca.RDS")
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/mouse_visium_snrna/seurat_new/results_cca.csv')
+predictions.assay[1:5, 1:5]
+```

@@ -1,0 +1,100 @@
+---
+title: "SPOTlight"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./SPOTlight.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./SPOTlight.html"))
+
+## SPOTlight
+
+```{r}
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+library(dplyr)
+library(SPOTlight)
+library(Seurat)
+```
+
+```{r}
+sp_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sp_data_downsampled.tsv')
+cell_names = sp_data$spot
+sp_data[, spot := NULL]
+sp_data = as.matrix(sp_data)
+rownames(sp_data) = cell_names
+
+sc_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference.tsv')
+cell_names = sc_data$cell
+sc_data[, cell := NULL]
+sc_data = as.matrix(sc_data)
+rownames(sc_data) = cell_names
+
+meta = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference_annot.tsv', data.table = F)
+rownames(meta) = meta$cell
+```
+
+```{r}
+sc_seu = Seurat::CreateSeuratObject(t(sc_data), meta=meta)
+Idents(sc_seu) = sc_seu$bio_celltype
+sp_seu = Seurat::CreateSeuratObject(t(sp_data))
+```
+
+```{r}
+# the column for annotations
+sc_seu@meta.data$bio_celltype = factor(sc_seu@meta.data$bio_celltype)
+```
+
+## running SPOTlight
+
+```{r seurat}
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+#### Extract the top marker genes from each cluster ####
+Seurat::Idents(object = sc_seu) <- sc_seu@meta.data$bio_celltype
+cluster_markers_all <- Seurat::FindAllMarkers(object = sc_seu, 
+                                              assay = "RNA",
+                                              slot = "data",
+                                              verbose = TRUE, 
+                                              only.pos = TRUE, 
+                                              logfc.threshold = 1,
+                                              min.pct = 0.9)
+
+
+set.seed(123)
+spotlight_ls <- spotlight_deconvolution(se_sc = sc_seu,
+                                      counts_spatial = sp_seu@assays$RNA@counts,
+                                      clust_vr = "bio_celltype",
+                                      cluster_markers = cluster_markers_all,
+                                      cl_n = 100, # 100 by default
+                                      hvg = 5000,
+                                      ntop = NULL,
+                                      transf = "uv",
+                                      method = "nsNMF",
+                                      min_cont = 0.09)
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = spotlight_ls,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/SPOTlight/results_hvg5k.RDS")
+
+decon_mtrx <- spotlight_ls[[2]]
+rownames(decon_mtrx) = colnames(sp_seu)
+
+library(data.table)
+decon_df = as.data.table(decon_mtrx, keep.rownames=TRUE)
+fwrite(decon_df, "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/SPOTlight/results_hvg5k.csv")
+```

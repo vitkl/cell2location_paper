@@ -1,0 +1,100 @@
+---
+title: "Seurat V3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Seurat V3
+
+```{r}
+library(Matrix)
+library(data.table)
+library(Seurat)
+```
+
+```{r}
+sp_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sp_data_downsampled.tsv')
+cell_names = sp_data$spot
+sp_data[, spot := NULL]
+sp_data = as.matrix(sp_data)
+rownames(sp_data) = cell_names
+
+sc_data = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference.tsv')
+cell_names = sc_data$cell
+sc_data[, cell := NULL]
+sc_data = as.matrix(sc_data)
+rownames(sc_data) = cell_names
+
+meta = fread('/lustre/scratch117/cellgen/team283/vk7/data_sharing/visium/lowdens_synthetic_ST_fewcells/csv_export/seed10/sc_reference_annot.tsv', data.table = F)
+rownames(meta) = meta$cell
+```
+
+```{r}
+sc_seu = Seurat::CreateSeuratObject(t(sc_data), meta=meta)
+Idents(sc_seu) = sc_seu$bio_celltype
+sp_seu = Seurat::CreateSeuratObject(t(sp_data))
+```
+
+```{r}
+# the column for annotations
+sc_seu@meta.data$bio_celltype = factor(sc_seu@meta.data$bio_celltype)
+```
+
+## running Seurat PCA
+
+```{r seurat}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT")
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$bio_celltype,
+                                  weight.reduction = 'pcaproject')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/seurat_new/results_pca.RDS")
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/seurat_new/results_pca.csv')
+predictions.assay[1:5, 1:5]
+```
+
+## running Seurat CCA
+
+```{r seurat_cca}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT", reduction='cca')
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$bio_celltype,
+                                  weight.reduction = 'cca')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = "/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/seurat_new/results_cca.RDS")
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/lowdens_synthetic_ST_fewcells/seurat_new/results_cca.csv')
+predictions.assay[1:5, 1:5]
+```
