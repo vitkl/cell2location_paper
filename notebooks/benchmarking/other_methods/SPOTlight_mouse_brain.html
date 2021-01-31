@@ -394,7 +394,7 @@ summary {
 <h2>SPOTlight</h2>
 <pre class="r"><code>library(Matrix)
 library(data.table)</code></pre>
-<pre><code>## data.table 1.13.4 using 12 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
+<pre><code>## data.table 1.13.6 using 12 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
 <pre class="r"><code>library(Seurat)
 library(SeuratDisk)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;cli&#39;:
@@ -6683,12 +6683,12 @@ spotlight_ls &lt;- spotlight_deconvolution(se_sc = sc_seu,
                                       ntop = NULL,
                                       transf = &quot;uv&quot;,
                                       method = &quot;nsNMF&quot;,
-                                      min_cont = 0.09)</code></pre>
+                                      min_cont = 0.01)</code></pre>
 <pre><code>## [1] &quot;Preparing Gene set&quot;
 ## [1] &quot;Normalizing count matrix&quot;
 ## [1] &quot;Seeding initial matrices&quot;
 ## [1] &quot;Training...&quot;
-## [1] &quot;Time to train NMF model was 499.34mins&quot;
+## [1] &quot;Time to train NMF model was 513.91mins&quot;
 ## [1] &quot;Deconvoluting spots&quot;
 ## 
   |                                                                            
@@ -7035,7 +7035,7 @@ spotlight_ls &lt;- spotlight_deconvolution(se_sc = sc_seu,
   |======================================================================| 100%</code></pre>
 <pre class="r"><code>end_time &lt;- Sys.time()
 end_time - start_time</code></pre>
-<pre><code>## Time difference of 8.921072 hours</code></pre>
+<pre><code>## Time difference of 9.352319 hours</code></pre>
 <pre class="r"><code>saveRDS(object = spotlight_ls,
         file = &quot;/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/mouse_visium_snrna/SPOTlight/results_hvg5k.RDS&quot;)
 

@@ -1,0 +1,97 @@
+---
+title: "RCTD"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./RCTD_with_tissue_zones.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./RCTD_with_tissue_zones.html"))
+
+## RCTD
+
+```{r }
+library(RCTD)
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+
+refdir <- system.file("extdata",'Reference/Vignette',package = 'RCTD') #directory for the reference
+reference <- dgeToSeurat(refdir)
+
+datadir <- system.file("extdata",'SpatialRNA/Vignette',package = 'RCTD') # directory for sample Slide-seq dataset
+puck <- read.SpatialRNA(datadir) # read in the SpatialRNA object
+
+barcodes <- colnames(puck@counts) #pixels to be used (a list of barcode names). 
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+```
+
+```{r}
+sc_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_data/mouse_visium_snrna/'
+sp_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/with_tissue_zones/data/'
+results_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/with_tissue_zones/real_mg/'
+
+#Convert(paste0(sp_data_folder,'synth_adata_real_mg_20210131.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_folder,'synth_adata_real_mg_20210131.h5seurat'))
+sp_seu = sp_seu[,sp_seu$sample == 'exper0']
+
+reg_mod_name = 'RegressionGeneBackgroundCoverageTorch_51covariates_8111cells_12422geneswith_tissue_zones'
+reg_path = paste0(results_folder, 'regression_model/',reg_mod_name,'/')
+Convert(paste0(reg_path, 'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sc_seu = LoadH5Seurat(paste0(reg_path, 'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$annotation_1
+```
+
+```{r}
+set.seed(1)
+# generate random positions
+coords = as.data.frame(sp_seu@reductions$spatial@cell.embeddings)
+colnames(coords) = c('xcoord', 'ycoord')
+```
+
+```{r}
+puck@counts = as(sp_seu@assays$RNA@counts, 'dgCMatrix')
+puck@coords = coords
+puck@nUMI = sp_seu$nCount_RNA
+puck@cell_type_names = unique(as.character(sc_seu@meta.data$annotation_1))
+
+# the column for annotations is hard-coded
+sc_seu@meta.data$liger_ident_coarse = factor(sc_seu@meta.data$annotation_1)
+
+sc_seu@meta.data$nUMI = sc_seu@meta.data$total_counts
+sc_seu@meta.data$orig.ident = factor(sc_seu@meta.data$annotation_1)
+sc_seu@meta.data$cluster = factor(sc_seu@meta.data$annotation_1)
+```
+
+## running RCTD
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(puck, sc_seu, 
+                        CELL_MIN_INSTANCE=2,
+                        max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+results <- myRCTD@results
+# normalize the cell type proportions to sum to 1.
+norm_weights = sweep(results$weights, 1, rowSums(results$weights), '/') 
+cell_type_names <- myRCTD@cell_type_info$info[[2]] #list of cell type names
+spatialRNA <- myRCTD@spatialRNA
+
+norm_weights
+spatialRNA
+```
+
+```{r}
+results_weights = as.data.frame(results$weights)
+results_weights$spot = rownames(results_weights)
+fwrite(results_weights, paste0(results_folder, 'rctd/results_weights.csv'))
+```

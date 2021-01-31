@@ -5173,12 +5173,12 @@ spotlight_ls &lt;- spotlight_deconvolution(se_sc = sc_seu,
                                       ntop = NULL,
                                       transf = &quot;uv&quot;,
                                       method = &quot;nsNMF&quot;,
-                                      min_cont = 0.09)</code></pre>
+                                      min_cont = 0.01)</code></pre>
 <pre><code>## [1] &quot;Preparing Gene set&quot;
 ## [1] &quot;Normalizing count matrix&quot;
 ## [1] &quot;Seeding initial matrices&quot;
 ## [1] &quot;Training...&quot;
-## [1] &quot;Time to train NMF model was 286.41mins&quot;
+## [1] &quot;Time to train NMF model was 301.32mins&quot;
 ## [1] &quot;Deconvoluting spots&quot;
 ## 
   |                                                                            
@@ -5525,7 +5525,7 @@ spotlight_ls &lt;- spotlight_deconvolution(se_sc = sc_seu,
   |======================================================================| 100%</code></pre>
 <pre class="r"><code>end_time &lt;- Sys.time()
 end_time - start_time</code></pre>
-<pre><code>## Time difference of 5.371488 hours</code></pre>
+<pre><code>## Time difference of 5.926184 hours</code></pre>
 <pre class="r"><code>saveRDS(object = spotlight_ls,
         file = paste0(spotlight_results, &quot;results_hvg5k.RDS&quot;))
 
