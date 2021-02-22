@@ -12,6 +12,8 @@ synthetic_*_counts.csv
 mapping_video/
 notebooks/selected_results/mouse_visium_snrna/segmentation/results/*_segmented
 notebooks/selected_data/
+notebooks/selected_results/lymph_nodes_analysis/hyperparameters/
+notebooks/selected_results/benchmarking/with_tissue_zones/real_mg/hyperparameters/
 *.gif
 
 Meta
