@@ -1,0 +1,103 @@
+---
+title: "Seurat V3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./Seurat_Zeisel_negative.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./Seurat_Zeisel_negative.html"))
+
+## Seurat V3
+
+```{r }
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+```
+
+```{r}
+sp_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/mouse_visium_snrna/'
+sc_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/zeisel/'
+results_seurat = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/zeisel_negative/seurat_new/'
+
+regression_model_output = 'RegressionGeneBackgroundCoverageTorch_263covariates_94986cells_12620genes'
+reg_path = paste0(sc_data_folder, 'regression_model/', regression_model_output, '/')
+#Convert(paste0(reg_path,'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$Class_ClusterName
+```
+
+```{r}
+run_name = 'LocationModelLinearDependentWMultiExperiment_59clusters_14968locations_12809genes_n_comb50_mean_var5_inferred_30k'
+sp_data_path = paste0(sp_data_folder, run_name, '/')
+
+#Convert(paste0(sp_data_path, 'sp_with_clusters.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_with_clusters.h5seurat'))
+```
+
+```{r}
+# the column for annotations should be factor type
+sc_seu@meta.data$Class_ClusterName = factor(sc_seu@meta.data$Class_ClusterName)
+```
+
+## running Seurat PCA
+
+```{r seurat}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT")
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$Class_ClusterName,
+                                  weight.reduction = 'pcaproject')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = paste0(results_seurat, "matching_regions_results_pca.RDS"))
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, paste0(results_seurat, "matching_regions_results_pca.csv"))
+predictions.assay[1:5, 1:5]
+```
+
+## running Seurat CCA
+
+```{r seurat_cca}
+library(dplyr)
+
+sc_seu <- SCTransform(sc_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+sp_seu <- SCTransform(sp_seu, verbose = FALSE) %>% RunPCA(verbose = FALSE)
+
+start_time <- Sys.time()
+
+anchors <- FindTransferAnchors(reference = sc_seu, query = sp_seu, normalization.method = "SCT", reduction='cca')
+
+predictions.assay <- TransferData(anchorset = anchors, refdata = sc_seu$Class_ClusterName,
+                                  weight.reduction = 'cca')
+
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+saveRDS(object = predictions.assay,
+        file = paste0(results_seurat, "matching_regions_results_cca.RDS"))
+
+predictions.assay$spot = rownames(predictions.assay)
+write.csv(predictions.assay, paste0(results_seurat, "matching_regions_results_cca.csv"))
+predictions.assay[1:5, 1:5]
+```

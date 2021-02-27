@@ -1,0 +1,108 @@
+---
+title: "RCTD"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./RCTD_Zeisel_negative.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./RCTD_Zeisel_negative.html"))
+                  
+## RCTD
+
+```{r }
+library(RCTD)
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+
+refdir <- system.file("extdata",'Reference/Vignette',package = 'RCTD') #directory for the reference
+reference <- dgeToSeurat(refdir)
+
+datadir <- system.file("extdata",'SpatialRNA/Vignette',package = 'RCTD') # directory for sample Slide-seq dataset
+puck <- read.SpatialRNA(datadir) # read in the SpatialRNA object
+
+barcodes <- colnames(puck@counts) #pixels to be used (a list of barcode names). 
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+```
+
+```{r}
+sp_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/mouse_visium_snrna/'
+sc_data_folder = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/zeisel/'
+rctd_results = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/benchmarking/zeisel_negative/rctd/'
+
+regression_model_output = 'RegressionGeneBackgroundCoverageTorch_263covariates_94986cells_12620genes'
+reg_path = paste0(sc_data_folder, 'regression_model/', regression_model_output, '/')
+#Convert(paste0(reg_path,'sc.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc.h5seurat'))
+Idents(sc_seu) = sc_seu$Class_ClusterName
+```
+
+```{r}
+run_name = 'LocationModelLinearDependentWMultiExperiment_59clusters_14968locations_12809genes_n_comb50_mean_var5_inferred_30k'
+sp_data_path = paste0(sp_data_folder, run_name, '/')
+
+#Convert(paste0(sp_data_path, 'sp_with_clusters.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_with_clusters.h5seurat'))
+```
+
+```{r}
+set.seed(1)
+# generate random positions
+coords = as.data.frame(sp_seu@reductions$spatial@cell.embeddings)
+colnames(coords) = c('xcoord', 'ycoord')
+```
+
+```{r}
+puck@counts = sp_seu@assays$RNA@counts
+puck@coords = coords
+puck@nUMI = sp_seu$total_counts
+puck@cell_type_names = as.character(unique(sc_seu@meta.data$Class_ClusterName))
+
+# the column for annotations is hard-coded
+sc_seu@meta.data$liger_ident_coarse = factor(sc_seu@meta.data$Class_ClusterName)
+
+sc_seu@meta.data$nUMI = sc_seu@meta.data$X_Total
+sc_seu@meta.data$orig.ident = sc_seu@meta.data$Class_ClusterName
+sc_seu@meta.data$cluster = sc_seu@meta.data$Class_ClusterName
+```
+
+## running RCTD
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(puck, sc_seu, 
+                        gene_cutoff = 0.000125, fc_cutoff = 0.05,
+                        gene_cutoff_reg = 0.000125, fc_cutoff_reg = 0.2,
+                        CELL_MIN_INSTANCE=1,
+                        max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+time # 2071.434 seconds, 34.5 min, with 10 cores.
+```
+
+```{r}
+results <- myRCTD@results
+# normalize the cell type proportions to sum to 1.
+norm_weights = sweep(results$weights, 1, rowSums(results$weights), '/') 
+cell_type_names <- myRCTD@cell_type_info$info[[2]] #list of cell type names
+spatialRNA <- myRCTD@spatialRNA
+
+norm_weights
+spatialRNA
+```
+
+```{r}
+results_weights = as.data.frame(results$weights)
+results_weights$spot = rownames(results_weights)
+fwrite(results_weights, paste0(rctd_results, 'matching_regions_results_weights_121clusters_3246genes_6367genes.csv'))
+```
