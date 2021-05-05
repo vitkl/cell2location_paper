@@ -1,0 +1,16 @@
+,top-1,top-2,top-3,top-4,top-5,top-6,top-7,top-8,top-9,top-10
+mean_cell_type_factorsfact_0,DC_cDC1: 0.58,T_CD4+: 0.13,DC_pDC: 0.093,T_CD4+_naive: 0.087,DC_cDC2: 0.067,B_Cycling: 0.065,NKT: 0.053,B_plasma: 0.044,T_CD8+_cytotoxic: 0.04,B_preGC: 0.028
+mean_cell_type_factorsfact_1,T_CD4+_naive: 0.74,T_CD8+_naive: 0.42,T_Treg: 0.16,T_TfR: 0.12,DC_CCR7+: 0.12,Macrophages_M2: 0.11,T_CD4+: 0.08,T_CD8+_CD161+: 0.062,B_IFN: 0.058,VSMC: 0.043
+mean_cell_type_factorsfact_2,B_naive: 0.66,B_activated: 0.14,B_mem: 0.12,T_CD4+_TfH: 0.12,T_CD4+_TfH_GC: 0.1,ILC: 0.099,B_GC_LZ: 0.08,T_CD8+_cytotoxic: 0.072,NK: 0.07,T_TIM3+: 0.061
+mean_cell_type_factorsfact_3,T_CD4+_TfH_GC: 0.66,FDC: 0.57,B_GC_prePB: 0.26,B_GC_LZ: 0.18,Macrophages_M1: 0.12,T_TfR: 0.079,T_TIM3+: 0.058,B_naive: 0.052,Endo: 0.029,B_IFN: 0.028
+mean_cell_type_factorsfact_4,B_preGC: 0.62,B_Cycling: 0.14,T_TIM3+: 0.087,Mast: 0.069,T_TfR: 0.062,DC_cDC1: 0.052,B_plasma: 0.045,VSMC: 0.044,NKT: 0.036,T_CD8+_naive: 0.026
+mean_cell_type_factorsfact_5,Endo: 0.59,VSMC: 0.47,Monocytes: 0.31,DC_cDC2: 0.29,Mast: 0.18,ILC: 0.17,NKT: 0.15,T_CD4+: 0.13,B_activated: 0.11,B_GC_DZ: 0.069
+mean_cell_type_factorsfact_6,B_plasma: 0.73,B_activated: 0.18,T_CD4+_TfH: 0.16,VSMC: 0.15,T_CD8+_CD161+: 0.11,Mast: 0.11,NKT: 0.1,T_CD8+_cytotoxic: 0.097,Monocytes: 0.096,T_CD8+_naive: 0.095
+mean_cell_type_factorsfact_7,B_GC_LZ: 0.71,B_GC_prePB: 0.28,B_GC_DZ: 0.19,FDC: 0.091,NK: 0.073,T_CD4+_TfH: 0.054,ILC: 0.053,T_CD4+_TfH_GC: 0.047,T_CD8+_CD161+: 0.039,T_CD8+_cytotoxic: 0.035
+mean_cell_type_factorsfact_8,B_mem: 0.82,T_CD4+: 0.32,B_preGC: 0.15,T_CD4+_naive: 0.15,NKT: 0.14,B_naive: 0.13,DC_cDC1: 0.11,B_activated: 0.11,FDC: 0.087,Mast: 0.064
+mean_cell_type_factorsfact_9,T_Treg: 0.66,T_TfR: 0.55,T_CD8+_cytotoxic: 0.44,DC_CCR7+: 0.41,T_CD4+_TfH: 0.34,NK: 0.28,T_CD8+_CD161+: 0.25,ILC: 0.18,T_CD8+_naive: 0.17,DC_pDC: 0.16
+mean_cell_type_factorsfact_10,T_TIM3+: 0.48,DC_pDC: 0.21,DC_cDC2: 0.2,ILC: 0.14,NK: 0.12,DC_CCR7+: 0.12,Mast: 0.069,T_CD8+_CD161+: 0.055,T_CD8+_naive: 0.047,Monocytes: 0.046
+mean_cell_type_factorsfact_11,B_IFN: 0.76,DC_CCR7+: 0.044,T_CD8+_cytotoxic: 0.042,FDC: 0.04,T_TfR: 0.038,NK: 0.038,Monocytes: 0.034,T_TIM3+: 0.029,T_Treg: 0.023,T_CD4+_TfH: 0.018
+mean_cell_type_factorsfact_12,B_Cycling: 0.78,B_GC_DZ: 0.52,B_GC_prePB: 0.2,FDC: 0.11,DC_cDC1: 0.097,Macrophages_M1: 0.083,T_CD4+: 0.074,Mast: 0.069,NKT: 0.047,T_CD8+_CD161+: 0.043
+mean_cell_type_factorsfact_13,Macrophages_M2: 0.85,DC_pDC: 0.48,B_activated: 0.39,Monocytes: 0.3,NK: 0.26,T_CD8+_CD161+: 0.24,ILC: 0.24,T_CD4+_TfH: 0.22,T_CD8+_naive: 0.2,T_CD8+_cytotoxic: 0.19
+mean_cell_type_factorsfact_14,Macrophages_M1: 0.59,DC_CCR7+: 0.24,DC_cDC2: 0.22,Mast: 0.19,Monocytes: 0.15,T_CD4+: 0.13,FDC: 0.11,NKT: 0.087,B_GC_prePB: 0.081,DC_cDC1: 0.07

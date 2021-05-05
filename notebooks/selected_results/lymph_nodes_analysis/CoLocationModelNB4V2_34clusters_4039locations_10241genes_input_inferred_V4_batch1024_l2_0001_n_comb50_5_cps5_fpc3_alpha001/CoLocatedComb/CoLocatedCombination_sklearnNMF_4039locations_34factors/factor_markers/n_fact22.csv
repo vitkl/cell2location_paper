@@ -1,0 +1,23 @@
+,top-1,top-2,top-3,top-4,top-5,top-6,top-7,top-8,top-9,top-10
+mean_cell_type_factorsfact_0,DC_pDC: 0.49,B_activated: 0.42,ILC: 0.29,T_CD4+_TfH: 0.17,Monocytes: 0.17,DC_cDC2: 0.15,T_CD8+_CD161+: 0.15,NKT: 0.14,B_naive: 0.13,NK: 0.1
+mean_cell_type_factorsfact_1,DC_cDC1: 0.57,T_CD4+: 0.13,T_CD4+_naive: 0.073,DC_pDC: 0.054,NKT: 0.049,Macrophages_M1: 0.042,B_Cycling: 0.031,Endo: 0.028,B_preGC: 0.028,VSMC: 0.026
+mean_cell_type_factorsfact_2,T_CD4+_naive: 0.68,T_CD8+_naive: 0.31,T_CD4+: 0.063,T_Treg: 0.053,DC_CCR7+: 0.049,B_IFN: 0.048,DC_cDC1: 0.041,B_preGC: 0.034,Macrophages_M2: 0.034,T_CD8+_CD161+: 0.031
+mean_cell_type_factorsfact_3,Macrophages_M1: 0.55,T_CD4+: 0.11,Mast: 0.097,NKT: 0.074,Monocytes: 0.059,Endo: 0.042,VSMC: 0.042,B_GC_prePB: 0.041,DC_cDC1: 0.039,T_TfR: 0.034
+mean_cell_type_factorsfact_4,Endo: 0.51,Monocytes: 0.14,Mast: 0.076,VSMC: 0.066,T_CD4+: 0.061,NKT: 0.055,ILC: 0.051,B_activated: 0.044,DC_cDC2: 0.043,T_CD8+_CD161+: 0.037
+mean_cell_type_factorsfact_5,T_TIM3+: 0.4,DC_pDC: 0.071,ILC: 0.065,T_TfR: 0.041,VSMC: 0.037,B_preGC: 0.035,B_plasma: 0.035,DC_CCR7+: 0.028,NK: 0.026,B_Cycling: 0.025
+mean_cell_type_factorsfact_6,DC_cDC2: 0.67,DC_CCR7+: 0.44,Mast: 0.25,Monocytes: 0.24,ILC: 0.12,T_TfR: 0.065,T_CD4+: 0.056,NKT: 0.055,Endo: 0.048,B_preGC: 0.045
+mean_cell_type_factorsfact_7,B_plasma: 0.67,B_activated: 0.15,T_CD4+_TfH: 0.12,Mast: 0.093,T_CD8+_CD161+: 0.083,Monocytes: 0.079,T_CD8+_naive: 0.074,T_CD8+_cytotoxic: 0.068,NKT: 0.068,Macrophages_M2: 0.064
+mean_cell_type_factorsfact_8,B_Cycling: 0.78,B_GC_prePB: 0.14,DC_cDC1: 0.097,B_GC_DZ: 0.086,FDC: 0.077,Macrophages_M1: 0.066,Mast: 0.057,T_CD4+: 0.054,T_CD4+_TfH_GC: 0.053,B_GC_LZ: 0.032
+mean_cell_type_factorsfact_9,B_naive: 0.56,B_mem: 0.13,B_activated: 0.1,B_GC_LZ: 0.091,T_CD4+_TfH: 0.083,T_CD4+_TfH_GC: 0.069,ILC: 0.069,T_Treg: 0.061,T_TIM3+: 0.05,T_CD8+_cytotoxic: 0.046
+mean_cell_type_factorsfact_10,B_mem: 0.83,T_CD4+: 0.29,B_preGC: 0.15,T_CD4+_naive: 0.13,DC_cDC1: 0.12,NKT: 0.11,B_naive: 0.11,B_activated: 0.093,T_TfR: 0.055,Mast: 0.054
+mean_cell_type_factorsfact_11,T_CD4+_TfH_GC: 0.55,T_TfR: 0.11,B_GC_prePB: 0.079,B_GC_LZ: 0.078,FDC: 0.06,T_CD4+_TfH: 0.046,B_naive: 0.035,Macrophages_M1: 0.033,T_CD8+_cytotoxic: 0.024,B_GC_DZ: 0.016
+mean_cell_type_factorsfact_12,FDC: 0.63,B_GC_prePB: 0.18,T_CD4+_TfH_GC: 0.058,B_activated: 0.047,Macrophages_M1: 0.032,DC_cDC1: 0.024,DC_CCR7+: 0.022,B_GC_DZ: 0.021,B_naive: 0.02,T_CD4+: 0.02
+mean_cell_type_factorsfact_13,T_CD8+_cytotoxic: 0.45,DC_pDC: 0.3,T_CD8+_naive: 0.21,T_CD8+_CD161+: 0.21,T_CD4+_TfH: 0.15,NKT: 0.13,NK: 0.1,T_Treg: 0.062,T_TIM3+: 0.055,Macrophages_M2: 0.044
+mean_cell_type_factorsfact_14,B_GC_LZ: 0.7,B_GC_prePB: 0.25,T_CD4+_TfH_GC: 0.16,FDC: 0.13,B_GC_DZ: 0.062,Macrophages_M1: 0.033,B_IFN: 0.032,ILC: 0.031,T_CD4+_TfH: 0.029,T_TIM3+: 0.028
+mean_cell_type_factorsfact_15,VSMC: 0.49,Monocytes: 0.093,NKT: 0.088,T_CD4+: 0.074,Mast: 0.059,Endo: 0.048,ILC: 0.048,T_CD8+_CD161+: 0.019,B_plasma: 0.018,B_activated: 0.018
+mean_cell_type_factorsfact_16,B_IFN: 0.74,DC_CCR7+: 0.027,T_TfR: 0.027,Monocytes: 0.024,T_TIM3+: 0.024,T_CD8+_cytotoxic: 0.021,FDC: 0.021,NK: 0.017,T_Treg: 0.016,DC_cDC1: 0.013
+mean_cell_type_factorsfact_17,Macrophages_M2: 0.69,Monocytes: 0.14,B_activated: 0.094,T_CD8+_naive: 0.08,T_CD8+_cytotoxic: 0.079,Mast: 0.071,T_CD8+_CD161+: 0.059,Endo: 0.059,NK: 0.053,T_CD4+_TfH: 0.047
+mean_cell_type_factorsfact_18,NK: 0.45,ILC: 0.14,T_CD4+_TfH: 0.085,DC_CCR7+: 0.06,T_CD8+_CD161+: 0.055,T_CD8+_cytotoxic: 0.054,NKT: 0.046,T_TIM3+: 0.035,Endo: 0.033,VSMC: 0.031
+mean_cell_type_factorsfact_19,B_GC_DZ: 0.7,B_GC_prePB: 0.15,B_GC_LZ: 0.067,B_Cycling: 0.038,FDC: 0.036,T_CD4+: 0.03,ILC: 0.028,T_CD4+_TfH_GC: 0.024,T_CD8+_CD161+: 0.023,T_CD4+_TfH: 0.022
+mean_cell_type_factorsfact_20,T_Treg: 0.62,T_TfR: 0.55,DC_CCR7+: 0.35,T_CD4+_TfH: 0.22,T_CD8+_cytotoxic: 0.17,T_CD8+_naive: 0.14,T_CD8+_CD161+: 0.13,T_CD4+_naive: 0.1,ILC: 0.1,T_TIM3+: 0.084
+mean_cell_type_factorsfact_21,B_preGC: 0.6,B_Cycling: 0.084,T_TIM3+: 0.078,Mast: 0.049,DC_pDC: 0.039,T_TfR: 0.038,DC_cDC1: 0.035,B_plasma: 0.034,T_CD8+_naive: 0.025,NKT: 0.024

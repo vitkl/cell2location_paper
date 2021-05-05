@@ -1,0 +1,12 @@
+,top-1,top-2,top-3,top-4,top-5,top-6,top-7,top-8,top-9,top-10
+mean_cell_type_factorsfact_0,T_CD4+_naive: 0.74,T_CD8+_naive: 0.48,T_Treg: 0.25,T_TfR: 0.2,DC_CCR7+: 0.16,Macrophages_M2: 0.13,T_CD4+: 0.094,T_CD8+_CD161+: 0.093,T_CD8+_cytotoxic: 0.08,T_CD4+_TfH: 0.076
+mean_cell_type_factorsfact_1,Endo: 0.67,Monocytes: 0.54,DC_cDC2: 0.53,VSMC: 0.41,Macrophages_M2: 0.41,Mast: 0.33,ILC: 0.31,DC_pDC: 0.31,B_activated: 0.3,Macrophages_M1: 0.28
+mean_cell_type_factorsfact_2,B_Cycling: 0.79,B_GC_DZ: 0.57,B_GC_prePB: 0.26,FDC: 0.17,DC_cDC1: 0.13,T_CD4+: 0.083,Macrophages_M1: 0.072,Mast: 0.07,NKT: 0.056,T_CD8+_CD161+: 0.055
+mean_cell_type_factorsfact_3,T_Treg: 0.61,T_TfR: 0.54,DC_CCR7+: 0.5,T_CD8+_cytotoxic: 0.44,NK: 0.38,T_TIM3+: 0.35,T_CD4+_TfH: 0.34,ILC: 0.27,DC_pDC: 0.27,T_CD8+_CD161+: 0.27
+mean_cell_type_factorsfact_4,B_plasma: 0.8,Macrophages_M2: 0.45,B_activated: 0.37,T_CD4+_TfH: 0.29,DC_pDC: 0.26,T_CD8+_CD161+: 0.24,NK: 0.24,Monocytes: 0.23,T_CD8+_cytotoxic: 0.21,ILC: 0.21
+mean_cell_type_factorsfact_5,B_naive: 0.69,B_activated: 0.17,T_CD4+_TfH: 0.14,T_CD4+_TfH_GC: 0.13,B_mem: 0.12,ILC: 0.11,T_CD8+_cytotoxic: 0.083,NK: 0.078,B_GC_LZ: 0.069,T_CD8+_CD161+: 0.067
+mean_cell_type_factorsfact_6,B_preGC: 0.64,T_TIM3+: 0.27,B_Cycling: 0.14,Mast: 0.088,DC_pDC: 0.08,T_TfR: 0.057,T_CD8+_naive: 0.043,DC_cDC1: 0.041,B_plasma: 0.04,ILC: 0.037
+mean_cell_type_factorsfact_7,DC_cDC1: 0.6,Macrophages_M1: 0.28,T_CD4+: 0.2,DC_cDC2: 0.19,DC_CCR7+: 0.18,Mast: 0.11,NKT: 0.1,T_CD4+_naive: 0.091,B_plasma: 0.079,B_GC_prePB: 0.073
+mean_cell_type_factorsfact_8,B_GC_LZ: 0.84,T_CD4+_TfH_GC: 0.6,FDC: 0.56,B_GC_prePB: 0.48,Macrophages_M1: 0.16,B_GC_DZ: 0.14,T_TfR: 0.058,T_CD4+_TfH: 0.051,B_naive: 0.049,B_IFN: 0.04
+mean_cell_type_factorsfact_9,B_mem: 0.81,T_CD4+: 0.37,B_preGC: 0.17,NKT: 0.17,T_CD4+_naive: 0.16,FDC: 0.15,B_naive: 0.14,DC_cDC1: 0.13,B_activated: 0.12,VSMC: 0.11
+mean_cell_type_factorsfact_10,B_IFN: 0.79,FDC: 0.061,T_TIM3+: 0.057,Monocytes: 0.05,DC_CCR7+: 0.048,NK: 0.038,T_CD8+_cytotoxic: 0.027,T_TfR: 0.027,Endo: 0.026,VSMC: 0.02
