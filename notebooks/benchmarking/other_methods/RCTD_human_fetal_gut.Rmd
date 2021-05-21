@@ -120,7 +120,7 @@ time = microbenchmark::microbenchmark({
                         gene_cutoff_reg = 2e-04, fc_cutoff_reg = 0.75,
                         CELL_MIN_INSTANCE=5, #cell_type_names=unique(as.character(sc_seu@meta.data$combined)),
                         max_cores = 10)
-  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = 'full')
 }, times=1)
 ```
 
