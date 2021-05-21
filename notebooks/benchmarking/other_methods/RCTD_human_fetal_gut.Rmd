@@ -1,0 +1,147 @@
+---
+title: "RCTD_human_fetal_gut"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+rmarkdown::render(input = paste0("./RCTD_human_fetal_gut.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("./RCTD_human_fetal_gut.html"))
+
+## RCTD
+
+```{r }
+library(RCTD)
+library(Matrix)
+library(data.table)
+library(Seurat)
+library(SeuratDisk)
+
+### Load in/preprocess your data, this might vary based on your file type
+refdir <- system.file("extdata",'Reference/Vignette',package = 'RCTD') # directory for the reference
+counts <- read.csv(file.path(refdir,"dge.csv")) # load in counts matrix
+rownames(counts) <- counts[,1]; counts[,1] <- NULL # Move first column to rownames
+meta_data <- read.csv(file.path(refdir,"meta_data.csv")) # load in meta_data (barcodes, clusters, and nUMI)
+cell_types <- meta_data$cluster; names(cell_types) <- meta_data$barcode # create cell_types named list
+cell_types <- as.factor(cell_types) # convert to factor data type
+nUMI <- meta_data$nUMI; names(nUMI) <- meta_data$barcode # create nUMI named list
+### Create the Reference object
+reference <- Reference(counts, cell_types, nUMI)
+## Examine reference object (optional)
+print(dim(reference@counts)) #observe Digital Gene Expression matrix
+table(reference@cell_types) #number of occurences for each cell type
+
+datadir <- system.file("extdata",'SpatialRNA/Vignette',package = 'RCTD') # directory for sample Slide-seq dataset
+counts <- read.csv(file.path(datadir,"MappedDGEForR.csv")) # load in counts matrix
+coords <- read.csv(file.path(datadir,"BeadLocationsForR.csv"))
+rownames(counts) <- counts[,1]; counts[,1] <- NULL # Move first column to rownames
+rownames(coords) <- coords$barcodes; coords$barcodes <- NULL # Move barcodes to rownames
+nUMI <- colSums(counts) # In this case, total counts per pixel is nUMI
+### Create SpatialRNA object
+puck <- SpatialRNA(coords, counts, nUMI)
+## Examine SpatialRNA object (optional)
+print(dim(puck@counts)) # observe Digital Gene Expression matrix
+hist(log(puck@nUMI,2)) # histogram of log_2 nUMI
+print(head(puck@coords)) # start of coordinate data.frame
+barcodes <- colnames(puck@counts) # pixels to be used (a list of barcode names). 
+# This list can be restricted if you want to crop the puck e.g. 
+# puck <- restrict_puck(puck, barcodes) provides a basic plot of the nUMI of each pixel
+# on the plot:
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+
+barcodes <- colnames(puck@counts) #pixels to be used (a list of barcode names). 
+plot_puck_continuous(puck, barcodes, puck@nUMI, ylimit = c(0,round(quantile(puck@nUMI,0.9))), 
+                     title ='plot of nUMI') 
+```
+
+```{r}
+# read cell2location model results
+results_folder = '/nfs/team205/vk7/sanger_projects/collaborations/fetal_gut_mapping/results/'
+
+reg_mod_name = 'RegressionGeneBackgroundCoverageGeneTechnologyTorch_88covariates_124049cells_13904genes_noLN_revise'
+reg_path = paste0(results_folder, '', reg_mod_name, '/')
+Convert(paste0(reg_path,'sc_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
+
+sc_seu = LoadH5Seurat(paste0(reg_path,'sc_for_seurat.h5seurat'))
+Idents(sc_seu) = sc_seu$combined
+```
+
+```{r}
+run_name = 'LocationModelLinearDependentWMultiExperimentLocationBackgroundNormGeneAlpha_3experiments_65clusters_4645locations_13904genes_F78_63_revised_2nd_trimester'
+sp_data_path = paste0(results_folder, run_name, '/')
+
+Convert(paste0(sp_data_path, 'sp_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_for_seurat.h5seurat'))
+
+#sp_seu = sp_seu[!duplicated(sp_seu@assays$RNA@meta.features$SYMBOL),]
+#rownames(sp_seu@assays$RNA@meta.features) = sp_seu@assays$RNA@meta.features$SYMBOL
+#rownames(sp_seu@assays$RNA@counts) = sp_seu@assays$RNA@meta.features$SYMBOL
+#rownames(sp_seu@assays$RNA@data) = sp_seu@assays$RNA@meta.features$SYMBOL
+#rownames(sp_seu@assays$RNA@scale.data) = sp_seu@assays$RNA@meta.features$SYMBOL
+```
+
+```{r}
+set.seed(1)
+# generate random positions
+#coords = as.data.frame(sp_seu@reductions$spatial@cell.embeddings)
+#colnames(coords) = c('xcoord', 'ycoord')
+```
+
+```{r}
+#puck@coords = coords
+sp_seu$total_counts = colSums(sp_seu@assays$RNA@counts)
+puck@counts = sp_seu@assays$RNA@counts
+puck@nUMI = sp_seu$total_counts
+#puck$cell_type_names = as.character(unique(sc_seu@meta.data$combined))
+#factor(as.character(sc_seu@meta.data$combined))
+# the column for annotations is hard-coded
+#sc_seu@meta.data$cell_types = sc_seu$combined
+#sc_seu@cell_types = sc_seu@meta.data$combined
+
+sc_seu$total_counts = Matrix::colSums(sc_seu@assays$RNA@counts)
+nUMI = sc_seu$total_counts
+#names(nUMI) = colnames(sc_seu)
+cell_types = sc_seu$combined
+#names(cell_types) = colnames(sc_seu)
+
+reference <- Reference(sc_seu@assays$RNA@counts, cell_types, nUMI)
+```
+
+## running RCTD
+
+```{r rctd}
+time = microbenchmark::microbenchmark({
+  myRCTD <- create.RCTD(spatialRNA=puck, reference=reference, 
+                        gene_cutoff = 0.000125, fc_cutoff = 0.25,
+                        gene_cutoff_reg = 2e-04, fc_cutoff_reg = 0.75,
+                        CELL_MIN_INSTANCE=5, #cell_type_names=unique(as.character(sc_seu@meta.data$combined)),
+                        max_cores = 10)
+  myRCTD <- run.RCTD(myRCTD, doublet_mode = FALSE)
+}, times=1)
+```
+
+```{r}
+time # 765.4797 seconds, 14 min, with 10 cores.
+```
+
+```{r}
+results <- myRCTD@results
+# normalize the cell type proportions to sum to 1.
+norm_weights = sweep(results$weights, 1, rowSums(results$weights), '/') 
+cell_type_names <- myRCTD@cell_type_info$info[[2]] #list of cell type names
+spatialRNA <- myRCTD@spatialRNA
+
+norm_weights
+spatialRNA
+```
+
+```{r}
+results_weights = as.data.frame(results$weights)
+results_weights$spot = rownames(results_weights)
+rctd_results = paste0(results_folder, 'rctd/')
+fwrite(results_weights, paste0(rctd_results, 'results_weights_65clusters.csv'))
+```
