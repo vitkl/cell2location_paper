@@ -65,7 +65,7 @@ results_folder = '/nfs/team205/vk7/sanger_projects/collaborations/fetal_gut_mapp
 
 reg_mod_name = 'RegressionGeneBackgroundCoverageGeneTechnologyTorch_88covariates_124049cells_13904genes_noLN_revise'
 reg_path = paste0(sc_results_folder, '', reg_mod_name, '/')
-Convert(paste0(reg_path,'sc_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
+#Convert(paste0(reg_path,'sc_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
 
 sc_seu = LoadH5Seurat(paste0(reg_path,'sc_for_seurat.h5seurat'))
 Idents(sc_seu) = sc_seu$combined
