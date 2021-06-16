@@ -66,10 +66,10 @@ end_time - start_time
 
 ```{r}
 saveRDS(object = predictions.assay,
-        file = paste0(results_folder, 'seurat/results_selected_pca.RDS'))
+        file = paste0(results_folder, 'seurat/results_selected_65clusters_pca.RDS'))
 
 predictions.assay$spot = rownames(predictions.assay)
-write.csv(predictions.assay, paste0(results_folder, 'seurat/results_selected_pca.csv'))
+write.csv(predictions.assay, paste0(results_folder, 'seurat/results_selected_65clusters_pca.csv'))
 predictions.assay[1:5, 1:5]
 ```
 
@@ -94,9 +94,9 @@ end_time - start_time
 
 ```{r}
 saveRDS(object = predictions.assay,
-        file = paste0(results_folder, 'seurat/results_selected_cca.RDS'))
+        file = paste0(results_folder, 'seurat/results_selected_65clusters_cca.RDS'))
 
 predictions.assay$spot = rownames(predictions.assay)
-write.csv(predictions.assay, paste0(results_folder, 'seurat/results_selected_cca.csv'))
+write.csv(predictions.assay, paste0(results_folder, 'seurat/results_selected_65clusters_cca.csv'))
 predictions.assay[1:5, 1:5]
 ```
