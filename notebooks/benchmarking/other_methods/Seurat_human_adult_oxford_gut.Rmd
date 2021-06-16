@@ -22,10 +22,11 @@ library(SeuratDisk)
 
 ```{r}
 # read cell2location model results 
-results_folder = '/nfs/team205/vk7/sanger_projects/collaborations/fetal_gut_mapping/results/'
+sc_results_folder = '/nfs/team205/vk7/sanger_projects/collaborations/fetal_gut_mapping/results/'
+results_folder = '/nfs/team205/vk7/sanger_projects/collaborations/fetal_gut_mapping/results/oxford/'
 
 reg_mod_name = 'RegressionGeneBackgroundCoverageGeneTechnologyTorch_88covariates_124049cells_13904genes_noLN_revise'
-reg_path = paste0(results_folder, '', reg_mod_name, '/')
+reg_path = paste0(sc_results_folder, '', reg_mod_name, '/')
 #Convert(paste0(reg_path,'sc_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
 
 sc_seu = LoadH5Seurat(paste0(reg_path,'sc_for_seurat.h5seurat'))
