@@ -96,16 +96,16 @@ set.seed(1)
 sp_seu$total_counts = colSums(sp_seu@assays$RNA@counts)
 puck@counts = sp_seu@assays$RNA@counts
 puck@nUMI = sp_seu$total_counts
-#puck$cell_type_names = as.character(unique(sc_seu@meta.data$combined))
-#factor(as.character(sc_seu@meta.data$combined))
+#puck$cell_type_names = as.character(unique(sc_seu@meta.data$Integrated_05))
+#factor(as.character(sc_seu@meta.data$Integrated_05))
 # the column for annotations is hard-coded
-#sc_seu@meta.data$cell_types = sc_seu$combined
-#sc_seu@cell_types = sc_seu@meta.data$combined
+#sc_seu@meta.data$cell_types = sc_seu$Integrated_05
+#sc_seu@cell_types = sc_seu@meta.data$Integrated_05
 
 sc_seu$total_counts = Matrix::colSums(sc_seu@assays$RNA@counts)
 nUMI = sc_seu$total_counts
 #names(nUMI) = colnames(sc_seu)
-cell_types = sc_seu$combined
+cell_types = sc_seu$Integrated_05
 #names(cell_types) = colnames(sc_seu)
 
 reference <- Reference(sc_seu@assays$RNA@counts, cell_types, nUMI)
@@ -118,7 +118,7 @@ time = microbenchmark::microbenchmark({
   myRCTD <- create.RCTD(spatialRNA=puck, reference=reference, 
                         gene_cutoff = 0.000125, fc_cutoff = 0.25,
                         gene_cutoff_reg = 2e-04, fc_cutoff_reg = 0.75,
-                        CELL_MIN_INSTANCE=5, #cell_type_names=unique(as.character(sc_seu@meta.data$combined)),
+                        CELL_MIN_INSTANCE=5, #cell_type_names=unique(as.character(sc_seu@meta.data$Integrated_05)),
                         max_cores = 10)
   myRCTD <- run.RCTD(myRCTD, doublet_mode = 'full')
 }, times=1)
