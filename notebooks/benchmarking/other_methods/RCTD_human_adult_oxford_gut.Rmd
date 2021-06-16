@@ -7,9 +7,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-rmarkdown::render(input = paste0("./RCTD_human_fetal_gut.Rmd"), 
+rmarkdown::render(input = paste0("./RCTD_human_adult_oxford_gut.Rmd"), 
                   output_format = "html_document", 
-                  output_file=paste0("./RCTD_human_fetal_gut.html"))
+                  output_file=paste0("./RCTD_human_adult_oxford_gut.html"))
 
 ## RCTD
 
