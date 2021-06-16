@@ -71,11 +71,10 @@ Idents(sc_seu) = sc_seu$combined
 ```
 
 ```{r}
-run_name = 'LocationModelLinearDependentWMultiExperimentLocationBackgroundNormGeneAlpha_3experiments_65clusters_4645locations_13904genes_F78_63_revised_2nd_trimester'
-sp_data_path = paste0(results_folder, run_name, '/')
+sp_data_path = '/nfs/team205/vk7/sanger_projects/large_data/gut_kj_re/Visium/'
 
-Convert(paste0(sp_data_path, 'sp_for_seurat.h5ad'), dest = "h5seurat", overwrite = TRUE)
-sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_for_seurat.h5seurat'))
+Convert(paste0(sp_data_path, 'sp_for_seurat_selected.h5ad'), dest = "h5seurat", overwrite = TRUE)
+sp_seu = LoadH5Seurat(paste0(sp_data_path, 'sp_for_seurat_selected.h5seurat'))
 
 #sp_seu = sp_seu[!duplicated(sp_seu@assays$RNA@meta.features$SYMBOL),]
 #rownames(sp_seu@assays$RNA@meta.features) = sp_seu@assays$RNA@meta.features$SYMBOL
@@ -143,5 +142,5 @@ spatialRNA
 results_weights = as.data.frame(results$weights)
 results_weights$spot = rownames(results_weights)
 rctd_results = paste0(results_folder, 'rctd/')
-fwrite(results_weights, paste0(rctd_results, 'results_weights_65clusters.csv'))
+fwrite(results_weights, paste0(rctd_results, 'results_selected_weights_65clusters.csv'))
 ```
