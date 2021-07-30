@@ -5,6 +5,10 @@ date: "15/09/2020"
 output: html_document
 ---
 
+rmarkdown::render(input = paste0("/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/mouse_brain_visium/analysis_4_Fig3D_astrocytes_across_brain_regions.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0("/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/mouse_brain_visium/analysis_4_Fig3D_astrocytes_across_brain_regions.html"))
+
 ```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -26,8 +30,9 @@ brewer_palette_4_values <- function(vec, palette, seed=42){
 ## Read average absolute cell abundance per region
 
 ```{r read}
-data_dir = '../selected_results/mouse_viseum_snrna/CoLocationModelNB4E6V2_59clusters_14968locations_12809genes_n_comb50_mean_var5_inferred_30k/'
-region_cell = fread(paste0(data_dir, '20200904_region_cell_abundances.csv'))
+data_dir = '/nfs/team205/vk7/sanger_projects/cell2location_paper/notebooks/selected_results/mouse_visium_snrna/scvi/'
+run_name = 'v3_lr0002_Adam_signatures_c2l_Cell2location_5experiments_59clusters_14968locations_12809genes_Nonebatch_size_amortisedFalse_20000max_epochs_200alphatest'
+region_cell = fread(paste0(data_dir, run_name, '/20200904_region_cell_abundances.csv'))
 region_cell[, c('V1', 'subregion') := NULL]
 
 region_cell$region_label_colors = toupper(region_cell$region_label_colors)
@@ -73,25 +78,25 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
                            annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
-                           filename=paste0(data_dir, "plots/figures/Fig3D_Supl_location_pheatmap.pdf"), 
+                           filename=paste0(data_dir, run_name, "/figures/Fig3D_Supl_location_pheatmap.pdf"), 
                            width=8.5*1.2, height=9*1.4
                            );
-pmap <- pheatmap::pheatmap(region_cell_mat, 
-                           show_colnames = T, angle_col=90,
-                           annotation_names_col=T,
-                           cluster_cols = F, cluster_rows = T, scale='none',
-                           color = RColorBrewer::brewer.pal(9, 'RdPu'),#viridis::magma(50), 
-                           cellwidth=12, cellheight=12, border_color=NA,
-                           silent = F,
-                           annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
-                           fontsize = 10,
-                           filename=paste0(data_dir, "plots/figures/Fig3D_Supl_location_pheatmap.png"), 
-                           width=8.5*1.2, height=9*1.4
-                           );
+#pmap <- pheatmap::pheatmap(region_cell_mat, 
+#                           show_colnames = T, angle_col=90,
+#                           annotation_names_col=T,
+#                           cluster_cols = F, cluster_rows = T, scale='none',
+#                           color = RColorBrewer::brewer.pal(9, 'RdPu'),#viridis::magma(50), 
+#                           cellwidth=12, cellheight=12, border_color=NA,
+#                           silent = F,
+#                           annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
+#                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
+#                           fontsize = 10,
+#                           filename=paste0(data_dir, run_name, "/figures/Fig3D_Supl_location_pheatmap.png"), 
+#                           width=8.5*1.2, height=9*1.4
+#                           );
 
-write.csv(as.data.frame(region_cell_mat[pmap$tree_row$labels[pmap$tree_row$order],]), paste0(data_dir, "plots/figures/Fig3D_Supl_location_pheatmap.csv"))
-knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3D_Supl_location_pheatmap.png"))
+write.csv(as.data.frame(region_cell_mat[pmap$tree_row$labels[pmap$tree_row$order],]), paste0(data_dir, run_name, "/figures/Fig3D_Supl_location_pheatmap.csv"))
+#knitr::include_graphics(paste0(data_dir, run_name, "/figures/Fig3D_Supl_location_pheatmap.png"))
 ```
 
 ## Plot heatmap for Fig3D
@@ -135,24 +140,24 @@ pmap <- pheatmap::pheatmap(region_cell_mat,
                            annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
                            annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
                            fontsize = 10,
-                           filename=paste0(data_dir, "plots/figures/Fig3D_astro_location_pheatmap.pdf"), 
+                           filename=paste0(data_dir, run_name, "/figures/Fig3D_astro_location_pheatmap.pdf"), 
                            width=8.5*1.2, height=9*1.3
                            #labels_col=paste0()
                            );
-pmap <- pheatmap::pheatmap(region_cell_mat, 
-                           show_colnames = T, angle_col=90,
-                           annotation_names_col=T,
-                           cluster_cols = F, cluster_rows = F, scale='none',
-                           color = RColorBrewer::brewer.pal(9, 'RdPu'),
-                           cellwidth=12, cellheight=12, border_color=NA,
-                           silent = F,
-                           annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
-                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
-                           fontsize = 10,
-                           filename=paste0(data_dir, "plots/figures/Fig3D_astro_location_pheatmap.png"), 
-                           width=8.5*1.2, height=9*1.3
-                           );
-write.csv(as.data.frame(region_cell_mat), paste0(data_dir, "plots/figures/Fig3D_astro_location_pheatmap.csv"))
+#pmap <- pheatmap::pheatmap(region_cell_mat, 
+#                           show_colnames = T, angle_col=90,
+#                           annotation_names_col=T,
+#                           cluster_cols = F, cluster_rows = F, scale='none',
+#                           color = RColorBrewer::brewer.pal(9, 'RdPu'),
+#                           cellwidth=12, cellheight=12, border_color=NA,
+#                           silent = F,
+#                           annotation_col = region_cell_annot,# annotation_row = rownames(region_cell_mat),
+#                           annotation_colors = list(region_label=reg_cl_pal, location=brain_reg_pal), 
+#                           fontsize = 10,
+#                           filename=paste0(data_dir, run_name, "/figures/Fig3D_astro_location_pheatmap.png"), 
+#                           width=8.5*1.2, height=9*1.3
+#                           );
+write.csv(as.data.frame(region_cell_mat), paste0(data_dir, run_name, "/figures/Fig3D_astro_location_pheatmap.csv"))
 
-knitr::include_graphics(paste0(data_dir, "plots/figures/Fig3D_astro_location_pheatmap.png"))
+#knitr::include_graphics(paste0(data_dir, run_name, "/figures/Fig3D_astro_location_pheatmap.png"))
 ```
