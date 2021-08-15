@@ -1,0 +1,7 @@
+detection_alpha,N_cells_per_location,A_factors_per_location,B_groups_per_location,lr,max_epochs,names
+20.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_20_25_7_7
+1.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_1.0_25_7_7
+5.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_5.0_25_7_7
+10.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_10.0_25_7_7
+20.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_20.0_25_7_7
+50.0,25.0,7.0,7.0,0.002,20000,test_hyperparameters_v3_adam_50.0_25_7_7
