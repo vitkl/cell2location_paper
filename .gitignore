@@ -2,6 +2,7 @@ notebooks/results
 .idea
 *.h5ad
 *.h5seurat
+*.mtx
 .pybiomart.sqlite
 
 model_*.p
@@ -11,6 +12,9 @@ counts_*.p
 synthetic_*_counts.csv
 mapping_video/
 notebooks/selected_results/mouse_visium_snrna/segmentation/results/*_segmented
+notebooks/selected_results/benchmarking/with_tissue_zones/real_mg/pyro/hyperparameter
+notebooks/selected_results/gut/hyperparameters
+notebooks/selected_results/gut/hyperparameters_v2
 notebooks/selected_data/
 notebooks/selected_results/lymph_nodes_analysis/hyperparameters/
 notebooks/selected_results/benchmarking/with_tissue_zones/real_mg/hyperparameters/
