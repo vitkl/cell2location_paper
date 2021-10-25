@@ -1,0 +1,295 @@
+,value,cell_type,is_uniform,is_high_density,is_txn_fine,max_density,method,value_normalised_by_density,Fig1_categories,Fig1_txn_categories
+0,0.248,Inh_3,1,0,1,0.9340324185608874,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2655154093924348,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.923,Ext_Pir,0,1,0,3.584910833189018,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2574680495411178,"Regional & 
+High abundance",Txn distict
+2,0.522,Oligo_2,0,0,1,0.6618093444979991,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.788746795946122,"Regional & 
+Low abundance",Txn fine-grained
+3,0.23,Astro_HYPO,0,0,1,0.7590342668801455,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.30301662261621964,"Regional & 
+Low abundance",Txn fine-grained
+4,0.693,Ext_L25,0,0,1,1.3638756918125519,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5081108228265456,"Regional & 
+Low abundance",Txn fine-grained
+5,0.862,Astro_THAL_lat,0,1,1,4.689548354621618,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.18381301029777986,"Regional & 
+High abundance",Txn fine-grained
+6,0.456,Ext_L5_1,0,0,1,0.7731843454703217,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5897687953351137,"Regional & 
+Low abundance",Txn fine-grained
+7,0.76,Ext_L23,1,1,0,2.7259494110317934,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.27880194581906564,"Ubiquitous & 
+High abundance",Txn distict
+8,0.864,Micro,0,0,1,1.6720552299426534,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5167293427440388,"Regional & 
+Low abundance",Txn fine-grained
+9,0.489,Ext_Thal_1,0,0,0,0.9881350279949519,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4948716381325348,"Regional & 
+Low abundance",Txn distict
+10,0.937,Ext_Hpc_CA1,0,1,0,2.550637450677472,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3673591477107515,"Regional & 
+High abundance",Txn distict
+11,0.952,Inh_Meis2_3,0,1,1,3.356570644237813,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.28362281057134536,"Regional & 
+High abundance",Txn fine-grained
+12,0.18,Inh_4,0,0,1,0.36002434842539527,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4999661850295657,"Regional & 
+Low abundance",Txn fine-grained
+13,0.47,OPC_1,0,0,1,0.7305896378918093,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6433159952230266,"Regional & 
+Low abundance",Txn fine-grained
+14,0.933,Oligo_1,0,0,0,2.2596396420359235,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4128976951207016,"Regional & 
+Low abundance",Txn distict
+15,0.689,Ext_Hpc_CA3,1,0,0,0.8030140011582712,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.8580174181349056,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.547,Astro_CTX,1,0,1,1.3961212546697226,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3917997796899114,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.364,Astro_THAL_med,0,1,1,3.5825830867095827,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.10160266801636558,"Regional & 
+High abundance",Txn fine-grained
+18,0.927,Inh_Vip,0,1,1,2.999432978297964,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3090584142760305,"Regional & 
+High abundance",Txn fine-grained
+19,0.923,Ext_Amy_2,0,1,0,3.4153910549404545,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2702472382085957,"Regional & 
+High abundance",Txn distict
+20,0.543,Astro_AMY_CTX,0,0,1,2.105167584238575,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2579367096783411,"Regional & 
+Low abundance",Txn fine-grained
+21,-0.055,Unk_1,0,0,1,0.8200796640018851,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,-0.06706665512421921,"Regional & 
+Low abundance",Txn fine-grained
+22,0.667,Inh_Sst,1,0,1,1.032853128294108,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6457839761802704,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.605,Inh_Meis2_2,0,0,1,0.8940716492784815,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6766795485442769,"Regional & 
+Low abundance",Txn fine-grained
+24,0.281,Ext_Hpc_DG2,0,0,0,1.2580996886530103,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2233527299421351,"Regional & 
+Low abundance",Txn distict
+25,0.667,Ext_Hpc_DG1,0,0,0,0.938917441554203,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.7103925973469039,"Regional & 
+Low abundance",Txn distict
+26,0.385,Inh_1,0,0,1,1.414836192422104,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.27211630721780306,"Regional & 
+Low abundance",Txn fine-grained
+27,0.863,Inh_Meis2_4,0,1,0,2.1806679798710262,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.39575029668250616,"Regional & 
+High abundance",Txn distict
+28,0.511,Inh_2,0,0,1,0.5378884813976498,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.9500110481492693,"Regional & 
+Low abundance",Txn fine-grained
+29,0.389,Nb_1,0,0,1,0.6431262480631248,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6048579126906021,"Regional & 
+Low abundance",Txn fine-grained
+30,0.907,Ext_Thal_2,0,1,0,2.7476514290709004,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.33010009581408073,"Regional & 
+High abundance",Txn distict
+31,0.776,Ext_Amy_1,0,0,0,1.1948401710140253,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6494592488813227,"Regional & 
+Low abundance",Txn distict
+32,0.436,Ext_L6,0,0,1,1.0470060131065513,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4164254976018264,"Regional & 
+Low abundance",Txn fine-grained
+33,0.933,OPC_2,0,0,0,1.2451789946723022,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.7492898643423878,"Regional & 
+Low abundance",Txn distict
+34,0.689,Inh_Meis2_1,0,0,1,1.5925301241346663,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4326448772040542,"Regional & 
+Low abundance",Txn fine-grained
+35,0.942,Ext_L6B,1,1,1,3.941847209305733,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.23897425495746497,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.85,LowQ_2,0,0,1,1.5927360259067613,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5336728661713331,"Regional & 
+Low abundance",Txn fine-grained
+37,0.772,Ext_Unk_3,1,0,0,1.01574706302035,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.7600317324122388,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.523,Ext_L56,0,0,0,0.6504120943140809,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.8041055887061132,"Regional & 
+Low abundance",Txn distict
+39,0.336,Inh_Lamp5,0,0,1,0.5278229620027214,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6365770801730821,"Regional & 
+Low abundance",Txn fine-grained
+40,0.84,Inh_Pvalb,0,0,0,1.2860995873459828,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6531376016793835,"Regional & 
+Low abundance",Txn distict
+41,0.764,Ext_L5_2,0,0,1,1.1740825327364774,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.65072086390666,"Regional & 
+Low abundance",Txn fine-grained
+42,0.65,Inh_6,0,0,0,1.1360266763199276,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5721696625167516,"Regional & 
+Low abundance",Txn distict
+43,0.451,Astro_AMY,0,0,1,1.1945691106347816,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3775419906516278,"Regional & 
+Low abundance",Txn fine-grained
+44,0.833,Ext_ClauPyr,0,0,0,1.6095946944987873,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5175215865503262,"Regional & 
+Low abundance",Txn distict
+45,0.229,Astro_HPC,0,0,1,0.670693426030606,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3414376690037066,"Regional & 
+Low abundance",Txn fine-grained
+46,0.421,Astro_WM,0,0,1,0.8840609931130858,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.47621148685399267,"Regional & 
+Low abundance",Txn fine-grained
+47,0.692,Nb_2,1,1,1,2.5359523525636276,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2728757893658562,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.476,Inh_5,0,0,0,0.3583016931254242,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,1.3284893963182454,"Regional & 
+Low abundance",Txn distict
+0,0.234,Inh_3,1,0,1,0.9340324185608874,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2505266362815715,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.805,Ext_Pir,0,1,0,3.584910833189018,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.22455230756294675,"Regional & 
+High abundance",Txn distict
+2,0.558,Oligo_2,0,0,1,0.6618093444979991,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.843143126701027,"Regional & 
+Low abundance",Txn fine-grained
+3,0.197,Astro_HYPO,0,0,1,0.7590342668801455,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2595403245886751,"Regional & 
+Low abundance",Txn fine-grained
+4,0.518,Ext_L25,0,0,1,1.3638756918125519,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.37980000898145844,"Regional & 
+Low abundance",Txn fine-grained
+5,0.818,Astro_THAL_lat,0,1,1,4.689548354621618,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.1744304436468491,"Regional & 
+High abundance",Txn fine-grained
+6,0.233,Ext_L5_1,0,0,1,0.7731843454703217,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3013511607743015,"Regional & 
+Low abundance",Txn fine-grained
+7,0.615,Ext_L23,1,1,0,2.7259494110317934,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.22560946931411233,"Ubiquitous & 
+High abundance",Txn distict
+8,0.772,Micro,0,0,1,1.6720552299426534,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.46170723680370135,"Regional & 
+Low abundance",Txn fine-grained
+9,0.513,Ext_Thal_1,0,0,0,0.9881350279949519,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5191598166911868,"Regional & 
+Low abundance",Txn distict
+10,0.933,Ext_Hpc_CA1,0,1,0,2.550637450677472,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3657909122882937,"Regional & 
+High abundance",Txn distict
+11,0.939,Inh_Meis2_3,0,1,1,3.356570644237813,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2797498100068207,"Regional & 
+High abundance",Txn fine-grained
+12,0.164,Inh_4,0,0,1,0.36002434842539527,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.45552474636027096,"Regional & 
+Low abundance",Txn fine-grained
+13,0.448,OPC_1,0,0,1,0.7305896378918093,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6132033316168425,"Regional & 
+Low abundance",Txn fine-grained
+14,0.918,Oligo_1,0,0,0,2.2596396420359235,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.406259468511044,"Regional & 
+Low abundance",Txn distict
+15,0.607,Ext_Hpc_CA3,1,0,0,0.8030140011582712,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.7559021376021593,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.469,Astro_CTX,1,0,1,1.3961212546697226,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.33593070690049076,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.354,Astro_THAL_med,0,1,1,3.5825830867095827,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.09881138592800388,"Regional & 
+High abundance",Txn fine-grained
+18,0.849,Inh_Vip,0,1,1,2.999432978297964,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.28305349915895345,"Regional & 
+High abundance",Txn fine-grained
+19,0.852,Ext_Amy_2,0,1,0,3.4153910549404545,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2494589891156268,"Regional & 
+High abundance",Txn distict
+20,0.533,Astro_AMY_CTX,0,0,1,2.105167584238575,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.25318649403048954,"Regional & 
+Low abundance",Txn fine-grained
+21,-0.024,Unk_1,0,0,1,0.8200796640018851,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,-0.0292654495087502,"Regional & 
+Low abundance",Txn fine-grained
+22,0.639,Inh_Sst,1,0,1,1.032853128294108,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6186746038668557,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.613,Inh_Meis2_2,0,0,1,0.8940716492784815,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6856273772853583,"Regional & 
+Low abundance",Txn fine-grained
+24,0.305,Ext_Hpc_DG2,0,0,0,1.2580996886530103,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.24242911968808253,"Regional & 
+Low abundance",Txn distict
+25,0.585,Ext_Hpc_DG1,0,0,0,0.938917441554203,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6230579751843159,"Regional & 
+Low abundance",Txn distict
+26,0.315,Inh_1,0,0,1,1.414836192422104,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.22264061499638432,"Regional & 
+Low abundance",Txn fine-grained
+27,0.854,Inh_Meis2_4,0,1,0,2.1806679798710262,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.39162312093494817,"Regional & 
+High abundance",Txn distict
+28,0.486,Inh_2,0,0,1,0.5378884813976498,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.9035330125255281,"Regional & 
+Low abundance",Txn fine-grained
+29,0.365,Nb_1,0,0,1,0.6431262480631248,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5675402008536498,"Regional & 
+Low abundance",Txn fine-grained
+30,0.908,Ext_Thal_2,0,1,0,2.7476514290709004,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3304640429979992,"Regional & 
+High abundance",Txn distict
+31,0.702,Ext_Amy_1,0,0,0,1.1948401710140253,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5875262792715058,"Regional & 
+Low abundance",Txn distict
+32,0.333,Ext_L6,0,0,1,1.0470060131065513,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.31804974931515645,"Regional & 
+Low abundance",Txn fine-grained
+33,0.901,OPC_2,0,0,0,1.2451789946723022,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.7235907478804837,"Regional & 
+Low abundance",Txn distict
+34,0.436,Inh_Meis2_1,0,0,1,1.5925301241346663,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.27377818064001114,"Regional & 
+Low abundance",Txn fine-grained
+35,0.891,Ext_L6B,1,1,1,3.941847209305733,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.22603615835148758,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.631,LowQ_2,0,0,1,1.5927360259067613,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.39617362182836613,"Regional & 
+Low abundance",Txn fine-grained
+37,0.661,Ext_Unk_3,1,0,0,1.01574706302035,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6507525584514117,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.412,Ext_L56,0,0,0,0.6504120943140809,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6334445555390413,"Regional & 
+Low abundance",Txn distict
+39,0.333,Inh_Lamp5,0,0,1,0.5278229620027214,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6308933562429653,"Regional & 
+Low abundance",Txn fine-grained
+40,0.836,Inh_Pvalb,0,0,0,1.2860995873459828,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.6500274226237673,"Regional & 
+Low abundance",Txn distict
+41,0.697,Ext_L5_2,0,0,1,1.1740825327364774,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5936550289829083,"Regional & 
+Low abundance",Txn fine-grained
+42,0.626,Inh_6,0,0,0,1.1360266763199276,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.5510433980545947,"Regional & 
+Low abundance",Txn distict
+43,0.362,Astro_AMY,0,0,1,1.1945691106347816,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3030381388378919,"Regional & 
+Low abundance",Txn fine-grained
+44,0.801,Ext_ClauPyr,0,0,0,1.6095946944987873,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.4976408053142993,"Regional & 
+Low abundance",Txn distict
+45,0.201,Astro_HPC,0,0,1,0.670693426030606,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.2996898317456115,"Regional & 
+Low abundance",Txn fine-grained
+46,0.291,Astro_WM,0,0,1,0.8840609931130858,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.3291628092031161,"Regional & 
+Low abundance",Txn fine-grained
+47,0.629,Nb_2,1,1,1,2.5359523525636276,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,0.24803305131665254,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.42,Inh_5,0,0,0,0.3583016931254242,LocationModelMultiExperimentLocationBackgroundNormLevelGeneAlphaPyroModel,1.1721965261631577,"Regional & 
+Low abundance",Txn distict
+0,0.029,Inh_3,1,0,1,0.9340324185608874,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.031048172872502455,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.655,Ext_Pir,0,1,0,3.584910833189018,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.18271026267544113,"Regional & 
+High abundance",Txn distict
+2,0.406,Oligo_2,0,0,1,0.6618093444979991,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.613469730180317,"Regional & 
+Low abundance",Txn fine-grained
+3,0.146,Astro_HYPO,0,0,1,0.7590342668801455,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.19234968218246984,"Regional & 
+Low abundance",Txn fine-grained
+4,0.314,Ext_L25,0,0,1,1.3638756918125519,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2302262602706138,"Regional & 
+Low abundance",Txn fine-grained
+5,0.607,Astro_THAL_lat,0,1,1,4.689548354621618,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.12943677175261295,"Regional & 
+High abundance",Txn fine-grained
+6,0.074,Ext_L5_1,0,0,1,0.7731843454703217,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.09570809397982108,"Regional & 
+Low abundance",Txn fine-grained
+7,0.219,Ext_L23,1,1,0,2.7259494110317934,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.08033898175575707,"Ubiquitous & 
+High abundance",Txn distict
+8,0.737,Micro,0,0,1,1.6720552299426534,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.44077491389161644,"Regional & 
+Low abundance",Txn fine-grained
+9,0.347,Ext_Thal_1,0,0,0,0.9881350279949519,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.35116658166051035,"Regional & 
+Low abundance",Txn distict
+10,0.891,Ext_Hpc_CA1,0,1,0,2.550637450677472,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.3493244403524862,"Regional & 
+High abundance",Txn distict
+11,0.868,Inh_Meis2_3,0,1,1,3.356570644237813,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.25859726846210906,"Regional & 
+High abundance",Txn fine-grained
+12,0.076,Inh_4,0,0,1,0.36002434842539527,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.21109683367914994,"Regional & 
+Low abundance",Txn fine-grained
+13,0.275,OPC_1,0,0,1,0.7305896378918093,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.3764082950773029,"Regional & 
+Low abundance",Txn fine-grained
+14,0.879,Oligo_1,0,0,0,2.2596396420359235,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.3890000793259343,"Regional & 
+Low abundance",Txn distict
+15,0.51,Ext_Hpc_CA3,1,0,0,0.8030140011582712,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.6351072325817154,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.301,Astro_CTX,1,0,1,1.3961212546697226,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2155973193540463,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.273,Astro_THAL_med,0,1,1,3.5825830867095827,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.07620200101227419,"Regional & 
+High abundance",Txn fine-grained
+18,0.736,Inh_Vip,0,1,1,2.999432978297964,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.24537971187395727,"Regional & 
+High abundance",Txn fine-grained
+19,0.684,Ext_Amy_2,0,1,0,3.4153910549404545,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.20026989267029197,"Regional & 
+High abundance",Txn distict
+20,0.497,Astro_AMY_CTX,0,0,1,2.105167584238575,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.23608571769822378,"Regional & 
+Low abundance",Txn fine-grained
+21,-0.032,Unk_1,0,0,1,0.8200796640018851,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,-0.03902059934500027,"Regional & 
+Low abundance",Txn fine-grained
+22,0.49,Inh_Sst,1,0,1,1.032853128294108,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.4744140154847563,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.452,Inh_Meis2_2,0,0,1,0.8940716492784815,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.5055523238710962,"Regional & 
+Low abundance",Txn fine-grained
+24,0.121,Ext_Hpc_DG2,0,0,0,1.2580996886530103,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.0961767983024852,"Regional & 
+Low abundance",Txn distict
+25,0.476,Ext_Hpc_DG1,0,0,0,0.938917441554203,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.5069668310901442,"Regional & 
+Low abundance",Txn distict
+26,0.187,Inh_1,0,0,1,1.414836192422104,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.13217077779150435,"Regional & 
+Low abundance",Txn fine-grained
+27,0.837,Inh_Meis2_4,0,1,0,2.1806679798710262,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.38382734452289413,"Regional & 
+High abundance",Txn distict
+28,0.287,Inh_2,0,0,1,0.5378884813976498,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.5335678489605484,"Regional & 
+Low abundance",Txn fine-grained
+29,0.158,Nb_1,0,0,1,0.6431262480631248,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.24567493625993606,"Regional & 
+Low abundance",Txn fine-grained
+30,0.798,Ext_Thal_2,0,1,0,2.7476514290709004,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2904298527669641,"Regional & 
+High abundance",Txn distict
+31,0.521,Ext_Amy_1,0,0,0,1.1948401710140253,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.43604158333398085,"Regional & 
+Low abundance",Txn distict
+32,0.076,Ext_L6,0,0,1,1.0470060131065513,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.07258793077463029,"Regional & 
+Low abundance",Txn fine-grained
+33,0.874,OPC_2,0,0,0,1.2451789946723022,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.7019071183657523,"Regional & 
+Low abundance",Txn distict
+34,0.233,Inh_Meis2_1,0,0,1,1.5925301241346663,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.1463080644245931,"Regional & 
+Low abundance",Txn fine-grained
+35,0.795,Ext_L6B,1,1,1,3.941847209305733,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2016820941520007,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.497,LowQ_2,0,0,1,1.5927360259067613,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.3120416641025324,"Regional & 
+Low abundance",Txn fine-grained
+37,0.512,Ext_Unk_3,1,0,0,1.01574706302035,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.5040624961075987,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.192,Ext_L56,0,0,0,0.6504120943140809,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2951974627754756,"Regional & 
+Low abundance",Txn distict
+39,0.121,Inh_Lamp5,0,0,1,0.5278229620027214,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.2292435318480444,"Regional & 
+Low abundance",Txn fine-grained
+40,0.745,Inh_Pvalb,0,0,0,1.2860995873459828,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.5792708491085008,"Regional & 
+Low abundance",Txn distict
+41,0.533,Ext_L5_2,0,0,1,1.1740825327364774,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.45397149275163584,"Regional & 
+Low abundance",Txn fine-grained
+42,0.513,Inh_6,0,0,0,1.1360266763199276,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.4515739028786055,"Regional & 
+Low abundance",Txn distict
+43,0.171,Astro_AMY,0,0,1,1.1945691106347816,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.14314785011403183,"Regional & 
+Low abundance",Txn fine-grained
+44,0.65,Ext_ClauPyr,0,0,0,1.6095946944987873,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.4038283688567972,"Regional & 
+Low abundance",Txn distict
+45,0.053,Astro_HPC,0,0,1,0.670693426030606,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.07902269195282291,"Regional & 
+Low abundance",Txn fine-grained
+46,0.304,Astro_WM,0,0,1,0.8840609931130858,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.34386767696820375,"Regional & 
+Low abundance",Txn fine-grained
+47,0.568,Nb_2,1,1,1,2.5359523525636276,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.22397897161821723,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.281,Inh_5,0,0,0,0.3583016931254242,LocationModelLinearDependentWMultiExperimentLocationBackgroundNormLevelNoMGPyroModel,0.7842552948853508,"Regional & 
+Low abundance",Txn distict

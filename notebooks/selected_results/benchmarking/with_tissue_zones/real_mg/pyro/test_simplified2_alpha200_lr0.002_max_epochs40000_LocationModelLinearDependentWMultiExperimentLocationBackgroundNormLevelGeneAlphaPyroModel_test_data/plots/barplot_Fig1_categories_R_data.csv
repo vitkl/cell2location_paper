@@ -1,0 +1,589 @@
+,value,cell_type,is_uniform,is_high_density,is_txn_fine,max_density,method,value_normalised_by_density,Fig1_categories,Fig1_txn_categories
+0,0.248,Inh_3,1,0,1,0.9340324185608874,Cell2location,0.2655154093924348,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.923,Ext_Pir,0,1,0,3.584910833189018,Cell2location,0.2574680495411178,"Regional & 
+High abundance",Txn distict
+2,0.522,Oligo_2,0,0,1,0.6618093444979991,Cell2location,0.788746795946122,"Regional & 
+Low abundance",Txn fine-grained
+3,0.23,Astro_HYPO,0,0,1,0.7590342668801455,Cell2location,0.30301662261621964,"Regional & 
+Low abundance",Txn fine-grained
+4,0.693,Ext_L25,0,0,1,1.3638756918125519,Cell2location,0.5081108228265456,"Regional & 
+Low abundance",Txn fine-grained
+5,0.862,Astro_THAL_lat,0,1,1,4.689548354621618,Cell2location,0.18381301029777986,"Regional & 
+High abundance",Txn fine-grained
+6,0.456,Ext_L5_1,0,0,1,0.7731843454703217,Cell2location,0.5897687953351137,"Regional & 
+Low abundance",Txn fine-grained
+7,0.76,Ext_L23,1,1,0,2.7259494110317934,Cell2location,0.27880194581906564,"Ubiquitous & 
+High abundance",Txn distict
+8,0.864,Micro,0,0,1,1.6720552299426534,Cell2location,0.5167293427440388,"Regional & 
+Low abundance",Txn fine-grained
+9,0.489,Ext_Thal_1,0,0,0,0.9881350279949519,Cell2location,0.4948716381325348,"Regional & 
+Low abundance",Txn distict
+10,0.937,Ext_Hpc_CA1,0,1,0,2.550637450677472,Cell2location,0.3673591477107515,"Regional & 
+High abundance",Txn distict
+11,0.952,Inh_Meis2_3,0,1,1,3.356570644237813,Cell2location,0.28362281057134536,"Regional & 
+High abundance",Txn fine-grained
+12,0.18,Inh_4,0,0,1,0.36002434842539527,Cell2location,0.4999661850295657,"Regional & 
+Low abundance",Txn fine-grained
+13,0.47,OPC_1,0,0,1,0.7305896378918093,Cell2location,0.6433159952230266,"Regional & 
+Low abundance",Txn fine-grained
+14,0.933,Oligo_1,0,0,0,2.2596396420359235,Cell2location,0.4128976951207016,"Regional & 
+Low abundance",Txn distict
+15,0.689,Ext_Hpc_CA3,1,0,0,0.8030140011582712,Cell2location,0.8580174181349056,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.547,Astro_CTX,1,0,1,1.3961212546697226,Cell2location,0.3917997796899114,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.364,Astro_THAL_med,0,1,1,3.5825830867095827,Cell2location,0.10160266801636558,"Regional & 
+High abundance",Txn fine-grained
+18,0.927,Inh_Vip,0,1,1,2.999432978297964,Cell2location,0.3090584142760305,"Regional & 
+High abundance",Txn fine-grained
+19,0.923,Ext_Amy_2,0,1,0,3.4153910549404545,Cell2location,0.2702472382085957,"Regional & 
+High abundance",Txn distict
+20,0.543,Astro_AMY_CTX,0,0,1,2.105167584238575,Cell2location,0.2579367096783411,"Regional & 
+Low abundance",Txn fine-grained
+21,-0.055,Unk_1,0,0,1,0.8200796640018851,Cell2location,-0.06706665512421921,"Regional & 
+Low abundance",Txn fine-grained
+22,0.667,Inh_Sst,1,0,1,1.032853128294108,Cell2location,0.6457839761802704,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.605,Inh_Meis2_2,0,0,1,0.8940716492784815,Cell2location,0.6766795485442769,"Regional & 
+Low abundance",Txn fine-grained
+24,0.281,Ext_Hpc_DG2,0,0,0,1.2580996886530103,Cell2location,0.2233527299421351,"Regional & 
+Low abundance",Txn distict
+25,0.667,Ext_Hpc_DG1,0,0,0,0.938917441554203,Cell2location,0.7103925973469039,"Regional & 
+Low abundance",Txn distict
+26,0.385,Inh_1,0,0,1,1.414836192422104,Cell2location,0.27211630721780306,"Regional & 
+Low abundance",Txn fine-grained
+27,0.863,Inh_Meis2_4,0,1,0,2.1806679798710262,Cell2location,0.39575029668250616,"Regional & 
+High abundance",Txn distict
+28,0.511,Inh_2,0,0,1,0.5378884813976498,Cell2location,0.9500110481492693,"Regional & 
+Low abundance",Txn fine-grained
+29,0.389,Nb_1,0,0,1,0.6431262480631248,Cell2location,0.6048579126906021,"Regional & 
+Low abundance",Txn fine-grained
+30,0.907,Ext_Thal_2,0,1,0,2.7476514290709004,Cell2location,0.33010009581408073,"Regional & 
+High abundance",Txn distict
+31,0.776,Ext_Amy_1,0,0,0,1.1948401710140253,Cell2location,0.6494592488813227,"Regional & 
+Low abundance",Txn distict
+32,0.436,Ext_L6,0,0,1,1.0470060131065513,Cell2location,0.4164254976018264,"Regional & 
+Low abundance",Txn fine-grained
+33,0.933,OPC_2,0,0,0,1.2451789946723022,Cell2location,0.7492898643423878,"Regional & 
+Low abundance",Txn distict
+34,0.689,Inh_Meis2_1,0,0,1,1.5925301241346663,Cell2location,0.4326448772040542,"Regional & 
+Low abundance",Txn fine-grained
+35,0.942,Ext_L6B,1,1,1,3.941847209305733,Cell2location,0.23897425495746497,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.85,LowQ_2,0,0,1,1.5927360259067613,Cell2location,0.5336728661713331,"Regional & 
+Low abundance",Txn fine-grained
+37,0.772,Ext_Unk_3,1,0,0,1.01574706302035,Cell2location,0.7600317324122388,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.523,Ext_L56,0,0,0,0.6504120943140809,Cell2location,0.8041055887061132,"Regional & 
+Low abundance",Txn distict
+39,0.336,Inh_Lamp5,0,0,1,0.5278229620027214,Cell2location,0.6365770801730821,"Regional & 
+Low abundance",Txn fine-grained
+40,0.84,Inh_Pvalb,0,0,0,1.2860995873459828,Cell2location,0.6531376016793835,"Regional & 
+Low abundance",Txn distict
+41,0.764,Ext_L5_2,0,0,1,1.1740825327364774,Cell2location,0.65072086390666,"Regional & 
+Low abundance",Txn fine-grained
+42,0.65,Inh_6,0,0,0,1.1360266763199276,Cell2location,0.5721696625167516,"Regional & 
+Low abundance",Txn distict
+43,0.451,Astro_AMY,0,0,1,1.1945691106347816,Cell2location,0.3775419906516278,"Regional & 
+Low abundance",Txn fine-grained
+44,0.833,Ext_ClauPyr,0,0,0,1.6095946944987873,Cell2location,0.5175215865503262,"Regional & 
+Low abundance",Txn distict
+45,0.229,Astro_HPC,0,0,1,0.670693426030606,Cell2location,0.3414376690037066,"Regional & 
+Low abundance",Txn fine-grained
+46,0.421,Astro_WM,0,0,1,0.8840609931130858,Cell2location,0.47621148685399267,"Regional & 
+Low abundance",Txn fine-grained
+47,0.692,Nb_2,1,1,1,2.5359523525636276,Cell2location,0.2728757893658562,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.476,Inh_5,0,0,0,0.3583016931254242,Cell2location,1.3284893963182454,"Regional & 
+Low abundance",Txn distict
+0,0.098,Inh_3,1,0,1,0.9340324185608874,Stereoscope,0.10492141177604278,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.724,Ext_Pir,0,1,0,3.584910833189018,Stereoscope,0.2019576033236937,"Regional & 
+High abundance",Txn distict
+2,0.495,Oligo_2,0,0,1,0.6618093444979991,Stereoscope,0.7479495478799432,"Regional & 
+Low abundance",Txn fine-grained
+3,0.105,Astro_HYPO,0,0,1,0.7590342668801455,Stereoscope,0.13833367554218723,"Regional & 
+Low abundance",Txn fine-grained
+4,0.435,Ext_L25,0,0,1,1.3638756918125519,Stereoscope,0.3189440229863599,"Regional & 
+Low abundance",Txn fine-grained
+5,0.763,Astro_THAL_lat,0,1,1,4.689548354621618,Stereoscope,0.16270223533318565,"Regional & 
+High abundance",Txn fine-grained
+6,0.126,Ext_L5_1,0,0,1,0.7731843454703217,Stereoscope,0.16296243028996563,"Regional & 
+Low abundance",Txn fine-grained
+7,0.538,Ext_L23,1,1,0,2.7259494110317934,Stereoscope,0.19736243006665438,"Ubiquitous & 
+High abundance",Txn distict
+8,0.688,Micro,0,0,1,1.6720552299426534,Stereoscope,0.4114696618146975,"Regional & 
+Low abundance",Txn fine-grained
+9,0.451,Ext_Thal_1,0,0,0,0.9881350279949519,Stereoscope,0.45641535541466915,"Regional & 
+Low abundance",Txn distict
+10,0.794,Ext_Hpc_CA1,0,1,0,2.550637450677472,Stereoscope,0.3112947313578833,"Regional & 
+High abundance",Txn distict
+11,0.857,Inh_Meis2_3,0,1,1,3.356570644237813,Stereoscope,0.2553201141382805,"Regional & 
+High abundance",Txn fine-grained
+12,0.058,Inh_4,0,0,1,0.36002434842539527,Stereoscope,0.1611002151761934,"Regional & 
+Low abundance",Txn fine-grained
+13,0.362,OPC_1,0,0,1,0.7305896378918093,Stereoscope,0.495490192065395,"Regional & 
+Low abundance",Txn fine-grained
+14,0.885,Oligo_1,0,0,0,2.2596396420359235,Stereoscope,0.39165536996979733,"Regional & 
+Low abundance",Txn distict
+15,0.467,Ext_Hpc_CA3,1,0,0,0.8030140011582712,Stereoscope,0.5815589757169826,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.391,Astro_CTX,1,0,1,1.3961212546697226,Stereoscope,0.28006163411107016,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.349,Astro_THAL_med,0,1,1,3.5825830867095827,Stereoscope,0.09741574488382304,"Regional & 
+High abundance",Txn fine-grained
+18,0.784,Inh_Vip,0,1,1,2.999432978297964,Stereoscope,0.2613827365613893,"Regional & 
+High abundance",Txn fine-grained
+19,0.631,Ext_Amy_2,0,1,0,3.4153910549404545,Stereoscope,0.18475190391075177,"Regional & 
+High abundance",Txn distict
+20,0.405,Astro_AMY_CTX,0,0,1,2.105167584238575,Stereoscope,0.19238373373798923,"Regional & 
+Low abundance",Txn fine-grained
+21,-0.125,Unk_1,0,0,1,0.8200796640018851,Stereoscope,-0.1524242161914073,"Regional & 
+Low abundance",Txn fine-grained
+22,0.542,Inh_Sst,1,0,1,1.032853128294108,Stereoscope,0.5247599926382407,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.487,Inh_Meis2_2,0,0,1,0.8940716492784815,Stereoscope,0.5446990746133271,"Regional & 
+Low abundance",Txn fine-grained
+24,0.199,Ext_Hpc_DG2,0,0,0,1.2580996886530103,Stereoscope,0.15817506497681452,"Regional & 
+Low abundance",Txn distict
+25,0.307,Ext_Hpc_DG1,0,0,0,0.938917441554203,Stereoscope,0.32697230492578633,"Regional & 
+Low abundance",Txn distict
+26,0.105,Inh_1,0,0,1,1.414836192422104,Stereoscope,0.07421353833212811,"Regional & 
+Low abundance",Txn fine-grained
+27,0.768,Inh_Meis2_4,0,1,0,2.1806679798710262,Stereoscope,0.35218566379161614,"Regional & 
+High abundance",Txn distict
+28,0.26,Inh_2,0,0,1,0.5378884813976498,Stereoscope,0.4833715704869081,"Regional & 
+Low abundance",Txn fine-grained
+29,0.223,Nb_1,0,0,1,0.6431262480631248,Stereoscope,0.3467437391516819,"Regional & 
+Low abundance",Txn fine-grained
+30,0.844,Ext_Thal_2,0,1,0,2.7476514290709004,Stereoscope,0.30717142322721513,"Regional & 
+High abundance",Txn distict
+31,0.59,Ext_Amy_1,0,0,0,1.1948401710140253,Stereoscope,0.4937898928350262,"Regional & 
+Low abundance",Txn distict
+32,0.218,Ext_L6,0,0,1,1.0470060131065513,Stereoscope,0.2082127488009132,"Regional & 
+Low abundance",Txn fine-grained
+33,0.82,OPC_2,0,0,0,1.2451789946723022,Stereoscope,0.6585398593362892,"Regional & 
+Low abundance",Txn distict
+34,0.324,Inh_Meis2_1,0,0,1,1.5925301241346663,Stereoscope,0.20344984065909083,"Regional & 
+Low abundance",Txn fine-grained
+35,0.833,Ext_L6B,1,1,1,3.941847209305733,Stereoscope,0.21132224456429757,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.506,LowQ_2,0,0,1,1.5927360259067613,Stereoscope,0.31769231797964065,"Regional & 
+Low abundance",Txn fine-grained
+37,0.432,Ext_Unk_3,1,0,0,1.01574706302035,Stereoscope,0.4253027310907864,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.29,Ext_L56,0,0,0,0.6504120943140809,Stereoscope,0.4458711677337912,"Regional & 
+Low abundance",Txn distict
+39,0.27,Inh_Lamp5,0,0,1,0.5278229620027214,Stereoscope,0.5115351537105124,"Regional & 
+Low abundance",Txn fine-grained
+40,0.744,Inh_Pvalb,0,0,0,1.2860995873459828,Stereoscope,0.5784933043445968,"Regional & 
+Low abundance",Txn distict
+41,0.603,Ext_L5_2,0,0,1,1.1740825327364774,Stereoscope,0.5135925143137643,"Regional & 
+Low abundance",Txn fine-grained
+42,0.593,Inh_6,0,0,0,1.1360266763199276,Stereoscope,0.5219947844191287,"Regional & 
+Low abundance",Txn distict
+43,0.377,Astro_AMY,0,0,1,1.1945691106347816,Stereoscope,0.31559496779526314,"Regional & 
+Low abundance",Txn fine-grained
+44,0.712,Ext_ClauPyr,0,0,0,1.6095946944987873,Stereoscope,0.44234738250159933,"Regional & 
+Low abundance",Txn distict
+45,0.2,Astro_HPC,0,0,1,0.670693426030606,Stereoscope,0.29819883755782234,"Regional & 
+Low abundance",Txn fine-grained
+46,0.368,Astro_WM,0,0,1,0.8840609931130858,Stereoscope,0.41626087211940455,"Regional & 
+Low abundance",Txn fine-grained
+47,0.539,Nb_2,1,1,1,2.5359523525636276,Stereoscope,0.2125434255320759,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.271,Inh_5,0,0,0,0.3583016931254242,Stereoscope,0.756345853786228,"Regional & 
+Low abundance",Txn distict
+0,0.111,Inh_3,1,0,1,0.9340324185608874,Seurat,0.11883955823613009,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.509,Ext_Pir,0,1,0,3.584910833189018,Seurat,0.14198400565160235,"Regional & 
+High abundance",Txn distict
+2,0.365,Oligo_2,0,0,1,0.6618093444979991,Seurat,0.5515183534872308,"Regional & 
+Low abundance",Txn fine-grained
+3,-0.0,Astro_HYPO,0,0,1,0.7590342668801455,Seurat,-0.0,"Regional & 
+Low abundance",Txn fine-grained
+4,-0.036,Ext_L25,0,0,1,1.3638756918125519,Seurat,-0.026395367419560813,"Regional & 
+Low abundance",Txn fine-grained
+5,0.617,Astro_THAL_lat,0,1,1,4.689548354621618,Seurat,0.13156917326418813,"Regional & 
+High abundance",Txn fine-grained
+6,-0.102,Ext_L5_1,0,0,1,0.7731843454703217,Seurat,-0.1319219673775912,"Regional & 
+Low abundance",Txn fine-grained
+7,0.664,Ext_L23,1,1,0,2.7259494110317934,Seurat,0.24358485792613105,"Ubiquitous & 
+High abundance",Txn distict
+8,0.52,Micro,0,0,1,1.6720552299426534,Seurat,0.31099451183669,"Regional & 
+Low abundance",Txn fine-grained
+9,0.216,Ext_Thal_1,0,0,0,0.9881350279949519,Seurat,0.21859360702786815,"Regional & 
+Low abundance",Txn distict
+10,0.697,Ext_Hpc_CA1,0,1,0,2.550637450677472,Seurat,0.27326502236328043,"Regional & 
+High abundance",Txn distict
+11,0.794,Inh_Meis2_3,0,1,1,3.356570644237813,Seurat,0.23655095755635322,"Regional & 
+High abundance",Txn fine-grained
+12,-0.059,Inh_4,0,0,1,0.36002434842539527,Seurat,-0.1638778050930243,"Regional & 
+Low abundance",Txn fine-grained
+13,0.408,OPC_1,0,0,1,0.7305896378918093,Seurat,0.558453034151053,"Regional & 
+Low abundance",Txn fine-grained
+14,0.847,Oligo_1,0,0,0,2.2596396420359235,Seurat,0.37483852922533145,"Regional & 
+Low abundance",Txn distict
+15,0.049,Ext_Hpc_CA3,1,0,0,0.8030140011582712,Seurat,0.061020106659811876,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.414,Astro_CTX,1,0,1,1.3961212546697226,Seurat,0.2965358478823095,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.196,Astro_THAL_med,0,1,1,3.5825830867095827,Seurat,0.05470912893188916,"Regional & 
+High abundance",Txn fine-grained
+18,0.544,Inh_Vip,0,1,1,2.999432978297964,Seurat,0.1813676131242293,"Regional & 
+High abundance",Txn fine-grained
+19,0.737,Ext_Amy_2,0,1,0,3.4153910549404545,Seurat,0.2157878814298321,"Regional & 
+High abundance",Txn distict
+20,0.733,Astro_AMY_CTX,0,0,1,2.105167584238575,Seurat,0.3481908069875212,"Regional & 
+Low abundance",Txn fine-grained
+21,0.059,Unk_1,0,0,1,0.8200796640018851,Seurat,0.07194423004234424,"Regional & 
+Low abundance",Txn fine-grained
+22,0.554,Inh_Sst,1,0,1,1.032853128294108,Seurat,0.5363782950582756,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.16,Inh_Meis2_2,0,0,1,0.8940716492784815,Seurat,0.17895657482162697,"Regional & 
+Low abundance",Txn fine-grained
+24,-0.016,Ext_Hpc_DG2,0,0,0,1.2580996886530103,Seurat,-0.012717593163964987,"Regional & 
+Low abundance",Txn distict
+25,0.488,Ext_Hpc_DG1,0,0,0,0.938917441554203,Seurat,0.5197475075041815,"Regional & 
+Low abundance",Txn distict
+26,0.308,Inh_1,0,0,1,1.414836192422104,Seurat,0.21769304577424245,"Regional & 
+Low abundance",Txn fine-grained
+27,0.724,Inh_Meis2_4,0,1,0,2.1806679798710262,Seurat,0.3320083601368881,"Regional & 
+High abundance",Txn distict
+28,0.033,Inh_2,0,0,1,0.5378884813976498,Seurat,0.06135100702333833,"Regional & 
+Low abundance",Txn fine-grained
+29,0.109,Nb_1,0,0,1,0.6431262480631248,Seurat,0.1694846079261584,"Regional & 
+Low abundance",Txn fine-grained
+30,0.839,Ext_Thal_2,0,1,0,2.7476514290709004,Seurat,0.3053516873076226,"Regional & 
+High abundance",Txn distict
+31,0.438,Ext_Amy_1,0,0,0,1.1948401710140253,Seurat,0.36657622552837543,"Regional & 
+Low abundance",Txn distict
+32,0.008,Ext_L6,0,0,1,1.0470060131065513,Seurat,0.007640834818382136,"Regional & 
+Low abundance",Txn fine-grained
+33,0.747,OPC_2,0,0,0,1.2451789946723022,Seurat,0.5999137499075708,"Regional & 
+Low abundance",Txn distict
+34,-0.048,Inh_Meis2_1,0,0,1,1.5925301241346663,Seurat,-0.030140717134680122,"Regional & 
+Low abundance",Txn fine-grained
+35,0.549,Ext_L6B,1,1,1,3.941847209305733,Seurat,0.1392748046408156,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.028,LowQ_2,0,0,1,1.5927360259067613,Seurat,0.017579812062114505,"Regional & 
+Low abundance",Txn fine-grained
+37,-0.047,Ext_Unk_3,1,0,0,1.01574706302035,Seurat,-0.04627136194737723,"Ubiquitous & 
+Low abundance",Txn distict
+38,-0.062,Ext_L56,0,0,0,0.6504120943140809,Seurat,-0.09532418068791398,"Regional & 
+Low abundance",Txn distict
+39,-0.038,Inh_Lamp5,0,0,1,0.5278229620027214,Seurat,-0.07199383644814618,"Regional & 
+Low abundance",Txn fine-grained
+40,0.775,Inh_Pvalb,0,0,0,1.2860995873459828,Seurat,0.6025971920256217,"Regional & 
+Low abundance",Txn distict
+41,0.28,Ext_L5_2,0,0,1,1.1740825327364774,Seurat,0.23848408624851414,"Regional & 
+Low abundance",Txn fine-grained
+42,0.397,Inh_6,0,0,0,1.1360266763199276,Seurat,0.34946362464484676,"Regional & 
+Low abundance",Txn distict
+43,0.099,Astro_AMY,0,0,1,1.1945691106347816,Seurat,0.08287507111865,"Regional & 
+Low abundance",Txn fine-grained
+44,0.496,Ext_ClauPyr,0,0,0,1.6095946944987873,Seurat,0.3081521091584175,"Regional & 
+Low abundance",Txn distict
+45,0.056,Astro_HPC,0,0,1,0.670693426030606,Seurat,0.08349567451619025,"Regional & 
+Low abundance",Txn fine-grained
+46,0.216,Astro_WM,0,0,1,0.8840609931130858,Seurat,0.24432703363530267,"Regional & 
+Low abundance",Txn fine-grained
+47,0.237,Nb_2,1,1,1,2.5359523525636276,Seurat,0.0934560145660519,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.251,Inh_5,0,0,0,0.3583016931254242,Seurat,0.7005269715879823,"Regional & 
+Low abundance",Txn distict
+0,0.076,Inh_3,1,0,1,0.9340324185608874,RCTD,0.08136762545897194,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.563,Ext_Pir,0,1,0,3.584910833189018,RCTD,0.15704714181110435,"Regional & 
+High abundance",Txn distict
+2,0.466,Oligo_2,0,0,1,0.6618093444979991,RCTD,0.704130281438492,"Regional & 
+Low abundance",Txn fine-grained
+3,0.272,Astro_HYPO,0,0,1,0.7590342668801455,RCTD,0.35835009283309455,"Regional & 
+Low abundance",Txn fine-grained
+4,0.25,Ext_L25,0,0,1,1.3638756918125519,RCTD,0.183301162635839,"Regional & 
+Low abundance",Txn fine-grained
+5,0.735,Astro_THAL_lat,0,1,1,4.689548354621618,RCTD,0.15673151110077516,"Regional & 
+High abundance",Txn fine-grained
+6,0.067,Ext_L5_1,0,0,1,0.7731843454703217,RCTD,0.08665462563037855,"Regional & 
+Low abundance",Txn fine-grained
+7,0.671,Ext_L23,1,1,0,2.7259494110317934,RCTD,0.24615277058499088,"Ubiquitous & 
+High abundance",Txn distict
+8,0.755,Micro,0,0,1,1.6720552299426534,RCTD,0.45154010853211723,"Regional & 
+Low abundance",Txn fine-grained
+9,0.409,Ext_Thal_1,0,0,0,0.9881350279949519,RCTD,0.4139110429370281,"Regional & 
+Low abundance",Txn distict
+10,0.92,Ext_Hpc_CA1,0,1,0,2.550637450677472,RCTD,0.3606941471653056,"Regional & 
+High abundance",Txn distict
+11,0.911,Inh_Meis2_3,0,1,1,3.356570644237813,RCTD,0.2714079626370753,"Regional & 
+High abundance",Txn fine-grained
+12,0.041,Inh_4,0,0,1,0.36002434842539527,RCTD,0.11388118659006774,"Regional & 
+Low abundance",Txn fine-grained
+13,0.431,OPC_1,0,0,1,0.7305896378918093,RCTD,0.5899344551938819,"Regional & 
+Low abundance",Txn fine-grained
+14,0.897,Oligo_1,0,0,0,2.2596396420359235,RCTD,0.3969659512575234,"Regional & 
+Low abundance",Txn distict
+15,0.448,Ext_Hpc_CA3,1,0,0,0.8030140011582712,RCTD,0.5578981180325657,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.228,Astro_CTX,1,0,1,1.3961212546697226,RCTD,0.16330959738446033,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.375,Astro_THAL_med,0,1,1,3.5825830867095827,RCTD,0.10467307831356344,"Regional & 
+High abundance",Txn fine-grained
+18,0.86,Inh_Vip,0,1,1,2.999432978297964,RCTD,0.2867208589831566,"Regional & 
+High abundance",Txn fine-grained
+19,0.811,Ext_Amy_2,0,1,0,3.4153910549404545,RCTD,0.23745450724503914,"Regional & 
+High abundance",Txn distict
+20,0.406,Astro_AMY_CTX,0,0,1,2.105167584238575,RCTD,0.19285875530277438,"Regional & 
+Low abundance",Txn fine-grained
+21,0.061,Unk_1,0,0,1,0.8200796640018851,RCTD,0.07438301750140676,"Regional & 
+Low abundance",Txn fine-grained
+22,0.549,Inh_Sst,1,0,1,1.032853128294108,RCTD,0.5315373357165945,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.543,Inh_Meis2_2,0,0,1,0.8940716492784815,RCTD,0.6073338758008966,"Regional & 
+Low abundance",Txn fine-grained
+24,0.205,Ext_Hpc_DG2,0,0,0,1.2580996886530103,RCTD,0.16294416241330137,"Regional & 
+Low abundance",Txn distict
+25,0.477,Ext_Hpc_DG1,0,0,0,0.938917441554203,RCTD,0.5080318874579807,"Regional & 
+Low abundance",Txn distict
+26,0.186,Inh_1,0,0,1,1.414836192422104,RCTD,0.1314639821883412,"Regional & 
+Low abundance",Txn fine-grained
+27,0.857,Inh_Meis2_4,0,1,0,2.1806679798710262,RCTD,0.39299884618413417,"Regional & 
+High abundance",Txn distict
+28,0.296,Inh_2,0,0,1,0.5378884813976498,RCTD,0.5502999417850953,"Regional & 
+Low abundance",Txn fine-grained
+29,0.243,Nb_1,0,0,1,0.6431262480631248,RCTD,0.37784183234914215,"Regional & 
+Low abundance",Txn fine-grained
+30,0.823,Ext_Thal_2,0,1,0,2.7476514290709004,RCTD,0.29952853236492655,"Regional & 
+High abundance",Txn distict
+31,0.503,Ext_Amy_1,0,0,0,1.1948401710140253,RCTD,0.42097680694240375,"Regional & 
+Low abundance",Txn distict
+32,0.152,Ext_L6,0,0,1,1.0470060131065513,RCTD,0.14517586154926057,"Regional & 
+Low abundance",Txn fine-grained
+33,0.905,OPC_2,0,0,0,1.2451789946723022,RCTD,0.7268031374382218,"Regional & 
+Low abundance",Txn distict
+34,0.26,Inh_Meis2_1,0,0,1,1.5925301241346663,RCTD,0.16326221781285066,"Regional & 
+Low abundance",Txn fine-grained
+35,0.824,Ext_L6B,1,1,1,3.941847209305733,RCTD,0.20903905104559567,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.537,LowQ_2,0,0,1,1.5927360259067613,RCTD,0.3371556813341246,"Regional & 
+Low abundance",Txn fine-grained
+37,0.529,Ext_Unk_3,1,0,0,1.01574706302035,RCTD,0.5207989461736714,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.34,Ext_L56,0,0,0,0.6504120943140809,RCTD,0.5227455069982381,"Regional & 
+Low abundance",Txn distict
+39,0.224,Inh_Lamp5,0,0,1,0.5278229620027214,RCTD,0.424384720115388,"Regional & 
+Low abundance",Txn fine-grained
+40,0.806,Inh_Pvalb,0,0,0,1.2860995873459828,RCTD,0.6267010797066466,"Regional & 
+Low abundance",Txn distict
+41,0.62,Ext_L5_2,0,0,1,1.1740825327364774,RCTD,0.528071905264567,"Regional & 
+Low abundance",Txn fine-grained
+42,0.563,Inh_6,0,0,0,1.1360266763199276,RCTD,0.49558695384143253,"Regional & 
+Low abundance",Txn distict
+43,0.316,Astro_AMY,0,0,1,1.1945691106347816,RCTD,0.26453053003528687,"Regional & 
+Low abundance",Txn fine-grained
+44,0.728,Ext_ClauPyr,0,0,0,1.6095946944987873,RCTD,0.45228777311961277,"Regional & 
+Low abundance",Txn distict
+45,0.079,Astro_HPC,0,0,1,0.670693426030606,RCTD,0.11778854083533982,"Regional & 
+Low abundance",Txn fine-grained
+46,0.277,Astro_WM,0,0,1,0.8840609931130858,RCTD,0.31332679776379097,"Regional & 
+Low abundance",Txn fine-grained
+47,0.663,Nb_2,1,1,1,2.5359523525636276,RCTD,0.2614402432797149,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.382,Inh_5,0,0,0,0.3583016931254242,RCTD,1.066140649986491,"Regional & 
+Low abundance",Txn distict
+0,0.061,Inh_3,1,0,1,0.9340324185608874,SPOTlight,0.06530822569733274,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.709,Ext_Pir,0,1,0,3.584910833189018,SPOTlight,0.19777339883494313,"Regional & 
+High abundance",Txn distict
+2,0.324,Oligo_2,0,0,1,0.6618093444979991,SPOTlight,0.4895669767941446,"Regional & 
+Low abundance",Txn fine-grained
+3,0.17,Astro_HYPO,0,0,1,0.7590342668801455,SPOTlight,0.2239688080206841,"Regional & 
+Low abundance",Txn fine-grained
+4,0.37,Ext_L25,0,0,1,1.3638756918125519,SPOTlight,0.27128572070104173,"Regional & 
+Low abundance",Txn fine-grained
+5,0.58,Astro_THAL_lat,0,1,1,4.689548354621618,SPOTlight,0.12367928767136,"Regional & 
+High abundance",Txn fine-grained
+6,0.202,Ext_L5_1,0,0,1,0.7731843454703217,SPOTlight,0.2612572295124846,"Regional & 
+Low abundance",Txn fine-grained
+7,0.566,Ext_L23,1,1,0,2.7259494110317934,SPOTlight,0.2076340807020936,"Ubiquitous & 
+High abundance",Txn distict
+8,0.741,Micro,0,0,1,1.6720552299426534,SPOTlight,0.4431671793672833,"Regional & 
+Low abundance",Txn fine-grained
+9,0.49,Ext_Thal_1,0,0,0,0.9881350279949519,SPOTlight,0.49588364557247866,"Regional & 
+Low abundance",Txn distict
+10,0.812,Ext_Hpc_CA1,0,1,0,2.550637450677472,SPOTlight,0.3183517907589437,"Regional & 
+High abundance",Txn distict
+11,0.904,Inh_Meis2_3,0,1,1,3.356570644237813,SPOTlight,0.26932250079463893,"Regional & 
+High abundance",Txn fine-grained
+12,0.026,Inh_4,0,0,1,0.36002434842539527,SPOTlight,0.07221733783760394,"Regional & 
+Low abundance",Txn fine-grained
+13,0.302,OPC_1,0,0,1,0.7305896378918093,SPOTlight,0.41336474586671074,"Regional & 
+Low abundance",Txn fine-grained
+14,0.806,Oligo_1,0,0,0,2.2596396420359235,SPOTlight,0.3566940431589341,"Regional & 
+Low abundance",Txn distict
+15,0.563,Ext_Hpc_CA3,1,0,0,0.8030140011582712,SPOTlight,0.7011085724382465,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.515,Astro_CTX,1,0,1,1.3961212546697226,SPOTlight,0.3688791344429696,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,0.211,Astro_THAL_med,0,1,1,3.5825830867095827,SPOTlight,0.05889605206443169,"Regional & 
+High abundance",Txn fine-grained
+18,0.724,Inh_Vip,0,1,1,2.999432978297964,SPOTlight,0.24137895570209927,"Regional & 
+High abundance",Txn fine-grained
+19,0.78,Ext_Amy_2,0,1,0,3.4153910549404545,SPOTlight,0.22837794778191187,"Regional & 
+High abundance",Txn distict
+20,0.142,Astro_AMY_CTX,0,0,1,2.105167584238575,SPOTlight,0.06745306219949251,"Regional & 
+Low abundance",Txn fine-grained
+21,0.093,Unk_1,0,0,1,0.8200796640018851,SPOTlight,0.11340361684640703,"Regional & 
+Low abundance",Txn fine-grained
+22,0.488,Inh_Sst,1,0,1,1.032853128294108,SPOTlight,0.4724776317480839,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.501,Inh_Meis2_2,0,0,1,0.8940716492784815,SPOTlight,0.5603577749102194,"Regional & 
+Low abundance",Txn fine-grained
+24,0.228,Ext_Hpc_DG2,0,0,0,1.2580996886530103,SPOTlight,0.18122570258650106,"Regional & 
+Low abundance",Txn distict
+25,0.467,Ext_Hpc_DG1,0,0,0,0.938917441554203,SPOTlight,0.49738132377961636,"Regional & 
+Low abundance",Txn distict
+26,0.261,Inh_1,0,0,1,1.414836192422104,SPOTlight,0.1844736524255756,"Regional & 
+Low abundance",Txn fine-grained
+27,0.843,Inh_Meis2_4,0,1,0,2.1806679798710262,SPOTlight,0.38657879502126613,"Regional & 
+High abundance",Txn distict
+28,0.316,Inh_2,0,0,1,0.5378884813976498,SPOTlight,0.5874823702840882,"Regional & 
+Low abundance",Txn fine-grained
+29,0.279,Nb_1,0,0,1,0.6431262480631248,SPOTlight,0.4338184001045706,"Regional & 
+Low abundance",Txn fine-grained
+30,0.851,Ext_Thal_2,0,1,0,2.7476514290709004,SPOTlight,0.3097190535146446,"Regional & 
+High abundance",Txn distict
+31,0.455,Ext_Amy_1,0,0,0,1.1948401710140253,SPOTlight,0.3808040698981982,"Regional & 
+Low abundance",Txn distict
+32,0.328,Ext_L6,0,0,1,1.0470060131065513,SPOTlight,0.3132742275536676,"Regional & 
+Low abundance",Txn fine-grained
+33,0.803,OPC_2,0,0,0,1.2451789946723022,SPOTlight,0.6448872037159028,"Regional & 
+Low abundance",Txn distict
+34,0.347,Inh_Meis2_1,0,0,1,1.5925301241346663,SPOTlight,0.21789226761945837,"Regional & 
+Low abundance",Txn fine-grained
+35,0.814,Ext_L6B,1,1,1,3.941847209305733,SPOTlight,0.20650216935814913,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.49,LowQ_2,0,0,1,1.5927360259067613,SPOTlight,0.3076467110870038,"Regional & 
+Low abundance",Txn fine-grained
+37,0.584,Ext_Unk_3,1,0,0,1.01574706302035,SPOTlight,0.5749462846227298,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.427,Ext_L56,0,0,0,0.6504120943140809,SPOTlight,0.6565068573183753,"Regional & 
+Low abundance",Txn distict
+39,0.305,Inh_Lamp5,0,0,1,0.5278229620027214,SPOTlight,0.5778452662285417,"Regional & 
+Low abundance",Txn fine-grained
+40,0.755,Inh_Pvalb,0,0,0,1.2860995873459828,SPOTlight,0.587046296747541,"Regional & 
+Low abundance",Txn distict
+41,0.674,Ext_L5_2,0,0,1,1.1740825327364774,SPOTlight,0.5740652647553519,"Regional & 
+Low abundance",Txn fine-grained
+42,0.544,Inh_6,0,0,0,1.1360266763199276,SPOTlight,0.47886199447555833,"Regional & 
+Low abundance",Txn distict
+43,0.054,Astro_AMY,0,0,1,1.1945691106347816,SPOTlight,0.04520458424653636,"Regional & 
+Low abundance",Txn fine-grained
+44,0.709,Ext_ClauPyr,0,0,0,1.6095946944987873,SPOTlight,0.4404835592607218,"Regional & 
+Low abundance",Txn distict
+45,0.0,Astro_HPC,0,0,1,0.670693426030606,SPOTlight,0.0,"Regional & 
+Low abundance",Txn fine-grained
+46,0.232,Astro_WM,0,0,1,0.8840609931130858,SPOTlight,0.2624253324231029,"Regional & 
+Low abundance",Txn fine-grained
+47,0.497,Nb_2,1,1,1,2.5359523525636276,SPOTlight,0.1959816001659401,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.21,Inh_5,0,0,0,0.3583016931254242,SPOTlight,0.5860982630815789,"Regional & 
+Low abundance",Txn distict
+0,0.046,Inh_3,1,0,1,0.9340324185608874,NNLS,0.049248825935693546,"Ubiquitous & 
+Low abundance",Txn fine-grained
+1,0.0,Ext_Pir,0,1,0,3.584910833189018,NNLS,0.0,"Regional & 
+High abundance",Txn distict
+2,0.0,Oligo_2,0,0,1,0.6618093444979991,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+3,0.0,Astro_HYPO,0,0,1,0.7590342668801455,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+4,0.0,Ext_L25,0,0,1,1.3638756918125519,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+5,0.0,Astro_THAL_lat,0,1,1,4.689548354621618,NNLS,0.0,"Regional & 
+High abundance",Txn fine-grained
+6,0.0,Ext_L5_1,0,0,1,0.7731843454703217,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+7,0.0,Ext_L23,1,1,0,2.7259494110317934,NNLS,0.0,"Ubiquitous & 
+High abundance",Txn distict
+8,0.105,Micro,0,0,1,1.6720552299426534,NNLS,0.06279696873625472,"Regional & 
+Low abundance",Txn fine-grained
+9,0.0,Ext_Thal_1,0,0,0,0.9881350279949519,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+10,0.0,Ext_Hpc_CA1,0,1,0,2.550637450677472,NNLS,0.0,"Regional & 
+High abundance",Txn distict
+11,0.0,Inh_Meis2_3,0,1,1,3.356570644237813,NNLS,0.0,"Regional & 
+High abundance",Txn fine-grained
+12,0.094,Inh_4,0,0,1,0.36002434842539527,NNLS,0.26109345218210656,"Regional & 
+Low abundance",Txn fine-grained
+13,0.0,OPC_1,0,0,1,0.7305896378918093,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+14,0.0,Oligo_1,0,0,0,2.2596396420359235,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+15,0.0,Ext_Hpc_CA3,1,0,0,0.8030140011582712,NNLS,0.0,"Ubiquitous & 
+Low abundance",Txn distict
+16,0.0,Astro_CTX,1,0,1,1.3961212546697226,NNLS,0.0,"Ubiquitous & 
+Low abundance",Txn fine-grained
+17,-0.009,Astro_THAL_med,0,1,1,3.5825830867095827,NNLS,-0.0025121538795255223,"Regional & 
+High abundance",Txn fine-grained
+18,0.0,Inh_Vip,0,1,1,2.999432978297964,NNLS,0.0,"Regional & 
+High abundance",Txn fine-grained
+19,0.0,Ext_Amy_2,0,1,0,3.4153910549404545,NNLS,0.0,"Regional & 
+High abundance",Txn distict
+20,0.0,Astro_AMY_CTX,0,0,1,2.105167584238575,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+21,0.228,Unk_1,0,0,1,0.8200796640018851,NNLS,0.2780217703331269,"Regional & 
+Low abundance",Txn fine-grained
+22,0.0,Inh_Sst,1,0,1,1.032853128294108,NNLS,0.0,"Ubiquitous & 
+Low abundance",Txn fine-grained
+23,0.0,Inh_Meis2_2,0,0,1,0.8940716492784815,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+24,0.0,Ext_Hpc_DG2,0,0,0,1.2580996886530103,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+25,0.0,Ext_Hpc_DG1,0,0,0,0.938917441554203,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+26,-0.039,Inh_1,0,0,1,1.414836192422104,NNLS,-0.02756502852336187,"Regional & 
+Low abundance",Txn fine-grained
+27,0.0,Inh_Meis2_4,0,1,0,2.1806679798710262,NNLS,0.0,"Regional & 
+High abundance",Txn distict
+28,0.0,Inh_2,0,0,1,0.5378884813976498,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+29,-0.065,Nb_1,0,0,1,0.6431262480631248,NNLS,-0.10106880289174584,"Regional & 
+Low abundance",Txn fine-grained
+30,0.0,Ext_Thal_2,0,1,0,2.7476514290709004,NNLS,0.0,"Regional & 
+High abundance",Txn distict
+31,0.0,Ext_Amy_1,0,0,0,1.1948401710140253,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+32,0.0,Ext_L6,0,0,1,1.0470060131065513,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+33,0.0,OPC_2,0,0,0,1.2451789946723022,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+34,0.0,Inh_Meis2_1,0,0,1,1.5925301241346663,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+35,0.0,Ext_L6B,1,1,1,3.941847209305733,NNLS,0.0,"Ubiquitous & 
+High abundance",Txn fine-grained
+36,0.0,LowQ_2,0,0,1,1.5927360259067613,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+37,0.0,Ext_Unk_3,1,0,0,1.01574706302035,NNLS,0.0,"Ubiquitous & 
+Low abundance",Txn distict
+38,0.0,Ext_L56,0,0,0,0.6504120943140809,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+39,0.0,Inh_Lamp5,0,0,1,0.5278229620027214,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+40,0.0,Inh_Pvalb,0,0,0,1.2860995873459828,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+41,0.0,Ext_L5_2,0,0,1,1.1740825327364774,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+42,0.0,Inh_6,0,0,0,1.1360266763199276,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+43,0.0,Astro_AMY,0,0,1,1.1945691106347816,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+44,0.0,Ext_ClauPyr,0,0,0,1.6095946944987873,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
+45,0.0,Astro_HPC,0,0,1,0.670693426030606,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+46,0.0,Astro_WM,0,0,1,0.8840609931130858,NNLS,0.0,"Regional & 
+Low abundance",Txn fine-grained
+47,0.0,Nb_2,1,1,1,2.5359523525636276,NNLS,0.0,"Ubiquitous & 
+High abundance",Txn fine-grained
+48,0.0,Inh_5,0,0,0,0.3583016931254242,NNLS,0.0,"Regional & 
+Low abundance",Txn distict
